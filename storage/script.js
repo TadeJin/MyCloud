@@ -771,3 +771,48 @@ function hideUploadStatus(completely) {
           );
     }
 }
+
+function toggleProfileInfo() {
+    let menu = document.getElementById("profileDropDown");
+    if (menu.hidden) {
+        menu.hidden = false;
+        menu.animate(
+        [      
+            {height: "0vw"},
+            {height: "5vw"}  
+        ],
+
+        {
+            duration: 250,
+            iterations: 1,
+            fill: "forwards",
+       });
+
+        setTimeout(() => {
+            document.getElementById("triangle").style = "display: block";
+        },250);
+
+       document.getElementById("availableSpaceDiv").hidden = false;
+       document.getElementById("takenSpaceDiv").hidden = false;
+       document.getElementById("logout").hidden = false;
+    } else {
+        document.getElementById("triangle").style = "display: none";
+        menu.animate(
+            [      
+                {height: "5vw"},
+                {height: "0vw"}  
+            ],
+    
+            {
+                duration: 250,
+                iterations: 1,
+                fill: "forwards",
+           });
+        setTimeout(() => {
+            menu.hidden = true;
+        },250);
+        document.getElementById("availableSpaceDiv").hidden = true;
+        document.getElementById("takenSpaceDiv").hidden = true;
+        document.getElementById("logout").hidden = true;
+    }
+}

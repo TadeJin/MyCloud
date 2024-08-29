@@ -15,57 +15,125 @@ body {
 }
 
 .header h1{
-    display: inline-block;
     font-size: 2vw;
     font-family: "Russo One",sans-serif;
-    margin-bottom: 0.5%;
-    margin-left: -18vw;
+    margin-bottom: 0;
+}
+
+.header svg {
+    position: absolute;
+    height: 3vw;
+    width: 3vw;
+    left: 38%;
+    top: 2%;
+}
+
+
+.header hr {
+    position: relative;
+    height: 3px;
+    background-color: black;
+    left: 0;
+    z-index: 1;
 }
 
 .header h1 img {
-    width: 15%;
+    width: 5vw;
 }
 
-.header .Space {
-    float: left;
-    top: 0;
-}   
-
-.header .Space h2 {
-    display: inline-block;
-    font-size: 2vw;
-    font-family: "Russo One",sans-serif;
-}
-
-
-.header form {
-    display: inline-block;
-    float: right;
-    margin-top: 3vh;
-    width: 10vw;
-    height: 5vh;
-}
-
-.header button {
+#userInfo {
     position: absolute;
-    left: 89.5%;
-    top: 5%;
-    font-size: 1vw;
-    font-family: "Russo One",sans-serif;
-    height: 5%;
-    width: 10%;
-    border-radius: 40px;
-    background: transparent;
-    text-align: center;
+    width: max-content;
+    height: 20vw;
+    right:3%;
+    top: 2%;
 }
 
-.header button:hover {
-    background: lightgray;
+
+#userName {
+    position: relative;
+    left:0;
+    top: 0;
+    display: inline-block;
+    width: max-content;
+    font-family: "Russo One",sans-serif;
+    font-size: 1.5vw;
+}
+
+#profilePic {
+    left:5%;
+    top: 2%;
+    position: relative;
+    display: inline-block;
+    height: 2vw;
+    width: 2vw;
+}
+
+#profilePic:hover {
     cursor: pointer;
 }
-.header button img {
-    padding-left: 1%;
+
+#profileDropDown {
     position: absolute;
+    width: 15vw;
+    height: 5vw;
+    outline: 4px solid black;
+    top: 16.5%;
+    border-radius: 1px;
+    right: 3.5%;
+    background-color: white;
+    z-index: 3;
+}
+
+#profileDropDown svg[name="triangle"] {
+    position: absolute;
+    top: -19%;
+    left: 94.25%;
+    width: 1vw;
+    height: 1vw;
+}
+
+#availableSpaceDiv {
+    position: absolute;
+    left:2%;
+    top:2%;
+    font-family: "Russo One",sans-serif;
+    font-size: 1vw;
+}
+
+#takenSpaceDiv {
+    position: absolute;
+    left:2%;
+    top:25%;
+    font-family: "Russo One",sans-serif;
+    font-size: 1vw;
+}
+
+#logout {
+    position: absolute;
+    width: 80%;
+    left:10%;
+    top:65%; 
+}
+
+#logout svg {
+    width: 1vw;
+    height: 1vw;
+    left: 65%;
+    top: 5%;
+}
+
+#logout button {
+    width: 100%;
+    background: transparent;
+    border: 2px solid black;
+    border-radius: 5px;
+    font-family: "Russo One",sans-serif;
+}
+
+#logout button:hover {
+    background-color: lightgray;
+    cursor: pointer;
 }
 
 #serverText {
@@ -84,6 +152,7 @@ body {
     font-family: "Russo One",sans-serif;
     display: inline-block;
 }
+
 
 .tools input {
     display: none;
@@ -115,19 +184,46 @@ body {
     cursor:pointer;
 }
 
-#fileUploadBut {
+
+#toolsWrapper {
     position: absolute;
+    left: 1%;
+    top: 15%;
+    width: 20vw;
+    height: 5vw;
+}
+
+#fileUploadBut {
+    position: relative;
     z-index: 1;
-    width: 4%;
-    height: auto;
-    left: 11.5%;
-    top: 20.5%;
+    width: 2vw;
+    height: 2vw;
+    left: 60%;
+    top: 25%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-#fileUploadBut :hover {
+#fileUploadBut:hover {
+    border-radius: 50%;
+    background-color: lightgray;
+    cursor: pointer;
+}
+
+#createFolderBut {
+    position: absolute;
+    z-index: 1;
+    width: 2vw;
+    height: 2vw;
+    left: 75%;
+    top: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#createFolderBut:hover {
     border-radius: 50%;
     background-color: lightgray;
     cursor: pointer;
