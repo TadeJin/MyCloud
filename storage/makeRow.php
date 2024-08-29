@@ -1,16 +1,24 @@
 <?php
 session_start();
 
-$host = "localhost";
-$user = "root";
-$passwd = "";
-$db = "MyCloud";
+if (isset($_POST["name"])) {
+    $host = "localhost";
+    $user = "root";
+    $passwd = "";
+    $db = "MyCloud1";
 
-$connect = new mysqli($host, $user, $passwd, $db);
-$connect -> set_charset("UTF8") or die("Kódování nenastaveno");
-$SQL = $connect -> prepare("INSERT INTO files(filename,user_iduser) VALUES(?,?)");
-$SQL ->bind_param("ss", $filename,$userid);
+    $connect = new mysqli($host, $user, $passwd, $db);
+    $connect -> set_charset("UTF8") or die("Kódování nenastaveno");
+    $SQL = $connect -> prepare("INSERT INTO storagedata(name,isDir,parentDir,user_iduser) VALUES(?,?,?,?)");
+    $SQL ->bind_param("sssi", $filename,$isDir,$parentDir,$userid);
 
-$filename = $_POST["fileName"];
-$userid = $_SESSION["userid"];
-$SQL->execute();
+    $filename = $_POST["name"];
+    $isDir = $_POST["isDir"];
+    $parentDir = $_SESSION["currentDir"];
+    $userid = $_SESSION["userid"];
+    $SQL->execute();
+
+    echo 0;
+} else {
+    echo 1;
+}

@@ -60,7 +60,7 @@
                 $host = "localhost";
                 $user = "root";
                 $passwd = "";
-                $db = "MyCloud";
+                $db = "MyCloud1";
                 
                 $connect = new mysqli($host, $user, $passwd, $db) or die("Spojení se nezdařilo");
                 $connect -> set_charset("UTF8") or die("Kódování nenastaveno");

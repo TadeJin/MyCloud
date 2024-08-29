@@ -4,12 +4,12 @@ session_start();
 $host = "localhost";
 $user = "root";
 $passwd = "";
-$db = "MyCloud";
+$db = "MyCloud1";
 
 $connect = new mysqli($host, $user, $passwd, $db);
 $connect -> set_charset("UTF8") or die("Encoding not set");
 
-$SQL = $connect->prepare("SELECT filename FROM files WHERE filename = ? AND user_iduser = ?");
+$SQL = $connect->prepare("SELECT name FROM storageData WHERE name = ? AND user_iduser = ?");
 $SQL ->bind_param("ss", $filename,$userid);
 
 $filename = $_POST["filename"];

@@ -41,6 +41,11 @@ body {
     width: 5vw;
 }
 
+#currentFolderDiv {
+    font-family: "Russo One",sans-serif;
+    font-size: 1vw;
+}
+
 #userInfo {
     position: absolute;
     width: max-content;
@@ -153,6 +158,23 @@ body {
     display: inline-block;
 }
 
+#returnToMain {
+    position: absolute;
+    z-index: 1;
+    width: 2vw;
+    height: 2vw;
+    left: 1%;
+    top: 22.5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#returnToMain:hover {
+    border-radius: 50%;
+    background-color: lightgray;
+    cursor: pointer;
+}
 
 .tools input {
     display: none;
@@ -205,10 +227,34 @@ body {
     align-items: center;
 }
 
+#fileUploadBut svg {
+    fill: rgb(54, 54, 54);
+}
+
+
 #fileUploadBut:hover {
     border-radius: 50%;
     background-color: lightgray;
     cursor: pointer;
+}
+
+#fileUploadButDisabled {
+    position: relative;
+    z-index: 1;
+    width: 2vw;
+    height: 2vw;
+    left: 60%;
+    top: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#fileUploadButDisabled:hover {
+    border-radius: 50%;
+    background-color: lightgray;
+    cursor: not-allowed;
 }
 
 #createFolderBut {
@@ -427,6 +473,18 @@ body {
     font-family: "Russo One",sans-serif;
 }
 
+#noFilesDisplay {
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#noFilesDisplay div {
+    font-size: 2vw;
+    font-family: "Russo One",sans-serif;
+    color: gray;
+}
 
 
 
@@ -449,12 +507,30 @@ body {
     width: 5vw;
 }
 
+.fileIcon {
+    position: absolute;
+    left: 20%;
+    top: 17%;
+}
+
+.fileIcon svg {
+    width: 1.5vw;
+    height: 1.5vw;
+}
+
 .fileBut {
     width: 13vw;
     height: 5vh;
     border-radius: 40px;
     font-size: 2vh;
     background: white;
+}
+.fileBut:disabled {
+    color: black;
+}
+
+.fileBut:disabled:hover {
+    cursor: not-allowed;
 }
 
 

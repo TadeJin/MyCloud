@@ -1,5 +1,22 @@
 //Document onload
 $(function() {
+
+    $.ajax({
+        url: "openFolder.php",
+        type: "POST",
+        data: { 
+            openedDir: "main"
+        },
+        success: function(response) {
+            document.getElementById("currentFolderDiv").innerHTML = "Directory: " + response + " folder";
+            document.getElementById("returnToMain").style = "display:none";
+            loadFiles(addEventListenersToFiles);
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            displayError("ERROR: " + errorThrown);
+        }
+    });
+
     document.getElementById("uploadStatusWrapper").animate(
         [
             { transform: "translateX(120%)" }
@@ -78,6 +95,11 @@ function loadFiles(callback) {
                 dataType:"html",
                 success: function(response) {
                     document.getElementById("fileDisplayDiv").innerHTML = response;
+                    if (document.getElementById("fileDisplayDiv").innerHTML == "") {
+                        document.getElementById("noFilesDisplay").style = "display:flex";
+                    } else {
+                        document.getElementById("noFilesDisplay").style = "display:none";
+                    }
                     callback();
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
@@ -99,7 +121,7 @@ function addEventListenersToFiles() {
                 let dots = file.querySelectorAll(".dot");
                 dropDown.style.animationName = "hide";
                 
-                file.querySelector("svg").animate(
+                file.querySelectorAll("svg")[1].animate(
                     [
                         { transform: "rotate(0deg)" },
                     ],
@@ -125,7 +147,7 @@ function addEventListenersToFiles() {
             if (dropDown.classList.contains("active")) {
                 dropDown.style.animationName = "hide";
                 
-                file.querySelector("svg").animate(
+                file.querySelectorAll("svg")[1].animate(
                     [
                         { transform: "rotate(0deg)" },
                     ],
@@ -150,7 +172,7 @@ function addEventListenersToFiles() {
                 dropDown.classList.remove("hide");
                 dropDown.classList.add("active");
                 
-                file.querySelector("svg").animate(
+                file.querySelectorAll("svg")[1].animate(
                     [
                         { transform: "rotate(90deg)" },
                     ],
@@ -235,6 +257,19 @@ function upload() {
 
                 showUploadStatus(true);
                 dotsAnim(0);
+                document.getElementById("fileUploadBut").onclick = function() {
+
+                };
+                document.getElementById("fileUploadBut").id = "fileUploadButDisabled";
+                document.getElementById("fileUploadButIcon").style = "fill: rgba(80,80,80,1);";
+                document.getElementById("fileDisplayDiv").querySelectorAll("button").forEach(button => {
+                    button.disabled = true;
+                });
+                document.getElementById("returnToMain").style = "cursor: not-allowed";
+                document.getElementById("returnToMainIcon").style = "fill: rgba(80,80,80,1)";
+                document.getElementById("returnToMain").onclick = function() {
+
+                };
 
                 let fileChunks = [];
                 const chunkSize = 20 * 1024 * 1024;
@@ -291,29 +326,49 @@ function upload() {
                                 sendNextChunk(fileIndex,chunkIndex + 1,fileChunks,files,cancelled);
                             }else {
                                 if (fileIndex < fileChunks.length-1) {
-                                    let xhr = new XMLHttpRequest();
+                                    /*let xhr = new XMLHttpRequest();
                                     let formData = new FormData();
                                     formData.append("fileName",files[fileIndex].name);
                                     xhr.open("POST","makeRow.php",false);
-                                    xhr.send(formData);
+                                    xhr.send(formData);*/
+                                    $.ajax({
+                                        url: "makeRow.php",
+                                        type: "POST",
+                                        async: false,
+                                        data: { 
+                                            name: files[fileIndex].name,
+                                            isDir: 0
+                                        }
+                                    });
                                     
                                     loadFiles(addEventListenersToFiles);
                                     getFreeSpace();
                                     window.removeEventListener("beforeunload",beforeUnloadFn);
                                     sendNextChunk(fileIndex + 1,0,fileChunks,files,cancelled);
                                 } else {
-                                    let xhr = new XMLHttpRequest();
+                                    /*let xhr = new XMLHttpRequest();
                                     let formData = new FormData();
                                     formData.append("fileName",files[fileIndex].name);
                                     xhr.open("POST","makeRow.php",false);
-                                    xhr.send(formData);
+                                    xhr.send(formData);*/
+                                    $.ajax({
+                                        url: "makeRow.php",
+                                        type: "POST",
+                                        async: false,
+                                        data: { 
+                                            name: files[fileIndex].name,
+                                            isDir: 0
+                                        }
+                                    });
                                     if(files.length > 1) {
                                         document.getElementById("file-input").value = "";
                                         hideUploadStatus(true);
+                                        enableUploadTools();
                                         displaySuccess("Files uploaded");
                                     } else {
                                         document.getElementById("file-input").value = "";
                                         hideUploadStatus(true);
+                                        enableUploadTools();
                                         displaySuccess("File uploaded");
                                     }
                                     window.removeEventListener("beforeunload",beforeUnloadFn);
@@ -333,7 +388,7 @@ function upload() {
                     type: "POST",
                     data: { fileName: files[fileIndex].name},
                     success: function(response) {
-                        console.log(response);
+                        enableUploadTools();
                         displaySuccess("Upload cancelled");
                         document.getElementById("file-input").value = "";
                         hideUploadStatus(true);
@@ -348,7 +403,7 @@ function upload() {
             }
             } else {
                 document.getElementById("file-input").value = "";
-                displayError("File with this name already exists"); 
+                displayError("File/Folder with this name already exists"); 
             }
         } else {
             displayError("Not enough space");
@@ -399,30 +454,52 @@ function sendNextChunk(fileIndex,chunkIndex,fileChunks,files,cancel) {
                     sendNextChunk(fileIndex,chunkIndex + 1,fileChunks,files,cancelled);
                 }else {
                     if (fileIndex < fileChunks.length-1) {
-                        let xhr = new XMLHttpRequest();
+                        /*let xhr = new XMLHttpRequest();
                         let formData = new FormData();
                         formData.append("fileName",files[fileIndex].name);
                         xhr.open("POST","makeRow.php",false);
-                        xhr.send(formData);
+                        xhr.send(formData);*/
+
+                        $.ajax({
+                            url: "makeRow.php",
+                            type: "POST",
+                            async: false,
+                            data: { 
+                                name: files[fileIndex].name,
+                                isDir: 0
+                            }
+                        });
                         
                         getFreeSpace();
                         loadFiles(addEventListenersToFiles);
                         window.removeEventListener("beforeunload",beforeUnloadFn);
                         sendNextChunk(fileIndex + 1,0,fileChunks,files,cancelled);
                     } else {
-                        let xhr = new XMLHttpRequest();
+                        /*let xhr = new XMLHttpRequest();
                         let formData = new FormData();
                         formData.append("fileName",files[fileIndex].name);
                         xhr.open("POST","makeRow.php",false);
-                        xhr.send(formData);
-                        
+                        xhr.send(formData);*/
+
+                        $.ajax({
+                            url: "makeRow.php",
+                            type: "POST",
+                            async: false,
+                            data: { 
+                                name: files[fileIndex].name,
+                                isDir: 0
+                            }
+                        });
+
                         if(files.length > 1) {
                             document.getElementById("file-input").value = "";
                             hideUploadStatus(true);
+                            enableUploadTools();
                             displaySuccess("Files uploaded");
                         } else {
                             document.getElementById("file-input").value = "";
                             hideUploadStatus(true); 
+                            enableUploadTools();
                             displaySuccess("File uploaded");
                         }
                         window.removeEventListener("beforeunload",beforeUnloadFn);
@@ -442,6 +519,7 @@ function sendNextChunk(fileIndex,chunkIndex,fileChunks,files,cancel) {
             type: "POST",
             data: {fileName: files[fileIndex].name},
             success: function() {
+                enableUploadTools();
                 displaySuccess("Upload cancelled");
                 document.getElementById("file-input").value = "";
                 hideUploadStatus(true);
@@ -476,6 +554,7 @@ function getTemp() {
 
 function back() {
     document.getElementById("renameContainer").hidden = true;
+    document.getElementById("newFolderContainer").hidden = true;
 }
 function removeFile(fileName) {
     $.ajax({
@@ -621,6 +700,18 @@ function showUploadStatus(completely) {
                 fill: "forwards",
            }
           );
+
+          document.getElementById("statusArrow").animate(
+            [
+                { transform: "rotate(180deg)" }
+            ],
+                            
+            {
+                duration: 0,
+                iterations: 1,
+                fill: "forwards",
+            }
+        );
     } else {
         document.getElementById('uploadText').hidden = false;
         document.getElementById('dots').hidden = false;
@@ -814,5 +905,102 @@ function toggleProfileInfo() {
         document.getElementById("availableSpaceDiv").hidden = true;
         document.getElementById("takenSpaceDiv").hidden = true;
         document.getElementById("logout").hidden = true;
+    }
+}
+
+function makeFolder() {
+    document.getElementById("newFolderName").value = "";
+    document.getElementById("newFolderContainer").hidden = false;
+    const folderSubButClickEL = function() {
+        back();
+        $.ajax({
+            url: "checkDuplicate.php",
+            type: "POST",
+            data: { 
+                filename: document.getElementById("newFolderName").value
+            },
+            success: function(response) {
+                if (response == 1) {
+                    $.ajax({
+                        url: "makeRow.php",
+                        type: "POST",
+                        data: { 
+                            name: document.getElementById("newFolderName").value,
+                            isDir: 1
+                        },
+                        success: function(response) {
+                            displaySuccess("Folder created"); 
+                            document.getElementById("newFolderSub").removeEventListener("click",folderSubButClickEL);
+                            loadFiles(addEventListenersToFiles);
+                        },
+                        error: function(jqXHR, textStatus, errorThrown) {
+                            displayError("ERROR: " + errorThrown);
+                        }
+                    });
+                } else {
+                    displayError("Folder/File with this name already exists")
+                }
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                displayError("ERROR: " + errorThrown);
+            }
+        });
+    }
+    document.getElementById("newFolderSub").addEventListener("click", folderSubButClickEL);
+}
+
+function openFolder(folderName) {
+    $.ajax({
+        url: "openFolder.php",
+        type: "POST",
+        data: { 
+            openedDir: folderName
+        },
+        success: function(response) {
+            document.getElementById("currentFolderDiv").innerHTML = "Directory: " + response + " folder";
+            if (folderName == "main") {
+                document.getElementById("returnToMain").style = "display:none";
+            } else {
+                document.getElementById("returnToMain").style = "display:flex";
+            }
+            loadFiles(addEventListenersToFiles);
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            displayError("ERROR: " + errorThrown);
+        }
+    });
+}
+
+function deleteFolder(folderName) {
+    $.ajax({
+        url: "deleteFolderContent.php",
+        type: "POST",
+        data: {
+            folderName: folderName
+        },
+        success: function(response) {
+            console.log(response);
+            displaySuccess("Folder deleted");
+            loadFiles(addEventListenersToFiles);
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            displayError("ERROR: " + errorThrown);
+        }
+    });
+}
+
+function enableUploadTools() {
+    document.getElementById("fileUploadButDisabled").id = "fileUploadBut";
+    document.getElementById("fileUploadButIcon").style = "fill: rgba(0,0,0,1);";
+    document.getElementById("fileUploadBut").onclick = function() {
+        document.getElementById('file-input').click()
+    };
+    document.getElementById("fileDisplayDiv").querySelectorAll("button").forEach(button => {
+        button.disabled = false;
+    });
+    document.getElementById("returnToMain").style = "cursor: pointer";
+    document.getElementById("returnToMainIcon").style = "fill: rgba(0,0,0,1)";
+    document.getElementById("returnToMain").onclick = function() {
+        openFolder("main");
     }
 }

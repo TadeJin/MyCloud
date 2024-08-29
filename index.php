@@ -43,7 +43,7 @@
             $host = "localhost";
             $user = "root";
             $passwd = "";
-            $db = "MyCloud";
+            $db = "MyCloud1";
 
             $connect = new mysqli($host, $user, $passwd, $db) or die("Spojení se nezdařilo");
             $connect -> set_charset("UTF8") or die("Kódování nenastaveno");
@@ -61,7 +61,8 @@
                 if(password_verify($_POST['pass'], $row["password"])) {
                     $_SESSION["user"] = $_POST["username"];
                     $_SESSION["userid"] = $row["iduser"];
-                    $_SESSION['rootPath'] = "C:\\PROJECTS\\MyCloud\\TestStorage\\";
+                    $_SESSION["currentDir"] = "main";
+                    $_SESSION["rootPath"] = "C:\\PROJECTS\\MyCloud\\TestStorage\\";
                     $connect->close();
                     header("Location: storage");
                 }

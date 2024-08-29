@@ -31,6 +31,15 @@
             <button class = "submitBut" id = "renameSub">SUBMIT</button>
         </div>
     </div>
+
+    <div class = "renameContainer" id = "newFolderContainer" hidden>
+        <div class = "renameBox">
+            <h2>Enter folder name:</h2>
+            <input type="text" class = "newNameInput" id = "newFolderName"><br>
+            <button class="backBut" onclick="back()">BACK</button>
+            <button class = "submitBut" id = "newFolderSub">SUBMIT</button>
+        </div>
+    </div>
     
     <div class="header">
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000" version="1.1" id="Capa_1" viewBox="0 0 547.674 547.674" xml:space="preserve">
@@ -41,6 +50,7 @@
             </g>
         </svg>
         <h1>MyCloud Storage</h1>
+        <div id = "currentFolderDiv">Directory: Main folder</div>
         <!--<div class="Space">
             <h2>Available storage: </h2>
             <h2 id = "storage"></h2>
@@ -84,6 +94,10 @@
     <div class="tools">
         <input id = "file-input" type="file" name ="file" multiple>
         
+        <div id = "returnToMain" title = "Return to main folder" onclick = 'openFolder("main")' style="display:none">
+            <svg id = "returnToMainIcon"xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M12.707 17.293 8.414 13H18v-2H8.414l4.293-4.293-1.414-1.414L4.586 12l6.707 6.707z"></path></svg>
+        </div>
+        
         <div id = "uploadStatusWrapper">
             <div id = "uploadStatusBox">
                 <div id = "uploadText">Uploading Files</div>
@@ -116,16 +130,20 @@
         </div>
         
         <div id = "toolsWrapper">
-            <h2 id = "filesHeader">Your files:</h2>
+            <h2 id = "filesHeader">Your files: </h2>
             <div id = "fileUploadBut" title = "Upload File" onclick="document.getElementById('file-input').click()">
-                <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);"><path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"></path></svg>
+                <svg id = "fileUploadButIcon" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);"><path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"></path></svg>
             </div>
-            <div id = "createFolderBut" title = "Create Folder" onclick="">
+            <div id = "createFolderBut" title = "Create Folder" onclick="makeFolder()">
                 <svg xmlns="http://www.w3.org/2000/svg" width="70%" height= "70%" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M20 5h-9.586L8.707 3.293A.997.997 0 0 0 8 3H4c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V7c0-1.103-.897-2-2-2zm-4 9h-3v3h-2v-3H8v-2h3V9h2v3h3v2z"></path></svg>
             </div>
         </div>
     </div>
     <div id = "fileDisplayDiv"></div>
+
+    <div id = "noFilesDisplay">
+        <div>No files uploaded</div>
+    </div>
 
     <?php 
         if (empty($_SESSION["userid"])) {
