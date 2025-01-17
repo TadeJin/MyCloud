@@ -42,6 +42,14 @@ body {
     left: 57.5vw;
 }
 
+.container .input-box img[id = "userImg"] {
+    position: absolute;
+    width: 1.9%;
+    height: auto;
+    left: 57.5vw;
+    top: 40vh;
+}
+
 .container .input-box img[src ='user-solid-60.png'] {
     top: 40.25vh;
 }

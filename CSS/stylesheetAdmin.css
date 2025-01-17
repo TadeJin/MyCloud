@@ -1,0 +1,217 @@
+@import url("https://fonts.googleapis.com/css?family=Russo+One");
+
+body {
+    z-index: -1;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+.header {
+    text-align: center;
+}
+
+#storage {
+    margin-left: 0.5vw;
+}
+
+div {
+    font-family: "Russo One",sans-serif;
+}
+
+.header h1{
+    font-size: 2vw;
+    font-family: "Russo One",sans-serif;
+    margin-bottom: 0;
+}
+
+.header svg {
+    position: absolute;
+    height: 3vw;
+    width: 3vw;
+    left: 38%;
+    top: 2%;
+}
+
+
+.header hr {
+    position: relative;
+    height: 3px;
+    background-color: black;
+    left: 0;
+    z-index: 1;
+}
+
+.header h1 img {
+    width: 5vw;
+}
+
+#userInfo {
+    position: absolute;
+    width: max-content;
+    height: 20vw;
+    right:3%;
+    top: 2%;
+}
+
+
+#userName {
+    position: relative;
+    left:0;
+    top: 0;
+    display: inline-block;
+    width: max-content;
+    font-family: "Russo One",sans-serif;
+    font-size: 1.5vw;
+}
+
+#profilePic {
+    left:5%;
+    top: 2%;
+    position: relative;
+    display: inline-block;
+    height: 2vw;
+    width: 2vw;
+}
+
+#profilePic:hover {
+    cursor: pointer;
+}
+
+#profileDropDown {
+    position: absolute;
+    width: 15vw;
+    height: 5vw;
+    outline: 4px solid black;
+    top: 16.5%;
+    border-radius: 1px;
+    right: 3.5%;
+    background-color: white;
+    z-index: 3;
+}
+
+#profileDropDown svg[name="triangle"] {
+    position: absolute;
+    top: -19%;
+    left: 94.25%;
+    width: 1vw;
+    height: 1vw;
+}
+
+
+#availableSpaceDiv {
+    position: absolute;
+    left:2%;
+    top:2%;
+    font-family: "Russo One",sans-serif;
+    font-size: 1vw;
+}
+
+#takenSpaceDiv {
+    position: absolute;
+    left:2%;
+    top:25%;
+    font-family: "Russo One",sans-serif;
+    font-size: 1vw;
+}
+
+#logout {
+    position: absolute;
+    width: 80%;
+    left:10%;
+    top:65%; 
+}
+
+#logout svg {
+    width: 1vw;
+    height: 1vw;
+    left: 65%;
+    top: 5%;
+}
+
+#logout button {
+    width: 100%;
+    background: transparent;
+    border: 2px solid black;
+    border-radius: 5px;
+    font-family: "Russo One",sans-serif;
+}
+
+#logout button:hover {
+    background-color: lightgray;
+    cursor: pointer;
+}
+
+.adminTools {
+    width: 100%;
+    height: 95vh;
+}
+
+.infoPanel {
+    width: 30%;
+    height: max-content;
+    min-height: 85vh;
+    outline: 5px solid black;
+    margin-left: 1%;
+    margin-right: 2%;
+    margin-top: 1%;
+    display: inline-block;
+    position: relative;
+}
+
+.infoPanelHeader {
+    font-size: 3vh;
+    padding-left: 2%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    outline: 5px solid black;
+    position: relative;
+}
+
+.infoPanelHeader img {
+    height: 100%;
+    width: 10%;
+    position: absolute;
+    left: 90%;
+    top: 0;
+}
+
+.panelContent {
+    top: 10%;
+    left: 2.5%;
+    position: absolute;
+}
+
+.panelContent label {
+    font-size: 2vh;
+}
+
+.rebootBut {
+    position: absolute;
+    top: -5%;
+    left: 75%;
+    width: 25%;
+    height: 25%;
+    text-align: left;
+    font-family: "Russo One",sans-serif;
+    font-size: 90%;
+    outline: 3px solid black;
+    background-color: transparent;
+    border: 0;
+    border-radius: 5px;
+}
+
+.rebootBut:hover {
+    cursor: pointer;
+    background-color: lightgray;
+    outline: 3px solid red;
+    color: red;
+    background-color: lightgray;
+}
+
+.rebootBut img {
+    width: 20%;
+    height: auto;
+    position: absolute;
+    top: 10%;
+    left: 75%;
+}

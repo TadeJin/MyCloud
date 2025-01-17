@@ -17,19 +17,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login – MyCloud</title>
-    <link rel="stylesheet" href="stylesheetLogin.css">
-    <link rel ="icon" href="cloud-solid-120.png">
+    <link rel="stylesheet" href="CSS/stylesheetLogin.css">
+    <link rel ="icon" href="media/cloud-solid-120.png">
 </head>
 <body>
     <div class = "container">
         <form method="post">
-            <div class="header"><h1><img src="cloud-black-shape-svgrepo-com.png"> MyCloud</h1></div>
+            <div class="header"><h1><img src="media/cloud-black-shape-svgrepo-com.png"> MyCloud</h1></div>
             <div class = "input-box">
-                <img src="user-solid-60.png">
+                <img src="user-solid-60.png" id = "userImg">
                 <input type = "name" name = "username" onkeyup="disableBut()" id = "username" placeholder="Username"><br>
             </div>
             <div class="input-box">
-                <img src="lock-solid-60.png">
+                <img src="lock-solid-60.png" id = "lockImg">
                 <input type="password" name = "pass" onkeyup="disableBut()" id = "password" placeholder="Password"><br>
             </div>
             <div class="butDiv"><input type="submit" name = "login" id = "login" disabled value = "Login" class="but"></div>

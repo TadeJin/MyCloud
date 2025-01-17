@@ -14,23 +14,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create User</title>
-    <link rel="stylesheet" href="stylesheetCreateUser.css">
-    <link rel ="icon" href="cloud-solid-120.png">
+    <link rel="stylesheet" href="../CSS/stylesheetCreateUser.css">
+    <link rel ="icon" href="../media/cloud-solid-120.png">
 </head>
 <body>
     <div class="container">
         <form method="post">
-            <div class="header"><h1><img src="cloud-black-shape-svgrepo-com.png"> Create User</h1></div>
+            <div class="header"><h1><img src="../media/cloud-black-shape-svgrepo-com.png"> Create User</h1></div>
             <div class="input-box">
-                <img src="user-solid-60.png">
+                <img src="../media/user-solid-60.png" id = "userImg">
                 <input type = "name" name = "username" placeholder="Username" onkeyup="disableBut()" id = "username">
             </div>
             <div class="input-box">
-                <img src="lock-solid-60.png" id="pass">
+                <img src="../media/lock-solid-60.png" id="pass">
                 <input type="password" name = "password" placeholder="Password" onkeyup="disableBut()" id = "password">
             </div>
             <div class="input-box">
-                <img src="lock-solid-60.png" id="admin">
+                <img src="../media/lock-solid-60.png" id="admin">
                 <input type = "password" name = "adminPassword" placeholder="Admin password" onkeyup="disableBut()" id = "adminPass">
             </div>
             <div class="butDiv">

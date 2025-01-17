@@ -13,34 +13,15 @@
  -->
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Storage – MyCloud</title>
-    <script type="text/javascript" src = "https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link rel="stylesheet" href = "../CSS/stylesheetStorage.css">
-    <link rel ="icon" href="../media/cloud-solid-120.png">
-</head>
-<body>
-    
-    <div class = "renameContainer" id = "renameContainer" hidden>
-        <div class = "renameBox">
-            <h2>Enter new file name:</h2>
-            <input type="text" class = "newNameInput" id = "newFileNameInput"><br>
-            <button class="backBut" onclick="back()">BACK</button>
-            <button class = "submitBut" id = "renameSub">SUBMIT</button>
-        </div>
-    </div>
-
-    <div class = "renameContainer" id = "newFolderContainer" hidden>
-        <div class = "renameBox">
-            <h2>Enter folder name:</h2>
-            <input type="text" class = "newNameInput" id = "newFolderName"><br>
-            <button class="backBut" onclick="back()">BACK</button>
-            <button class = "submitBut" id = "newFolderSub">SUBMIT</button>
-        </div>
-    </div>
-    
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Storage – MyCloud</title>
+        <script type="text/javascript" src = "https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <link rel="stylesheet" href = "../CSS/stylesheetAdmin.css">
+        <link rel ="icon" href="../media/cloud-solid-120.png">
+    </head>
+    <body>
     <div class="header">
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000" version="1.1" id="Capa_1" viewBox="0 0 547.674 547.674" xml:space="preserve">
             <g>
@@ -49,8 +30,7 @@
                 </g>
             </g>
         </svg>
-        <h1>MyCloud Storage</h1>
-        <div id = "currentFolderDiv">Directory: Main folder</div>
+        <h1>MyCloud Admin</h1>
         <!--<div class="Space">
             <h2>Available storage: </h2>
             <h2 id = "storage"></h2>
@@ -91,69 +71,28 @@
         <hr>
     </div> 
     
-    <div class="tools">
-        <input id = "file-input" type="file" name ="file" multiple>
-        
-        <div id = "returnToMain" title = "Return to main folder" onclick = 'openFolder("main")' style="display:none">
-            <svg id = "returnToMainIcon"xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M12.707 17.293 8.414 13H18v-2H8.414l4.293-4.293-1.414-1.414L4.586 12l6.707 6.707z"></path></svg>
-        </div>
-        
-        <div id = "uploadStatusWrapper">
-            <div id = "uploadStatusBox">
-                <div id = "uploadText">Uploading Files</div>
-                <div id = "dots">...</div>
-                <div id = "currentFileUploading">Current file: </div>
-                <div id = "filesUploaded">Uploaded: 0/4 files</div>
-                <div id = "percentage">0%</div>
-                <progress id = "progress" value="0" max = "100"></progress>
-
-                <div id = "cancelUpload">Cancel Upload</div>
-                <div id = "hideUploadStatus">
-                    <svg id = "statusArrow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z"></path></svg>
-                </div>
+    <div class = "adminTools">
+        <div class = "infoPanel">
+            <div class = "infoPanelHeader">Server info <img src = "../media/server-icon.png"></div>
+            <div class = "panelContent">
+                <label>STATUS: <label style = "color:green;">ONLINE</label></label>&emsp;&emsp;&emsp; <button class = "rebootBut">&emsp;REBOOT<img src = "../media/red-reboot.png" ></button> <br /><br />
+                <label>CPU Temperature:</label> <label>100°C</label>&emsp;&emsp;&emsp;&emsp;
+                <label>RAM used:</label> <label>2.0/8.0 GB</label><br /><br />
+                <label>Available space: </label> <label>960.0 GB</label><br /><br />
+                <label>Taken space: </label> <label>40.0 GB</label>
             </div>
         </div>
 
-        <div id = "statusBoxWrapper">
-            <div id = "statusBox">
-                <div id = "statusHeaderText"></div>
-                <div id = "statusIcon"></div>
-                
-                <div id = "statusText"></div>
-                <div id = "hideStatusBox">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="18" y1="6" x2="6" y2="18"></line>
-                        <line x1="6" y1="6" x2="18" y2="18"></line>
-                    </svg>
-                </div>
-            </div>
+        <div class = "infoPanel">
+            <div class = "infoPanelHeader">User info <img src = "../media/user-detail.png" style = "left: 87.5%;width:12.5%;height:auto;top: -12%;"></div>
         </div>
-        
-        <div id = "toolsWrapper">
-            <h2 id = "filesHeader">Your files: </h2>
-            <div id = "fileUploadBut" title = "Upload File" onclick="document.getElementById('file-input').click()">
-                <svg id = "fileUploadButIcon" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);"><path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"></path></svg>
-            </div>
-            <div id = "createFolderBut" title = "Create Folder" onclick="makeFolder()">
-                <svg xmlns="http://www.w3.org/2000/svg" width="70%" height= "70%" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M20 5h-9.586L8.707 3.293A.997.997 0 0 0 8 3H4c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V7c0-1.103-.897-2-2-2zm-4 9h-3v3h-2v-3H8v-2h3V9h2v3h3v2z"></path></svg>
-            </div>
+
+        <div class = "infoPanel">
+            <div class = "infoPanelHeader">Account requests  <img src = "../media/request-icon.png" style = "width: 8%;height: auto;top: 7.5%;"></div>
         </div>
     </div>
-    <div id = "fileDisplayDiv"></div>
 
-    <div id = "noFilesDisplay">
-        <div>No files uploaded</div>
-    </div>
 
-    <?php 
-        if (empty($_SESSION["userid"])) {
-            header ("Location:/MyCloud");
-        }
-        
-        if (isset($_POST["logout"])) {
-            session_destroy();
-            header("Location: /MyCloud");
-        }?>
-    <script type="text/javascript" src = "../Scripts/script.js"></script>
-</body>
+    <script src="../Scripts/script.js"></script>
+    </body>
 </html>
