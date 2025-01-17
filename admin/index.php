@@ -75,7 +75,7 @@
         <div class = "infoPanel">
             <div class = "infoPanelHeader">Server info <img src = "../media/server-icon.png"></div>
             <div class = "panelContent">
-                <label>STATUS: <label style = "color:green;">ONLINE</label></label>&emsp;&emsp;&emsp; <button class = "rebootBut">&emsp;REBOOT<img src = "../media/red-reboot.png" ></button> <br /><br />
+                <label>STATUS: <label style = "color:green;">ONLINE</label></label>&emsp;&emsp;&emsp; <button class = "rebootBut">&emsp;REBOOT<img src = "../media/reboot-icon.png" ></button> <br /><br />
                 <label>CPU Temperature:</label> <label>100°C</label>&emsp;&emsp;&emsp;&emsp;
                 <label>RAM used:</label> <label>2.0/8.0 GB</label><br /><br />
                 <label>Available space: </label> <label>960.0 GB</label><br /><br />
