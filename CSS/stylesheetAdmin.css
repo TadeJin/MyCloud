@@ -4,6 +4,7 @@ body {
     z-index: -1;
     height: 100%;
     overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 .header {
@@ -182,22 +183,23 @@ div {
 }
 
 .panelContent label {
-    font-size: 2vh;
+    font-size: 2.25vh;
 }
 
 .rebootBut {
     position: absolute;
-    top: -5%;
-    left: 75%;
-    width: 25%;
-    height: 25%;
+    top: 10%;
+    left: 62.5%;
+    width: 7.5vw;
+    height: 2.25vw;
     text-align: left;
-    font-family: "Russo One",sans-serif;
-    font-size: 90%;
     outline: 3px solid black;
     background-color: transparent;
     border: 0;
     border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .rebootBut:hover {
@@ -214,4 +216,39 @@ div {
     position: absolute;
     top: 10%;
     left: 75%;
+}
+
+#buttonText {
+    font-family: "Russo One",sans-serif;
+    position: relative;
+    font-size: .9vw;
+}
+
+.logDiv {
+    width: 26vw;
+    height: 44.5vh;
+    margin-left: 1%;
+    outline: 5px solid black;
+    margin-top: 2.5%;
+    padding: 3%;
+    position: relative;
+}
+
+.userTable {
+    width: 26vw;
+    margin-left: 4.5%;
+}   
+
+.userTable tr {
+    outline: 3px solid black;
+}
+
+
+.userTable td {
+    outline: 3px solid black;
+    text-align: center;
+}
+
+.userTable a {
+    color: red;
 }

@@ -16,7 +16,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Storage – MyCloud</title>
+        <title>ADMIN – MyCloud</title>
         <script type="text/javascript" src = "https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <link rel="stylesheet" href = "../CSS/stylesheetAdmin.css">
         <link rel ="icon" href="../media/cloud-solid-120.png">
@@ -73,22 +73,70 @@
     
     <div class = "adminTools">
         <div class = "infoPanel">
-            <div class = "infoPanelHeader">Server info <img src = "../media/server-icon.png"></div>
+            <div class = "infoPanelHeader">Server info <button class = "rebootBut">&emsp;<div id = "buttonText">REBOOT&emsp;&emsp;</div><img src = "../media/reboot-icon.png" ></button><img src = "../media/server-icon.png"></div>
             <div class = "panelContent">
-                <label>STATUS: <label style = "color:green;">ONLINE</label></label>&emsp;&emsp;&emsp; <button class = "rebootBut">&emsp;REBOOT<img src = "../media/reboot-icon.png" ></button> <br /><br />
+                <label>STATUS: <label style = "color:green;">ONLINE</label></label>&emsp;&emsp;&emsp;  <br /><br />
                 <label>CPU Temperature:</label> <label>100°C</label>&emsp;&emsp;&emsp;&emsp;
                 <label>RAM used:</label> <label>2.0/8.0 GB</label><br /><br />
                 <label>Available space: </label> <label>960.0 GB</label><br /><br />
-                <label>Taken space: </label> <label>40.0 GB</label>
+                <label>Taken space: </label> <label>40.0 GB</label><br /><br />
+                <label>Logs: </label>
+
+                <div class = "logDiv" style = "overflow-y:scroll;">
+                   <label>User tadeas logged in at 12:37 AM 24-01-2025</label>
+                   <label>User Marek logged in at 8:37 PM 24-01-2025</label>
+                </div>
             </div>
         </div>
 
         <div class = "infoPanel">
-            <div class = "infoPanelHeader">User info <img src = "../media/user-detail.png" style = "left: 87.5%;width:12.5%;height:auto;top: -12%;"></div>
+            <div class = "infoPanelHeader">User info <img src = "../media/user-detail.png" style = "left: 87.5%;width:12.5%;height:auto;top: -16%;"></div>
+            <div class = "panelContent">
+                <label>Total user count: 10</label><br /><br />
+                <label>Currently active users: 2</label><br /><br />
+
+                <table class = "userTable">
+                    <tr>
+                        <td colspan = "3" style = "text-align: center;font-size: 1.25vw;">User list</td>
+                    </tr>
+                    <tr id = "userTableHeader">
+                        <td>Username</td>
+                        <td>Taken space</td>
+                        <td>Remove</td>
+                    </tr>
+
+                    <tr>
+                        <td>tadeas</td>
+                        <td>47.6 GB</td>
+                        <td><a href = "removeUser.php" id = "">remove</a></td>
+                    </tr>
+                </table>
+            </div>
         </div>
 
         <div class = "infoPanel">
             <div class = "infoPanelHeader">Account requests  <img src = "../media/request-icon.png" style = "width: 8%;height: auto;top: 7.5%;"></div>
+            <div class = "panelContent">
+                <table class="userTable" id = "requests">
+                    <tr>
+                        <td colspan ="4">New requests</td>
+                    </tr>
+
+                    <tr>
+                        <td>Username</td>
+                        <td>Date</td>
+                        <td>Accept</td>
+                        <td>Decline</td>
+                    </tr>
+
+                    <tr>
+                        <td>marek</td>
+                        <td>02-01-2025</td>
+                        <td><a href = "acceptRequest.php" style = "color:lime;">Accept</a></td>
+                        <td><a href="declineRequest.php">Decline</a></td>
+                    </tr>
+                </table>
+            </div>
         </div>
     </div>
 
