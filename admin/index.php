@@ -21,7 +21,7 @@
         <link rel="stylesheet" href = "../CSS/stylesheetAdmin.css">
         <link rel ="icon" href="../media/cloud-solid-120.png">
     </head>
-    <body>
+    <body onload="loadUsers()">
     <div class="header">
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000" version="1.1" id="Capa_1" viewBox="0 0 547.674 547.674" xml:space="preserve">
             <g>
@@ -76,15 +76,26 @@
             <div class = "infoPanelHeader">Server info <button class = "rebootBut">&emsp;<div id = "buttonText">REBOOT&emsp;&emsp;</div><img src = "../media/reboot-icon.png" ></button><img src = "../media/server-icon.png"></div>
             <div class = "panelContent">
                 <label>STATUS: <label style = "color:green;">ONLINE</label></label>&emsp;&emsp;&emsp;  <br /><br />
-                <label>CPU Temperature:</label> <label>100°C</label>&emsp;&emsp;&emsp;&emsp;
+                <label>CPU Temperature:</label> <label style = "color: red">100°C</label>&emsp;&emsp;&emsp;&emsp;
                 <label>RAM used:</label> <label>2.0/8.0 GB</label><br /><br />
                 <label>Available space: </label> <label>960.0 GB</label><br /><br />
                 <label>Taken space: </label> <label>40.0 GB</label><br /><br />
-                <label>Logs: </label>
 
-                <div class = "logDiv" style = "overflow-y:scroll;">
-                   <label>User tadeas logged in at 12:37 AM 24-01-2025</label>
-                   <label>User Marek logged in at 8:37 PM 24-01-2025</label>
+                <div class = "tableDiv" name = "logs">
+                    <table class = "userTable" name = "logs">
+                        <tr>
+                            <td colspan = "3" style = "text-align: center;font-size: 1.25vw;outline: 4px solid black;">Logs</td>
+                        </tr>
+
+                        <tr>
+                            <td id = "logTd">
+                                <div class = "logDiv">
+                                &emsp; User tadeas logged in at 12:37 AM 24-01-2025<br />
+                                &emsp; User Marek logged in at 8:37 PM 24-01-2025
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
             </div>
         </div>
@@ -95,31 +106,40 @@
                 <label>Total user count: 10</label><br /><br />
                 <label>Currently active users: 2</label><br /><br />
 
-                <table class = "userTable">
-                    <tr>
-                        <td colspan = "3" style = "text-align: center;font-size: 1.25vw;">User list</td>
-                    </tr>
-                    <tr id = "userTableHeader">
-                        <td>Username</td>
-                        <td>Taken space</td>
-                        <td>Remove</td>
-                    </tr>
+                <div class = "tableDiv">
+                    <table class = "userTable" id = "usersTable">
+                        <tr>
+                            <td colspan = "3" style = "text-align: center;font-size: 1.25vw;">User list</td>
+                        </tr>
+                        <tr>
+                            <td>Username</td>
+                            <td>Taken space</td>
+                            <td>Remove</td>
+                        </tr>
 
-                    <tr>
-                        <td>tadeas</td>
-                        <td>47.6 GB</td>
-                        <td><a href = "removeUser.php" id = "">remove</a></td>
-                    </tr>
-                </table>
+                        <tr>
+                            <td>tadeas</td>
+                            <td>47.6 GB</td>
+                            <td><a href = "removeUser.php" id = "">Remove</a></td>
+                        </tr>
+                    </table>
+                </div>
             </div>
         </div>
 
         <div class = "infoPanel">
             <div class = "infoPanelHeader">Account requests  <img src = "../media/request-icon.png" style = "width: 8%;height: auto;top: 7.5%;"></div>
             <div class = "panelContent">
+
+
+            <label>Request email: tadeas.jindra28@seznam.cz</label><br /><br />
+            <label>Total requests: 1</label><br /><br />
+            
+
+            <div class = "tableDiv">
                 <table class="userTable" id = "requests">
                     <tr>
-                        <td colspan ="4">New requests</td>
+                        <td colspan ="4" style = "font-size: 1.25vw;">New requests</td>
                     </tr>
 
                     <tr>
@@ -137,10 +157,21 @@
                     </tr>
                 </table>
             </div>
+            </div>
         </div>
     </div>
 
 
-    <script src="../Scripts/script.js"></script>
+    <!-- <script src="../Scripts/script.js"></script> -->
+
+    <script src="../Scripts/fileDisplayScripts.js"></script>
+    <script src="../Scripts/fileManagementScripts.js"></script>
+    <script src="../Scripts/fileDisplayScripts.js"></script>
+    <script src="../Scripts/startUpScript.js"></script>
+    <script src="../Scripts/UIControlScripts.js"></script>
+    <script src="../Scripts/uploadScripts.js"></script>
+    <script src = "../Scripts/serverStatusScripts.js"></script>
+
+    
     </body>
 </html>

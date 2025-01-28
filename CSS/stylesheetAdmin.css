@@ -157,6 +157,7 @@ div {
     margin-top: 1%;
     display: inline-block;
     position: relative;
+    border-radius: 10px;
 }
 
 .infoPanelHeader {
@@ -166,6 +167,8 @@ div {
     padding-bottom: 2%;
     outline: 5px solid black;
     position: relative;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
 
 .infoPanelHeader img {
@@ -224,31 +227,52 @@ div {
     font-size: .9vw;
 }
 
-.logDiv {
-    width: 26vw;
-    height: 44.5vh;
-    margin-left: 1%;
-    outline: 5px solid black;
-    margin-top: 2.5%;
-    padding: 3%;
-    position: relative;
-}
-
 .userTable {
     width: 26vw;
-    margin-left: 4.5%;
 }   
-
-.userTable tr {
-    outline: 3px solid black;
-}
-
 
 .userTable td {
     outline: 3px solid black;
     text-align: center;
 }
 
+
+.userTable td[id="logTd"] {
+    height: 50vh;
+    text-align: left;
+    position: relative;
+}
+
 .userTable a {
     color: red;
+}
+
+.tableDiv {
+    min-height: 65vh;
+    outline: 4px solid black;
+    width: 26vw;
+    margin-left: 4.5%;
+    border-radius: 3px;
+}
+
+.tableDiv[name = "logs"] {
+    min-height: 55.25vh;
+}
+
+.userTable[name = "logs"] tr td {
+    outline: none;
+}
+
+.userTable[name = "logs"] tr td label {
+    font-size: 1vw;
+}
+
+.logDiv {
+    position: absolute;
+    top:1%;
+    left: 1%;
+    overflow-y: scroll;
+    width: 99%;
+    height: 99%;
+    font-size: .9vw;
 }

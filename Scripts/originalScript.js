@@ -556,6 +556,7 @@ function back() {
     document.getElementById("renameContainer").hidden = true;
     document.getElementById("newFolderContainer").hidden = true;
 }
+
 function removeFile(fileName) {
     $.ajax({
         url: "deleteFile.php",
@@ -1003,4 +1004,18 @@ function enableUploadTools() {
     document.getElementById("returnToMain").onclick = function() {
         openFolder("main");
     }
+}
+
+
+function loadUsers() {
+    $.ajax({
+        url: "getUsers.php",
+        type: "POST",
+        success: function(response) {
+            document.getElementById("usersTable").innerHTML = response;
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            displayError("ERROR: " + errorThrown);
+        }
+    });
 }

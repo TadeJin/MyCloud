@@ -1,5 +1,10 @@
 <?php
-    session_start();
+    session_start(); 
+    
+    if (empty($_SESSION["userid"])) {
+        header ("Location: /MyCloud");
+    }
+
 ?>
 <!--                                                                                                                    
   __  __          _____  _                    _        
@@ -70,7 +75,7 @@
                         c0,0.938-0.41,1.829-1.125,2.438C30.712,38.068,26.911,39.579,22.761,39.579z"/>
                 </g>
             </svg>
-            <form method = "post">
+            <form method = "post" action = "logout.php">
                 <div id = "profileDropDown" hidden>
                     <svg id = "triangle" name="triangle" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" version="1.1" style = "display: none;">
                         <title>triangle-filled</title>
@@ -145,15 +150,15 @@
         <div>No files uploaded</div>
     </div>
 
-    <?php 
-        if (empty($_SESSION["userid"])) {
-            header ("Location:/MyCloud");
-        }
-        
-        if (isset($_POST["logout"])) {
-            session_destroy();
-            header("Location: /MyCloud");
-        }?>
-    <script type="text/javascript" src = "../Scripts/script.js"></script>
+
+    <!-- <script type="text/javascript" src = "../Scripts/script.js"></script> -->
+     
+    <script src="../Scripts/fileDisplayScripts.js"></script>
+    <script src="../Scripts/fileManagementScripts.js"></script>
+    <script src="../Scripts/fileDisplayScripts.js"></script>
+    <script src="../Scripts/startUpScript.js"></script>
+    <script src="../Scripts/UIControlScripts.js"></script>
+    <script src="../Scripts/uploadScripts.js"></script>
+    <script src = "../Scripts/serverStatusScripts.js"></script>
 </body>
 </html>
