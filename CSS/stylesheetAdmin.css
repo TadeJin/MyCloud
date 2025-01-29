@@ -238,7 +238,7 @@ div {
 
 
 .userTable td[id="logTd"] {
-    height: 50vh;
+    height: 46.5vh;
     text-align: left;
     position: relative;
 }
@@ -248,7 +248,7 @@ div {
 }
 
 .tableDiv {
-    min-height: 65vh;
+    min-height: 62vh;
     outline: 4px solid black;
     width: 26vw;
     margin-left: 4.5%;
@@ -256,7 +256,7 @@ div {
 }
 
 .tableDiv[name = "logs"] {
-    min-height: 55.25vh;
+    min-height: 46.5vh;
 }
 
 .userTable[name = "logs"] tr td {

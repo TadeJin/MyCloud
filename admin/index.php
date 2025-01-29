@@ -31,12 +31,7 @@
             </g>
         </svg>
         <h1>MyCloud Admin</h1>
-        <!--<div class="Space">
-            <h2>Available storage: </h2>
-            <h2 id = "storage"></h2>
-        </div>
-        <div id = "temp">0.00°C</div>
-        <div id = "serverText">SERVER TEMPERATURE:</div>-->
+
         <div id = "userInfo">
             <div id = "userName"><?php echo $_SESSION["user"]?></div>
             <svg onclick = "toggleProfileInfo()" id = "profilePic" fill="#000000" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
@@ -172,6 +167,5 @@
     <script src="../Scripts/uploadScripts.js"></script>
     <script src = "../Scripts/serverStatusScripts.js"></script>
 
-    
     </body>
 </html>

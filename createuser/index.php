@@ -55,41 +55,64 @@
             header("Location: /MyCloud");
         }
     
-        if (isset($_POST["add"])) {
-            if (!empty($_POST["username"]) && !empty($_POST["password"]) && !empty($_POST["adminPassword"]) && $_POST["adminPassword"] != "admin" ) {
+        // if (isset($_POST["add"])) {
+        //     if (!empty($_POST["username"]) && !empty($_POST["password"]) && !empty($_POST["adminPassword"]) && $_POST["adminPassword"] != "admin" ) {
+        //         $host = "localhost";
+        //         $user = "root";
+        //         $passwd = "";
+        //         $db = "MyCloud1";
+                
+        //         $connect = new mysqli($host, $user, $passwd, $db) or die("Spojení se nezdařilo");
+        //         $connect -> set_charset("UTF8") or die("Kódování nenastaveno");
+                
+        //         $SQL = $connect->prepare("SELECT username,password FROM user WHERE username = ?");
+        //         $SQL->bind_param("s",$name);
+                
+        //         $name = "admin";
+        //         $SQL->execute();
+                
+        //         $result = $SQL->get_result();
+        //         $row = $result->fetch_assoc();
+                
+        //         $connect->close();
+                
+        //         if (password_verify($_POST["adminPassword"],$row["password"])) { 
+        //             $connect = new mysqli($host, $user, $passwd, $db) or die("Spojení se nezdařilo");
+        //             $connect -> set_charset("UTF8") or die("Kódování nenastaveno");
+        //             $SQL = $connect->prepare("INSERT INTO user(username,password) VALUES (?,?)");
+        //             $SQL-> bind_param("ss",$user,$password);
+
+        //             $user = $_POST["username"];
+        //             $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
+        //             $SQL->execute();
+
+        //             $connect->close();
+        //             mkdir("C:\\PROJECTS\\MyCloud\\TestStorage\\" . $_POST["username"]);
+        //             header("Location: /MyCloud");
+        //         }
+        //     }
+        // }
+
+        if(isset($_POST["add"])) {
+            if (!empty($_POST["username"]) && !empty($_POST["password"])) {
                 $host = "localhost";
                 $user = "root";
                 $passwd = "";
                 $db = "MyCloud1";
-                
+
                 $connect = new mysqli($host, $user, $passwd, $db) or die("Spojení se nezdařilo");
                 $connect -> set_charset("UTF8") or die("Kódování nenastaveno");
-                
-                $SQL = $connect->prepare("SELECT username,password FROM user WHERE username = ?");
-                $SQL->bind_param("s",$name);
-                
-                $name = "admin";
+                $SQL = $connect->prepare("INSERT INTO accountRequests(username,password,date) VALUES (?,?,?)");
+                $SQL-> bind_param("sss",$user,$password,$date);
+
+                $user = $_POST["username"];
+                $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
+                $date = date("d-m-Y");
                 $SQL->execute();
-                
-                $result = $SQL->get_result();
-                $row = $result->fetch_assoc();
-                
+
                 $connect->close();
+
                 
-                if (password_verify($_POST["adminPassword"],$row["password"])) { 
-                    $connect = new mysqli($host, $user, $passwd, $db) or die("Spojení se nezdařilo");
-                    $connect -> set_charset("UTF8") or die("Kódování nenastaveno");
-                    $SQL = $connect->prepare("INSERT INTO user(username,password) VALUES (?,?)");
-                    $SQL-> bind_param("ss",$user,$password);
-
-                    $user = $_POST["username"];
-                    $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
-                    $SQL->execute();
-
-                    $connect->close();
-                    mkdir("C:\\PROJECTS\\MyCloud\\TestStorage\\" . $_POST["username"]);
-                    header("Location: /MyCloud");
-                }
             }
         }
     ?>
