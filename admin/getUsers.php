@@ -8,7 +8,7 @@
     $connect -> set_charset("UTF8") or die("Kódování nenastaveno");
 
 
-    $result = $connect->query("SELECT username FROM user WHERE username != 'admin';");
+    $result = $connect->query("SELECT iduser,username FROM user WHERE username != 'admin';");
 
     $htmlOutput = 
     
@@ -27,7 +27,7 @@
         <tr>
             <td>' . $row["username"] . '</td>
             <td> 0 GB</td>
-            <td><a href = "removeUser.php?username=' . $row["username"] . '" id = "">Remove</a></td>
+            <td><a href = "removeUser.php?userid=' . $row["iduser"] . '&username='. $row["username"] . '" id = "">Remove</a></td>
         </tr>';
     }
     

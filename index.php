@@ -33,7 +33,7 @@
                 <input type="password" name = "pass" onkeyup="disableBut()" id = "password" placeholder="Password"><br>
             </div>
             <div class="butDiv"><input type="submit" name = "login" id = "login" disabled value = "Login" class="but"></div>
-            <div class="register">Don't have an account ? <a href="createuser">Register here</a></div>
+            <div class="register">Don't have an account ? <a href="createuser">Request one here</a></div>
         </form>
     </div>
 
@@ -64,11 +64,9 @@
                     $_SESSION["currentDir"] = "main";
                     $_SESSION["rootPath"] = "C:\\PROJECTS\\MyCloud\\TestStorage\\";
                     $connect->close();
-                    header("Location: storage");
+                    $_POST["username"] != "admin" ? header("Location: storage") : header("Location: admin");
                 }
             }
-
-            $connect->close();
         }
     ?>
 

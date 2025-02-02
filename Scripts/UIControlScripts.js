@@ -358,3 +358,20 @@ function loadUsers() {
         }
     });
 }
+
+function loadRequests() {
+    $.ajax({
+        url: "loadRequests.php",
+        type: "POST",
+        success: function(response) {
+            let splitResponse = response.split("!");
+            
+            document.getElementById("requests").innerHTML = splitResponse[0];
+            document.getElementById("requestCount").innerHTML = "Total requests: " + splitResponse[1];
+            
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            displayError("ERROR: " + errorThrown);
+        }
+    });
+}

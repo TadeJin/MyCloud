@@ -1,5 +1,9 @@
 <?php
     session_start();
+
+    if (empty($_SESSION["userid"]) || $_SESSION["user"] != "admin") {
+        header ("Location: /MyCloud");
+    }
 ?>
 <!--                                                                                                                    
   __  __          _____  _                    _        
@@ -21,7 +25,7 @@
         <link rel="stylesheet" href = "../CSS/stylesheetAdmin.css">
         <link rel ="icon" href="../media/cloud-solid-120.png">
     </head>
-    <body onload="loadUsers()">
+    <body onload="loadUsers(),loadRequests()">
     <div class="header">
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000" version="1.1" id="Capa_1" viewBox="0 0 547.674 547.674" xml:space="preserve">
             <g>
@@ -45,7 +49,7 @@
                         c0,0.938-0.41,1.829-1.125,2.438C30.712,38.068,26.911,39.579,22.761,39.579z"/>
                 </g>
             </svg>
-            <form method = "post">
+            <form method = "post" action = "../storage/logout.php">
                 <div id = "profileDropDown" hidden>
                     <svg id = "triangle" name="triangle" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" version="1.1" style = "display: none;">
                         <title>triangle-filled</title>
@@ -112,11 +116,11 @@
                             <td>Remove</td>
                         </tr>
 
-                        <tr>
+                        <!-- <tr>
                             <td>tadeas</td>
                             <td>47.6 GB</td>
                             <td><a href = "removeUser.php" id = "">Remove</a></td>
-                        </tr>
+                        </tr> -->
                     </table>
                 </div>
             </div>
@@ -128,7 +132,7 @@
 
 
             <label>Request email: tadeas.jindra28@seznam.cz</label><br /><br />
-            <label>Total requests: 1</label><br /><br />
+            <label id = "requestCount"></label><br /><br />
             
 
             <div class = "tableDiv">
@@ -144,12 +148,12 @@
                         <td>Decline</td>
                     </tr>
 
-                    <tr>
+                    <!-- <tr>
                         <td>marek</td>
                         <td>02-01-2025</td>
                         <td><a href = "acceptRequest.php" style = "color:lime;">Accept</a></td>
                         <td><a href="declineRequest.php">Decline</a></td>
-                    </tr>
+                    </tr> -->
                 </table>
             </div>
             </div>

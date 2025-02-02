@@ -12,11 +12,9 @@ $SQL = $connect->prepare("INSERT INTO user(username,password) VALUES(?,?)");
 $SQL->bind_param("ss",$name,$password);
 
 $name = "admin";
-$password = password_hash("2268516",PASSWORD_DEFAULT);
+$password = password_hash("54321",PASSWORD_DEFAULT);
 $SQL->execute();
 
-$result = $SQL->get_result();
-$row = $result->fetch_assoc();
 
 $connect->close();
 

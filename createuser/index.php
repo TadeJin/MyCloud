@@ -29,20 +29,23 @@
                 <img src="../media/lock-solid-60.png" id="pass">
                 <input type="password" name = "password" placeholder="Password" onkeyup="disableBut()" id = "password">
             </div>
-            <div class="input-box">
+            <!-- <div class="input-box">
                 <img src="../media/lock-solid-60.png" id="admin">
                 <input type = "password" name = "adminPassword" placeholder="Admin password" onkeyup="disableBut()" id = "adminPass">
-            </div>
+            </div> -->
+            
             <div class="butDiv">
-                <input type="submit" name = "add" id = "add" disabled value = "Create User" class = "but"><br>
+                <input type="submit" name = "add" id = "add" disabled value = "Request account" class = "but"><br>
                 <button type = "submit" name = "back">Back</button>
             </div>
+            <div class="register">Once your account is approved you will be able to log in.</div>
+            <div class = "loginErrorDisplay">Account with this name already exists</div>
         </form>
     </div>
     
     <script>
         disableBut = () => {
-            if (document.getElementById("username").value != "" && document.getElementById("password").value != "" && document.getElementById("adminPass").value != "") {
+            if (document.getElementById("username").value != "" && document.getElementById("password").value != "") {
                 document.getElementById("add").disabled = false;
             } else {
                 document.getElementById("add").disabled = true
@@ -54,66 +57,27 @@
         if (isset($_POST["back"])) {
             header("Location: /MyCloud");
         }
-    
-        // if (isset($_POST["add"])) {
-        //     if (!empty($_POST["username"]) && !empty($_POST["password"]) && !empty($_POST["adminPassword"]) && $_POST["adminPassword"] != "admin" ) {
-        //         $host = "localhost";
-        //         $user = "root";
-        //         $passwd = "";
-        //         $db = "MyCloud1";
-                
-        //         $connect = new mysqli($host, $user, $passwd, $db) or die("Spojení se nezdařilo");
-        //         $connect -> set_charset("UTF8") or die("Kódování nenastaveno");
-                
-        //         $SQL = $connect->prepare("SELECT username,password FROM user WHERE username = ?");
-        //         $SQL->bind_param("s",$name);
-                
-        //         $name = "admin";
-        //         $SQL->execute();
-                
-        //         $result = $SQL->get_result();
-        //         $row = $result->fetch_assoc();
-                
-        //         $connect->close();
-                
-        //         if (password_verify($_POST["adminPassword"],$row["password"])) { 
-        //             $connect = new mysqli($host, $user, $passwd, $db) or die("Spojení se nezdařilo");
-        //             $connect -> set_charset("UTF8") or die("Kódování nenastaveno");
-        //             $SQL = $connect->prepare("INSERT INTO user(username,password) VALUES (?,?)");
-        //             $SQL-> bind_param("ss",$user,$password);
-
-        //             $user = $_POST["username"];
-        //             $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
-        //             $SQL->execute();
-
-        //             $connect->close();
-        //             mkdir("C:\\PROJECTS\\MyCloud\\TestStorage\\" . $_POST["username"]);
-        //             header("Location: /MyCloud");
-        //         }
-        //     }
-        // }
 
         if(isset($_POST["add"])) {
-            if (!empty($_POST["username"]) && !empty($_POST["password"])) {
-                $host = "localhost";
-                $user = "root";
-                $passwd = "";
-                $db = "MyCloud1";
+            $host = "localhost";
+            $user = "root";
+            $passwd = "";
+            $db = "MyCloud1";
 
-                $connect = new mysqli($host, $user, $passwd, $db) or die("Spojení se nezdařilo");
-                $connect -> set_charset("UTF8") or die("Kódování nenastaveno");
-                $SQL = $connect->prepare("INSERT INTO accountRequests(username,password,date) VALUES (?,?,?)");
-                $SQL-> bind_param("sss",$user,$password,$date);
+            $connect = new mysqli($host, $user, $passwd, $db) or die("Spojení se nezdařilo");
+            $connect -> set_charset("UTF8") or die("Kódování nenastaveno");
 
-                $user = $_POST["username"];
-                $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
-                $date = date("d-m-Y");
-                $SQL->execute();
+            $SQL = $connect->prepare("INSERT INTO accountRequests(username,password,date) VALUES(?,?,?)");
+            $SQL->bind_param("sss",$name,$password,$date);
 
-                $connect->close();
+            $name = $_POST["username"];
+            $password = password_hash($_POST["password"],PASSWORD_DEFAULT);
+            $date = date("d-m-Y");
+            $SQL->execute();
 
-                
-            }
+
+            $connect->close();
+            header("Location: /MyCloud");
         }
     ?>
 </body>
