@@ -351,7 +351,10 @@ function loadUsers() {
         url: "getUsers.php",
         type: "POST",
         success: function(response) {
-            document.getElementById("usersTable").innerHTML = response;
+            let splitResponse = response.split("!");
+            
+            document.getElementById("usersTable").innerHTML = splitResponse[0];
+            document.getElementById("userCount").innerHTML = "Total user count: " + splitResponse[1];
         },
         error: function(jqXHR, textStatus, errorThrown) {
             displayError("ERROR: " + errorThrown);

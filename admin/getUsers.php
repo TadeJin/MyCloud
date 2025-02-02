@@ -32,5 +32,7 @@
     }
     
     $connect->close();
+
+    $htmlOutput .= " !" . mysqli_num_rows($result);
     
     echo $htmlOutput;

@@ -102,8 +102,8 @@
         <div class = "infoPanel">
             <div class = "infoPanelHeader">User info <img src = "../media/user-detail.png" style = "left: 87.5%;width:12.5%;height:auto;top: -16%;"></div>
             <div class = "panelContent">
-                <label>Total user count: 10</label><br /><br />
-                <label>Currently active users: 2</label><br /><br />
+                <label id = "userCount">Total user count: </label><br /><br />
+                <label id = "activeUserCount">Currently active users: </label><br /><br />
 
                 <div class = "tableDiv">
                     <table class = "userTable" id = "usersTable">
@@ -132,7 +132,7 @@
 
 
             <label>Request email: tadeas.jindra28@seznam.cz</label><br /><br />
-            <label id = "requestCount"></label><br /><br />
+            <label id = "requestCount">Total requests: </label><br /><br />
             
 
             <div class = "tableDiv">
