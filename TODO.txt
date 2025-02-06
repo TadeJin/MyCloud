@@ -1,0 +1,6 @@
+Database entry file 
+Search box - file loading onkeyup listener
+Multiple file download/delete (preview with checkbox instead of file icon)
+Moving files into another folder (select tag with dir names)
+CSS improvements (flexbox)
+Code optimalization (upload fnc, animations)
