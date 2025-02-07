@@ -48,7 +48,16 @@ function upload() {
 
                 };
                 document.getElementById("fileUploadBut").id = "fileUploadButDisabled";
+
+                document.getElementById("createFolderBut").onclick = () => {
+
+                };
+                document.getElementById("createFolderBut").id = "createFolderButDisabled";
+                
+
+                document.getElementById("createFolderButSvg").style = "fill: rgba(80, 80, 80, 1);transform: ;msFilter:;"
                 document.getElementById("fileUploadButIcon").style = "fill: rgba(80,80,80,1);";
+
                 document.getElementById("fileDisplayDiv").querySelectorAll("button").forEach(button => {
                     button.disabled = true;
                 });

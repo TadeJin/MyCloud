@@ -275,6 +275,24 @@ body {
     cursor: pointer;
 }
 
+#createFolderButDisabled {
+    position: absolute;
+    z-index: 1;
+    width: 2vw;
+    height: 2vw;
+    left: 75%;
+    top: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#createFolderButDisabled:hover {
+    border-radius: 50%;
+    background-color: lightgray;
+    cursor: not-allowed;
+}
+
 #uploadStatusWrapper {
     position: relative; 
     width: 25%;

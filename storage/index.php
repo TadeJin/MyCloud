@@ -140,8 +140,8 @@
             <div id = "fileUploadBut" title = "Upload File" onclick="document.getElementById('file-input').click()">
                 <svg id = "fileUploadButIcon" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);"><path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"></path></svg>
             </div>
-            <div id = "createFolderBut" title = "Create Folder" onclick="makeFolder()">
-                <svg xmlns="http://www.w3.org/2000/svg" width="70%" height= "70%" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M20 5h-9.586L8.707 3.293A.997.997 0 0 0 8 3H4c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V7c0-1.103-.897-2-2-2zm-4 9h-3v3h-2v-3H8v-2h3V9h2v3h3v2z"></path></svg>
+            <div id = "createFolderBut" title = "Create Folder">
+                <svg id = "createFolderButSvg" xmlns="http://www.w3.org/2000/svg" width="70%" height= "70%" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M20 5h-9.586L8.707 3.293A.997.997 0 0 0 8 3H4c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V7c0-1.103-.897-2-2-2zm-4 9h-3v3h-2v-3H8v-2h3V9h2v3h3v2z"></path></svg>
             </div>
         </div>
     </div>

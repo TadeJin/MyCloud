@@ -73,6 +73,9 @@ $(function() {
         upload();
     });
     
+    document.getElementById("createFolderBut").onclick = () => {
+        makeFolder();        
+    }
 
     $(".tooltip").hide();
         $("#uploadButton").mouseenter(function() {
@@ -84,4 +87,6 @@ $(function() {
             if (document.getElementById("file-input").files.length == 0) 
                 $(".tooltip").fadeOut(100);
         });
+
+        
     });

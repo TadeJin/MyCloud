@@ -326,17 +326,24 @@ function toggleProfileInfo() {
 
 function enableUploadTools() {
     document.getElementById("fileUploadButDisabled").id = "fileUploadBut";
+    document.getElementById("createFolderButDisabled").id = "createFolderBut";
     document.getElementById("fileUploadButIcon").style = "fill: rgba(0,0,0,1);";
+    document.getElementById("createFolderButSvg").style = "fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"
     document.getElementById("fileUploadBut").onclick = function() {
         document.getElementById('file-input').click()
     };
+
+    document.getElementById("createFolderBut").onclick = function() {
+        makeFolder();
+    };
+
     document.getElementById("fileDisplayDiv").querySelectorAll("button").forEach(button => {
         button.disabled = false;
     });
 
     document.getElementById("returnToMainIcon").style = "fill: rgba(0,0,0,1)";
     document.getElementById("returnToMain").onclick = function() {
-        openFolder("main");
+        openFolder(document.getElementById("folderTrace").value.split(";")[document.getElementById("folderTrace").value.split(";").length - 2]);
     }
 
     if (document.getElementById("currentFolderDiv").innerHTML == "Directory: main folder") {
