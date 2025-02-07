@@ -39,28 +39,31 @@ function makeFolder() {
     document.getElementById("newFolderSub").addEventListener("click", folderSubButClickEL);
 }
 
+
+
 function openFolder(folderName) {
 
-    let folderTrace = document.getElementById("folderTrace").value.split(";");
-    let fileIndex = -1;
+    let folderTrace = document.getElementById("folderTrace");
+    let folderIndex = folderTrace.value.split(";").indexOf(folderName);
 
-    for(let i = 0; i < folderTrace.length;i++) {
-        if (folderTrace[i] == folderName) {
-            fileIndex = i;
-            break;
+    if (folderName != "main") {
+        if (folderIndex == -1) {
+            folderTrace.value += ";" + folderName;
+            document.getElementById("returnToMain").onclick = () => {
+                let split = folderTrace.value.split(";");
+                openFolder(split[split.length - 2]);
+            }
+        } else if (folderIndex == 0) {
+            folderTrace.value = "";
+            openFolder("main");
+        } else{
+            let tmp = ";";
+            let split = folderTrace.value.split(";");
+            for (let i = 0; i < folderIndex;i++) {
+                tmp += split[i+1];
+            }
+            folderTrace.value = tmp;
         }
-    }
-    
-
-    if (fileIndex == -1) {
-        document.getElementById("folderTrace").value += folderName + ";";
-        document.getElementById("returnToMain").onclick = function () {
-            openFolder(folderTrace[folderTrace.length - 2]);
-        };
-
-    } else {
-        let tmp = document.getElementById("folderTrace").value.split(";").pop();
-        document.getElementById("folderTrace").value = tmp.join(";");
     }
 
     $.ajax({
@@ -71,12 +74,12 @@ function openFolder(folderName) {
         },
         success: function(response) {
             document.getElementById("currentFolderDiv").innerHTML = "Directory: " + response + " folder";
-            if (folderName == "main") {
+            loadFiles(addEventListenersToFiles);
+            if (response == "main") {
                 document.getElementById("returnToMain").style = "display:none";
             } else {
                 document.getElementById("returnToMain").style = "display:flex";
             }
-            loadFiles(addEventListenersToFiles);
         },
         error: function(jqXHR, textStatus, errorThrown) {
             displayError("ERROR: " + errorThrown);
@@ -92,7 +95,6 @@ function deleteFolder(folderName) {
             folderName: folderName
         },
         success: function(response) {
-            console.log(response);
             displaySuccess("Folder deleted");
             loadFiles(addEventListenersToFiles);
         },
