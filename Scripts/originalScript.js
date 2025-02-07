@@ -950,27 +950,27 @@ function makeFolder() {
     document.getElementById("newFolderSub").addEventListener("click", folderSubButClickEL);
 }
 
-function openFolder(folderName) {
-    $.ajax({
-        url: "openFolder.php",
-        type: "POST",
-        data: { 
-            openedDir: folderName
-        },
-        success: function(response) {
-            document.getElementById("currentFolderDiv").innerHTML = "Directory: " + response + " folder";
-            if (folderName == "main") {
-                document.getElementById("returnToMain").style = "display:none";
-            } else {
-                document.getElementById("returnToMain").style = "display:flex";
-            }
-            loadFiles(addEventListenersToFiles);
-        },
-        error: function(jqXHR, textStatus, errorThrown) {
-            displayError("ERROR: " + errorThrown);
-        }
-    });
-}
+// function openFolder(folderName) {
+//     $.ajax({
+//         url: "openFolder.php",
+//         type: "POST",
+//         data: { 
+//             openedDir: folderName
+//         },
+//         success: function(response) {
+//             document.getElementById("currentFolderDiv").innerHTML = "Directory: " + response + " folder";
+//             if (folderName == "main") {
+//                 document.getElementById("returnToMain").style = "display:none";
+//             } else {
+//                 document.getElementById("returnToMain").style = "display:flex";
+//             }
+//             loadFiles(addEventListenersToFiles);
+//         },
+//         error: function(jqXHR, textStatus, errorThrown) {
+//             displayError("ERROR: " + errorThrown);
+//         }
+//     });
+// }
 
 function deleteFolder(folderName) {
     $.ajax({

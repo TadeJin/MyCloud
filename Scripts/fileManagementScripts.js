@@ -40,20 +40,28 @@ function makeFolder() {
 }
 
 function openFolder(folderName) {
-    let fileTrace = document.getElementById("folderTrace").value.split(";");
+
+    let folderTrace = document.getElementById("folderTrace").value.split(";");
     let fileIndex = -1;
 
-    for(let i = 0; i < fileTrace.length;i++) {
-        if (fileTrace[i] == folderName) {
+    for(let i = 0; i < folderTrace.length;i++) {
+        if (folderTrace[i] == folderName) {
             fileIndex = i;
             break;
         }
     }
+    
 
     if (fileIndex == -1) {
-        document.getElementById("returnToMainIcon").onclick = 'openFolder("' + fileTrace[-1] + '")';
         document.getElementById("folderTrace").value += folderName + ";";
-    } 
+        document.getElementById("returnToMain").onclick = function () {
+            openFolder(folderTrace[folderTrace.length - 2]);
+        };
+
+    } else {
+        let tmp = document.getElementById("folderTrace").value.split(";").pop();
+        document.getElementById("folderTrace").value = tmp.join(";");
+    }
 
     $.ajax({
         url: "openFolder.php",
