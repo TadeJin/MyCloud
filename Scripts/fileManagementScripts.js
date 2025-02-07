@@ -60,7 +60,7 @@ function openFolder(folderName) {
             let tmp = ";";
             let split = folderTrace.value.split(";");
             for (let i = 0; i < folderIndex;i++) {
-                tmp += split[i+1];
+                tmp += ";" + split[i+1];
             }
             folderTrace.value = tmp;
         }
