@@ -1,9 +1,6 @@
 <?php
     session_start();
-    $host = "localhost";
-    $user = "root";
-    $passwd = "";
-    $db = "MyCloud1";
+    include("../dbInfo/database.php");
 
     $userid = (int) $_GET["userid"];
 

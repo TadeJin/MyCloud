@@ -40,10 +40,8 @@
     <?php 
 
         if(isset($_POST["login"]) && !empty($_POST["username"]) && !empty($_POST["pass"])) {
-            $host = "localhost";
-            $user = "root";
-            $passwd = "";
-            $db = "MyCloud1";
+
+            include("dbInfo/database.php");
 
             $connect = new mysqli($host, $user, $passwd, $db) or die("Spojení se nezdařilo");
             $connect -> set_charset("UTF8") or die("Kódování nenastaveno");
@@ -64,6 +62,7 @@
                     $_SESSION["currentDir"] = "main";
                     $_SESSION["rootPath"] = "C:\\PROJECTS\\MyCloud\\TestStorage\\";
                     $connect->close();
+                    echo '<script>newLog("User "' . $_POST["username"] . '" logged in at ' . date("d-m-Y H:m:s") . ')</script>';
                     $_POST["username"] != "admin" ? header("Location: storage") : header("Location: admin");
                 }
             }
@@ -79,5 +78,6 @@
             }
         }
     </script>
+    <script src="serverStatusScripts"></script>
 </body>
 </html>

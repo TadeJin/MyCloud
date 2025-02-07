@@ -3,10 +3,7 @@
 
 
     if ($_SESSION["user"] == "admin") {
-        $host = "localhost";
-        $user = "root";
-        $passwd = "";
-        $db = "MyCloud1";
+        include("../dbInfo/database.php");
 
         $requestId = (int) $_GET["id"];
 

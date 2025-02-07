@@ -234,6 +234,9 @@ div {
 .userTable td {
     outline: 3px solid black;
     text-align: center;
+    max-width: 5vw;
+    overflow-x: auto;
+    scrollbar-width: none;
 }
 
 
@@ -248,15 +251,28 @@ div {
 }
 
 .tableDiv {
-    min-height: 62vh;
+    height: 62vh;
     outline: 4px solid black;
     width: 26vw;
     margin-left: 4.5%;
     border-radius: 3px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: relative;
+}
+
+.tableDiv[id="requests"] tbody {
+    height: 50vh;
+}
+
+.tableDiv[id="requests"] thead {
+    position: sticky;
+    top: 0;
+    left: 0;
 }
 
 .tableDiv[name = "logs"] {
-    min-height: 46.5vh;
+    height: 52vh;
 }
 
 .userTable[name = "logs"] tr td {

@@ -1,9 +1,6 @@
 <?php
     session_start();
-    $host = "localhost";
-    $user = "root";
-    $passwd = "";
-    $db = "MyCloud1";
+    include("../dbInfo/database.php");
 
     $connect = new mysqli($host, $user, $passwd, $db) or die("Spojení se nezdařilo");
     $connect -> set_charset("UTF8") or die("Kódování nenastaveno");

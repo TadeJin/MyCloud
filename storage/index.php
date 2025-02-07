@@ -27,6 +27,7 @@
     <link rel ="icon" href="../media/cloud-solid-120.png">
 </head>
 <body>
+    <input type="hidden" id = "folderTrace" value = "main;">
     
     <div class = "renameContainer" id = "renameContainer" hidden>
         <div class = "renameBox">

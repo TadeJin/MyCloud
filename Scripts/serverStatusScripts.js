@@ -30,3 +30,19 @@ function getFreeSpace() {
         }
     });*/
 }
+
+function newLog(message) {
+    $.ajax({
+        url: "createLog.php",
+        type: "POST",
+        data: {
+            logMessage: message
+        },
+        success: function(response) {
+            
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+           console.log("ERROR LOGGING")
+        }
+    });
+}

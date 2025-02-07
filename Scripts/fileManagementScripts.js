@@ -40,6 +40,21 @@ function makeFolder() {
 }
 
 function openFolder(folderName) {
+    let fileTrace = document.getElementById("folderTrace").value.split(";");
+    let fileIndex = -1;
+
+    for(let i = 0; i < fileTrace.length;i++) {
+        if (fileTrace[i] == folderName) {
+            fileIndex = i;
+            break;
+        }
+    }
+
+    if (fileIndex == -1) {
+        document.getElementById("returnToMainIcon").onclick = 'openFolder("' + fileTrace[-1] + '")';
+        document.getElementById("folderTrace").value += folderName + ";";
+    } 
+
     $.ajax({
         url: "openFolder.php",
         type: "POST",

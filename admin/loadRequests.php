@@ -1,8 +1,5 @@
 <?php
-    $host = "localhost";
-    $user = "root";
-    $passwd = "";
-    $db = "MyCloud1";
+    include("../dbInfo/database.php");
 
     $connect = new mysqli($host, $user, $passwd, $db) or die("Spojení se nezdařilo");
     $connect -> set_charset("UTF8") or die("Kódování nenastaveno");
@@ -12,16 +9,21 @@
 
     $htmlOutput = 
 
-    '<tr>
-        <td colspan ="4" style = "font-size: 1.25vw;">New requests</td>
-    </tr>
+    '
+    <thead>
+        <tr>
+            <td colspan ="4" style = "font-size: 1.25vw;">New requests</td>
+        </tr>
 
-    <tr>
-        <td>Username</td>
-        <td>Date</td>
-        <td>Accept</td>
-        <td>Decline</td>
-    </tr>';
+        <tr>
+            <td>Username</td>
+            <td>Date</td>
+            <td>Accept</td>
+            <td>Decline</td>
+        </tr>
+    </thead>
+    
+    <tbody>';
 
     while ($row = $result -> fetch_assoc()) {
         $htmlOutput .= '
@@ -35,6 +37,6 @@
 
     $connect->close();
 
-    $htmlOutput .= " !" . mysqli_num_rows($result);
+    $htmlOutput .= " </tbody>!" . mysqli_num_rows($result);
 
     echo $htmlOutput;

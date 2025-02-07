@@ -8,10 +8,7 @@ if (file_exists($_SESSION["rootPath"] . $_SESSION["user"] . "/" . $_POST["fileNa
 	echo -1;
 }
 
-$host = "localhost";
-$user = "root";
-$passwd = "";
-$db = "MyCloud1";
+include("../dbInfo/database.php");
 
 $connect1 = new mysqli($host, $user, $passwd, $db) or die("Spojení se nezdařilo");
 $connect1 -> set_charset("UTF8") or die("Kódování nenastaveno");

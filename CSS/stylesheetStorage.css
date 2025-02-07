@@ -546,7 +546,7 @@ body {
     height: 25px;
     margin-right: 5px;
     border-radius: 50%;
-    margin-top: -6px;
+    margin-top: -5%;
     z-index: 2;
     display: flex;
     justify-content: center;
@@ -562,6 +562,7 @@ body {
     height: 5px;
     width: 100%;
     font-family: "Russo One",sans-serif;
+    margin-top: 2.5%;
 }
 
 li {
@@ -612,7 +613,7 @@ ul {
     background-color: white;
     border-radius: 5px;
     font-family: "Russo One",sans-serif;
-    font-size: 90%;
+    font-size: 80%;
 }
 
 .dropDownBut button:hover {

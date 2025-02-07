@@ -131,22 +131,28 @@
             <div class = "panelContent">
 
 
-            <label>Request email: tadeas.jindra28@seznam.cz</label><br /><br />
+            <label>Request email: example@seznam.cz</label><br /><br />
             <label id = "requestCount">Total requests: </label><br /><br />
             
 
             <div class = "tableDiv">
                 <table class="userTable" id = "requests">
-                    <tr>
-                        <td colspan ="4" style = "font-size: 1.25vw;">New requests</td>
-                    </tr>
+                    <thead>
+                        <tr>
+                            <td colspan ="4" style = "font-size: 1.25vw;">New requests</td>
+                        </tr>
 
-                    <tr>
-                        <td>Username</td>
-                        <td>Date</td>
-                        <td>Accept</td>
-                        <td>Decline</td>
-                    </tr>
+                        <tr>
+                            <td>Username</td>
+                            <td>Date</td>
+                            <td>Accept</td>
+                            <td>Decline</td>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                    </tbody>
 
                     <!-- <tr>
                         <td>marek</td>

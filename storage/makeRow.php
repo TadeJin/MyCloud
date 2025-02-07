@@ -2,10 +2,7 @@
 session_start();
 
 if (isset($_POST["name"])) {
-    $host = "localhost";
-    $user = "root";
-    $passwd = "";
-    $db = "MyCloud1";
+    include("../dbInfo/database.php");
 
     $connect = new mysqli($host, $user, $passwd, $db);
     $connect -> set_charset("UTF8") or die("Kódování nenastaveno");
