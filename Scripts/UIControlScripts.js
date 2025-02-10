@@ -343,7 +343,7 @@ function enableUploadTools() {
 
     document.getElementById("returnToMainIcon").style = "fill: rgba(0,0,0,1)";
     document.getElementById("returnToMain").onclick = function() {
-        openFolder(document.getElementById("folderTrace").value.split(";")[document.getElementById("folderTrace").value.split(";").length - 2]);
+        openPreviousFolder();
     }
 
     if (document.getElementById("currentFolderDiv").innerHTML == "Directory: main folder") {

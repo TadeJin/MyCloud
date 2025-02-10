@@ -43,29 +43,6 @@ function makeFolder() {
 
 function openFolder(folderName) {
 
-    let folderTrace = document.getElementById("folderTrace");
-    let folderIndex = folderTrace.value.split(";").indexOf(folderName);
-
-    if (folderName != "main") {
-        if (folderIndex == -1) {
-            folderTrace.value += ";" + folderName;
-            document.getElementById("returnToMain").onclick = () => {
-                let split = folderTrace.value.split(";");
-                openFolder(split[split.length - 2]);
-            }
-        } else if (folderIndex == 0) {
-            folderTrace.value = "";
-            openFolder("main");
-        } else{
-            let tmp = "";
-            let split = folderTrace.value.split(";");
-            for (let i = 0; i < folderIndex;i++) {
-                tmp += ";" + split[i+1];
-            }
-            folderTrace.value = tmp;
-        }
-    }
-
     $.ajax({
         url: "openFolder.php",
         type: "POST",
@@ -80,6 +57,36 @@ function openFolder(folderName) {
             } else {
                 document.getElementById("returnToMain").style = "display:flex";
             }
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            displayError("ERROR: " + errorThrown);
+        }
+    });
+}
+
+function openPreviousFolder() {
+    let tmp = document.getElementById("currentFolderDiv").innerHTML.split(" ");
+
+    let currentFolder = "";
+    tmp.forEach(element => {
+        if (element != "Directory:") {
+            currentFolder += element + ";";
+        }
+    });
+    currentFolder = currentFolder.split(";");
+    currentFolder.pop();
+    currentFolder.pop();
+    currentFolder = currentFolder.join(" ");
+
+
+    $.ajax({
+        url: "getPreviousFolder.php",
+        type: "POST",
+        data: { 
+            currentDir: currentFolder
+        },
+        success: function(response) {
+            openFolder(response);
         },
         error: function(jqXHR, textStatus, errorThrown) {
             displayError("ERROR: " + errorThrown);
@@ -102,22 +109,6 @@ function deleteFolder(folderName) {
             displayError("ERROR: " + errorThrown);
         }
     });
-}
-
-function enableUploadTools() {
-    document.getElementById("fileUploadButDisabled").id = "fileUploadBut";
-    document.getElementById("fileUploadButIcon").style = "fill: rgba(0,0,0,1);";
-    document.getElementById("fileUploadBut").onclick = function() {
-        document.getElementById('file-input').click()
-    };
-    document.getElementById("fileDisplayDiv").querySelectorAll("button").forEach(button => {
-        button.disabled = false;
-    });
-    document.getElementById("returnToMain").style = "cursor: pointer";
-    document.getElementById("returnToMainIcon").style = "fill: rgba(0,0,0,1)";
-    document.getElementById("returnToMain").onclick = function() {
-        openFolder("main");
-    }
 }
 
 
