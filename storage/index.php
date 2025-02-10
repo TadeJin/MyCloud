@@ -27,7 +27,6 @@
     <link rel ="icon" href="../media/cloud-solid-120.png">
 </head>
 <body>
-    <input type="hidden" id = "folderTrace" value = "">
     
     <div class = "renameContainer" id = "renameContainer" hidden>
         <div class = "renameBox">
@@ -44,6 +43,23 @@
             <input type="text" class = "newNameInput" id = "newFolderName"><br>
             <button class="backBut" onclick="back()">BACK</button>
             <button class = "submitBut" id = "newFolderSub">SUBMIT</button>
+        </div>
+    </div>
+
+    <div class = "renameContainer" id = "folderDelete" hidden>
+        <div class = "renameBox">
+            <h2 id = "folderDeleteWarningHeader">Are you sure you want to delete and its contents ?</h2>
+            <p>All its contents will be permanently lost!</p>
+            <button class="backBut" onclick="back()">CANCEL</button>
+            <button class = "submitBut" id = "folderDelteSub">YES</button>
+        </div>
+    </div>
+
+    <div class = "renameContainer" id = "fileDelete" hidden>
+        <div class = "renameBox">
+            <h2 id = "fileDeleteWarningHeader">Are you sure you want to delete ?</h2>
+            <button class="backBut" onclick="back()">CANCEL</button>
+            <button class = "submitBut" id = "fileDelteSub">YES</button>
         </div>
     </div>
     

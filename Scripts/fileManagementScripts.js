@@ -104,6 +104,7 @@ function deleteFolder(folderName) {
         success: function(response) {
             displaySuccess("Folder deleted");
             loadFiles(addEventListenersToFiles);
+            back();
         },
         error: function(jqXHR, textStatus, errorThrown) {
             displayError("ERROR: " + errorThrown);
@@ -144,6 +145,7 @@ function removeFile(fileName) {
             displaySuccess("Removed file");
             getFreeSpace();
             loadFiles(addEventListenersToFiles);
+            back();
         },
         error: function(jqXHR, textStatus, errorThrown) {
             displayError("Error: " + errorThrown);

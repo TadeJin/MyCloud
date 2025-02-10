@@ -1,10 +1,12 @@
 Delete all folders and files inside other folders that are inside the delted folder if a folder is delted **
-Warning on folder and file delete
+Warning on folder and file delete **
 
 Search box - file loading onkeyup listener
 Multiple file download/delete (preview with checkbox instead of file icon)
 
 Moving files into another folder (select tag with dir names)
+
+Log in wrong password, name already is use ...
 
 Animation fix (dots while upload)
 CSS improvements (flexbox)

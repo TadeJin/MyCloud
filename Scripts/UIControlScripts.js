@@ -8,6 +8,8 @@ function dotsAnim(num) {
 function back() {
     document.getElementById("renameContainer").hidden = true;
     document.getElementById("newFolderContainer").hidden = true;
+    document.getElementById("folderDelete").hidden = true;
+    document.getElementById("fileDelete").hidden = true;
 }
 
 
@@ -384,4 +386,20 @@ function loadRequests() {
             displayError("ERROR: " + errorThrown);
         }
     });
+}
+
+function showFolderDeleteWarning(folderName) {
+    document.getElementById("folderDeleteWarningHeader").innerHTML = "Are you sure you want to delete " + folderName +" and its contents ?";
+    document.getElementById("folderDelete").hidden = false;
+    document.getElementById("folderDelteSub").onclick = function () {
+        deleteFolder(folderName);
+    };
+}
+
+function showFileDeleteWarning(fileName) {
+    document.getElementById("fileDeleteWarningHeader").innerHTML = "Are you sure you want to delete " + fileName +" ?";
+    document.getElementById("fileDelete").hidden = false;
+    document.getElementById("fileDelteSub").onclick = function () {
+        removeFile(fileName);
+    };
 }

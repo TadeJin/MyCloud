@@ -41,7 +41,7 @@
 				<ul>
 				<li class="dropDownBut"><button onclick="download(this.name)" name = "'. $_SESSION["rootPath"] . $_SESSION["user"] . "/" . $row["name"] . '"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 8zM4 19h16v2H4z"/></svg>Download</button></li>
 				<li class="dropDownBut"><button onclick="renameFile(this.name)" name = "' . htmlspecialchars($row["name"]) .'"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="m16 2.012 3 3L16.713 7.3l-3-3zM4 14v3h3l8.299-8.287-3-3zm0 6h16v2H4z"/></svg>Rename</button></li>
-				<li class="dropDownBut" style="margin-bottom: 0;"><button onclick = "removeFile(\'' . $row["name"] . '\')" name = "'. $_SESSION["rootPath"] . $_SESSION["user"] . "/" . $row["name"] . '"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M6 7H5v13a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7H6zm4 12H8v-9h2v9zm6 0h-2v-9h2v9zm.618-15L15 2H9L7.382 4H3v2h18V4z"/></svg>Remove</button></li>
+				<li class="dropDownBut" style="margin-bottom: 0;"><button onclick = "showFileDeleteWarning(\'' . $row["name"] . '\')" name = "'. $_SESSION["rootPath"] . $_SESSION["user"] . "/" . $row["name"] . '"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M6 7H5v13a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7H6zm4 12H8v-9h2v9zm6 0h-2v-9h2v9zm.618-15L15 2H9L7.382 4H3v2h18V4z"/></svg>Remove</button></li>
 				</ul>
 			</div>
 			</div>';
@@ -62,7 +62,7 @@
 				<ul>
 				<li class="dropDownBut"><button onclick="openFolder(this.name)" name = "'. $row["name"] . '">Open</button></li>
 				<li class="dropDownBut"><button onclick="renameFile(this.name)" name = "' . htmlspecialchars($row["name"]) .'"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="m16 2.012 3 3L16.713 7.3l-3-3zM4 14v3h3l8.299-8.287-3-3zm0 6h16v2H4z"/></svg>Rename</button></li>
-				<li class="dropDownBut" style="margin-bottom: 0;"><button onclick = "deleteFolder(\'' . $row["name"] . '\')"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M6 7H5v13a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7H6zm4 12H8v-9h2v9zm6 0h-2v-9h2v9zm.618-15L15 2H9L7.382 4H3v2h18V4z"/></svg>Remove</button></li>
+				<li class="dropDownBut" style="margin-bottom: 0;"><button onclick = "showFolderDeleteWarning(\'' . $row["name"] . '\')"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M6 7H5v13a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7H6zm4 12H8v-9h2v9zm6 0h-2v-9h2v9zm.618-15L15 2H9L7.382 4H3v2h18V4z"/></svg>Remove</button></li>
 				</ul>
 			</div>
 			</div>';
