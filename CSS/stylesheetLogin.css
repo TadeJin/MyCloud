@@ -11,7 +11,7 @@ body {
     border: solid black 2px;
     border-radius: 20%;
     width: 25%;
-    padding-bottom: 3%;
+    padding-bottom: 1%;
 }
 
 .container .header {
@@ -117,11 +117,19 @@ body {
     font-size: 1.75vh;
 }
 
+.container #errorDiv {
+    font-family: "Russo One",sans-serif;
+    text-align: center;
+    font-size: 1.75vh;
+    color: red;
+    margin-top: 5%;
+}
+
 
 
 @media (max-width: 1250px) {
     
-.container {
+/* .container {
     border: solid black 2px;
     border-radius: 20%;
     width: 85%;
@@ -184,6 +192,6 @@ body {
 
 .container .but {
     margin-bottom: 2%;
-}
+} */
 
 }
