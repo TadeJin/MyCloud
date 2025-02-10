@@ -353,6 +353,15 @@ function enableUploadTools() {
     } else {
         document.getElementById("returnToMain").style = "display: flex;cursor: pointer";
     }
+
+    document.getElementById("searchbarIcon").disabled = false;
+    document.getElementById("searchbarIcon").onmouseover = function () {
+       this.style = "cursor:pointer;"
+    }
+    document.getElementById("searchBar").disabled = false;
+    document.getElementById("searchBarDiv").onmouseover = function () {
+        this.style = "cursor:auto;"
+    }
 }
 
 function loadUsers() {

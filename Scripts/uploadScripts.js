@@ -67,6 +67,16 @@ function upload() {
 
                 };
 
+                document.getElementById("searchbarIcon").disabled = true;
+                document.getElementById("searchbarIcon").onmouseover = function () {
+                    this.style = "cursor: not-allowed";
+                }
+                document.getElementById("searchBar").disabled = true;
+                document.getElementById("searchBarDiv").onmouseover = function () {
+                    this.style = "cursor: not-allowed";
+                }
+                document.getElementById("searchBar").value = "";
+
                 let fileChunks = [];
                 const chunkSize = 20 * 1024 * 1024;
                 

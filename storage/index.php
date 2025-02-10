@@ -49,7 +49,7 @@
     <div class = "renameContainer" id = "folderDelete" hidden>
         <div class = "renameBox">
             <h2 id = "folderDeleteWarningHeader">Are you sure you want to delete and its contents ?</h2>
-            <p>All its contents will be permanently lost!</p>
+            <p>This action cannot be undone!</p>
             <button class="backBut" onclick="back()">CANCEL</button>
             <button class = "submitBut" id = "folderDelteSub">YES</button>
         </div>
@@ -58,6 +58,7 @@
     <div class = "renameContainer" id = "fileDelete" hidden>
         <div class = "renameBox">
             <h2 id = "fileDeleteWarningHeader">Are you sure you want to delete ?</h2>
+            <p>This action cannot be undone!</p>
             <button class="backBut" onclick="back()">CANCEL</button>
             <button class = "submitBut" id = "fileDelteSub">YES</button>
         </div>
@@ -161,6 +162,11 @@
             </div>
         </div>
     </div>
+
+    <div class = "searchBarWrapper">
+            <div id = "searchBarDiv"><input id = "searchBar" onkeyup="loadFiles(addEventListenersToFiles)" placeholder="Search..."><div id = "searchbarIcon" onclick = "loadFiles(addEventListenersToFiles)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: gray;transform: ;msFilter:;"><path d="M10 18a7.952 7.952 0 0 0 4.897-1.688l4.396 4.396 1.414-1.414-4.396-4.396A7.952 7.952 0 0 0 18 10c0-4.411-3.589-8-8-8s-8 3.589-8 8 3.589 8 8 8zm0-14c3.309 0 6 2.691 6 6s-2.691 6-6 6-6-2.691-6-6 2.691-6 6-6z"></path></svg></div></div>
+    </div>
+
     <div id = "fileDisplayDiv"></div>
 
     <div id = "noFilesDisplay">

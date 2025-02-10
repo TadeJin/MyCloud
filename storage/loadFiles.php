@@ -2,15 +2,24 @@
     session_start();
     include("../dbInfo/database.php");
 
-    $connect = new mysqli($host, $user, $passwd, $db) or die("Spojení se nezdařilo");
+	$connect = new mysqli($host, $user, $passwd, $db) or die("Spojení se nezdařilo");
     $connect -> set_charset("UTF8") or die("Kódování nenastaveno");
+	
+	if ($_POST["searchString"] == "") {
+		$SQL = $connect->prepare("SELECT name,isDir FROM storageData WHERE user_iduser = ? AND parentDir = ?");
+		$SQL ->bind_param("ss", $userid,$parentDir);
 
-    $SQL = $connect->prepare("SELECT name,isDir FROM storageData WHERE user_iduser = ? AND parentDir = ?");
-    $SQL ->bind_param("ss", $userid,$parentDir);
+		$userid = $_SESSION["userid"];
+		$parentDir = $_SESSION["currentDir"];
+		$SQL -> execute();
+	} else {
+		$SQL = $connect->prepare("SELECT name,isDir FROM storageData WHERE user_iduser = ? AND name LIKE ?");
+		$SQL ->bind_param("ss", $userid,$search);
 
-    $userid = $_SESSION["userid"];
-	$parentDir = $_SESSION["currentDir"];
-    $SQL -> execute();
+		$userid = $_SESSION["userid"];
+		$search = $_POST["searchString"] . "%";
+		$SQL -> execute();
+	}
 
     $result = $SQL->get_result();
     
@@ -67,5 +76,7 @@
 			</div>
 			</div>';
 		}
-    }      
+    }  
+$connect->close();
+
 echo $htmlOutput;

@@ -1,22 +1,82 @@
 function loadFiles(callback) {
-    $.ajax({
-        url: "loadFiles.php",
-        type: "POST",
-        dataType:"html",
-        success: function(response) {
-            document.getElementById("fileDisplayDiv").innerHTML = response;
-            if (document.getElementById("fileDisplayDiv").innerHTML == "") {
-                document.getElementById("noFilesDisplay").style = "display:flex";
-            } else {
-                document.getElementById("noFilesDisplay").style = "display:none";
+    // $.ajax({
+    //     url: "loadFiles.php",
+    //     type: "POST",
+    //     dataType:"html",
+    //     success: function(response) {
+    //         document.getElementById("fileDisplayDiv").innerHTML = response;
+    //         if (document.getElementById("fileDisplayDiv").innerHTML == "") {
+    //             document.getElementById("noFilesDisplay").style = "display:flex";
+    //             if (document.getElementById("searchBar").value != "") {
+    //                 document.getElementById("noFilesDisplay").innerHTML = "No files found";
+    //             } else {
+    //                 document.getElementById("noFilesDisplay").innerHTML = "No files uploaded";
+    //             }
+    //         } else {
+    //             document.getElementById("noFilesDisplay").style = "display:none";
+    //         }
+    //         callback();
+    //     },
+    //     error: function(jqXHR, textStatus, errorThrown) {
+    //         document.getElementById("fileDisplayDiv").innerHTML = "Error: " + textStatus + " - " + errorThrown;
+    //     }
+    // });
+
+    let fileSearch = document.getElementById("searchBar").value;
+
+        $.ajax({
+            url: "loadFiles.php",
+            type: "POST",
+            dataType:"html",
+            data: {
+                searchString: fileSearch
+            },
+            success: function(response) {
+                document.getElementById("fileDisplayDiv").innerHTML = response;
+                if (document.getElementById("fileDisplayDiv").innerHTML == "") {
+                    document.getElementById("noFilesDisplay").style = "display:flex";
+                    if (document.getElementById("searchBar").value != "") {
+                        document.getElementById("noFilesDisplay").innerHTML = "<div>No files found</div>";
+                    } else {
+                        document.getElementById("noFilesDisplay").innerHTML = "<div>No files uploaded</div>";
+                    }
+                } else {
+                    document.getElementById("noFilesDisplay").style = "display:none";
+                }
+                callback();
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                document.getElementById("fileDisplayDiv").innerHTML = "Error: " + textStatus + " - " + errorThrown;
             }
-            callback();
-        },
-        error: function(jqXHR, textStatus, errorThrown) {
-            document.getElementById("fileDisplayDiv").innerHTML = "Error: " + textStatus + " - " + errorThrown;
-        }
-    });
+        });
 }
+
+// function loadFiles(callback, isSearching) {
+//     if (isSearching == 1) {
+//         let fileSearch = document.getElementById("searchBar").value;
+
+//         $.ajax({
+//             url: "loadFiles.php",
+//             type: "POST",
+//             dataType:"html",
+//             data: {
+//                 searchString: fileSearch
+//             },
+//             success: function(response) {
+//                 document.getElementById("fileDisplayDiv").innerHTML = response;
+//                 if (document.getElementById("fileDisplayDiv").innerHTML == "") {
+//                     document.getElementById("noFilesDisplay").style = "display:flex";
+//                 } else {
+//                     document.getElementById("noFilesDisplay").style = "display:none";
+//                 }
+//                 callback();
+//             },
+//             error: function(jqXHR, textStatus, errorThrown) {
+//                 document.getElementById("fileDisplayDiv").innerHTML = "Error: " + textStatus + " - " + errorThrown;
+//             }
+//         });
+//     }
+// }
 
 function addEventListenersToFiles() {
 const files = document.querySelectorAll(".file");

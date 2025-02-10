@@ -12,8 +12,8 @@ include("../dbInfo/database.php");
 
 $connect1 = new mysqli($host, $user, $passwd, $db) or die("Spojení se nezdařilo");
 $connect1 -> set_charset("UTF8") or die("Kódování nenastaveno");
-$SQL1 = $connect1->prepare("DELETE FROM storagedata WHERE name = ? AND user_iduser = ? AND parentDir = ?");
-$SQL1->bind_param("sis",$fileName,$userid,$_SESSION["currentDir"]);
+$SQL1 = $connect1->prepare("DELETE FROM storagedata WHERE name = ? AND user_iduser = ?");
+$SQL1->bind_param("si",$fileName,$userid);
 
 $fileName = $_POST["fileName"];
 $userid = $_SESSION["userid"];
