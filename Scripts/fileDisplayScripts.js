@@ -1,27 +1,4 @@
 function loadFiles(callback) {
-    // $.ajax({
-    //     url: "loadFiles.php",
-    //     type: "POST",
-    //     dataType:"html",
-    //     success: function(response) {
-    //         document.getElementById("fileDisplayDiv").innerHTML = response;
-    //         if (document.getElementById("fileDisplayDiv").innerHTML == "") {
-    //             document.getElementById("noFilesDisplay").style = "display:flex";
-    //             if (document.getElementById("searchBar").value != "") {
-    //                 document.getElementById("noFilesDisplay").innerHTML = "No files found";
-    //             } else {
-    //                 document.getElementById("noFilesDisplay").innerHTML = "No files uploaded";
-    //             }
-    //         } else {
-    //             document.getElementById("noFilesDisplay").style = "display:none";
-    //         }
-    //         callback();
-    //     },
-    //     error: function(jqXHR, textStatus, errorThrown) {
-    //         document.getElementById("fileDisplayDiv").innerHTML = "Error: " + textStatus + " - " + errorThrown;
-    //     }
-    // });
-
     let fileSearch = document.getElementById("searchBar").value;
 
         $.ajax({
@@ -29,7 +6,9 @@ function loadFiles(callback) {
             type: "POST",
             dataType:"html",
             data: {
-                searchString: fileSearch
+                searchString: fileSearch,
+                isSelecting: document.getElementById("mutipleFileControlValue").value,
+                selectedFiles: document.getElementById("selectedFiles").value
             },
             success: function(response) {
                 document.getElementById("fileDisplayDiv").innerHTML = response;

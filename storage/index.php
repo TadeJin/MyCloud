@@ -167,6 +167,24 @@
             <div id = "searchBarDiv"><input id = "searchBar" onkeyup="loadFiles(addEventListenersToFiles)" placeholder="Search..."><div id = "searchbarIcon" onclick = "loadFiles(addEventListenersToFiles)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: gray;transform: ;msFilter:;"><path d="M10 18a7.952 7.952 0 0 0 4.897-1.688l4.396 4.396 1.414-1.414-4.396-4.396A7.952 7.952 0 0 0 18 10c0-4.411-3.589-8-8-8s-8 3.589-8 8 3.589 8 8 8zm0-14c3.309 0 6 2.691 6 6s-2.691 6-6 6-6-2.691-6-6 2.691-6 6-6z"></path></svg></div></div>
     </div>
 
+    <div class = "multipleFileManagementWrapper">
+        <input type="hidden" id = "selectedFiles" value = "">
+        
+
+        <div id = "downloadMultiple" title = "Download selected files" style = "display:none;" onclick = "downloadSelected()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M19 9h-4V3H9v6H5l7 8zM4 19h16v2H4z"></path></svg>
+        </div>
+
+        <div id = "deleteMultiple" title = "Delete selected files" style = "display:none;" onclick="deleteSelected()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M6 7H5v13a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7H6zm4 12H8v-9h2v9zm6 0h-2v-9h2v9zm.618-15L15 2H9L7.382 4H3v2h18V4z"></path></svg>
+        </div>
+
+        <div id = "mutipleFileControl" title = "Select files" onclick = "selectFiles()">
+            <input type="hidden" id = "mutipleFileControlValue" value = "0">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M20 2H8c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2V4c0-1.103-.897-2-2-2zM8 16V4h12l.002 12H8z"></path><path d="M4 8H2v12c0 1.103.897 2 2 2h12v-2H4V8zm8.933 3.519-1.726-1.726-1.414 1.414 3.274 3.274 5.702-6.84-1.538-1.282z"></path></svg>
+        </div>
+    </div>
+
     <div id = "fileDisplayDiv"></div>
 
     <div id = "noFilesDisplay">

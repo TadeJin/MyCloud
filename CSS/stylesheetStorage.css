@@ -351,6 +351,28 @@ body {
 
 }
 
+.multipleFileManagementWrapper  {
+    position: absolute;
+    width: 20%;
+    height: auto;
+    left: 77.5%;
+    top: 17.5%;
+    text-align: right;
+}
+
+.multipleFileManagementWrapper div {
+    display: inline-block;
+    margin-left: 10%;
+}
+
+.multipleFileManagementWrapper div:hover {
+    cursor: pointer;
+}
+
+.multipleFileManagementWrapper div svg {
+    width: 125%;
+    height: auto;
+}
 
 #uploadStatusWrapper {
     position: relative; 

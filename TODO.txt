@@ -1,15 +1,23 @@
 Delete all folders and files inside other folders that are inside the delted folder if a folder is delted **
 Warning on folder and file delete **
-
+Log in wrong password, name already is use ... **
 Search box - file loading onkeyup listener **
-Multiple file download/delete (preview with checkbox instead of file icon)
+
+Multiple file download/delete (preview with checkbox instead of file icon)**
 
 Moving files into another folder (select tag with dir names)
 
-Log in wrong password, name already is use ... **
+Server logs
 
 Bind enter to send data in ajax forms
 
-Animation fix (dots while upload)**
-CSS improvements (flexbox)
+Animation fix (dots while uploading on laptop)
+CSS improvements - admin page table scrolling
+
+Link available space to RaspPi storage (user info in admin panel, user profile info on profile icon click)
+Link CPU temp, RAM usage, Reboot
+Currently active users counter
+
+Security update (folder traversal, SQL injections, unwanted ajax)
+
 Code optimalization (upload fnc, animations)

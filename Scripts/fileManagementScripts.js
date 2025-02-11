@@ -152,3 +152,59 @@ function removeFile(fileName) {
   	    }
  	});	
 }
+
+
+function selectFiles() {
+    if (document.getElementById("mutipleFileControlValue").value == "0") {
+        document.getElementById("mutipleFileControl").innerHTML = '<input type="hidden" id = "mutipleFileControlValue" value = "1"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M9.172 16.242 12 13.414l2.828 2.828 1.414-1.414L13.414 12l2.828-2.828-1.414-1.414L12 10.586 9.172 7.758 7.758 9.172 10.586 12l-2.828 2.828z"></path><path d="M12 22c5.514 0 10-4.486 10-10S17.514 2 12 2 2 6.486 2 12s4.486 10 10 10zm0-18c4.411 0 8 3.589 8 8s-3.589 8-8 8-8-3.589-8-8 3.589-8 8-8z"></path></svg>';
+        document.getElementById("mutipleFileControl").title = "Unselect files";
+        document.getElementById("downloadMultiple").style = "display: inline-block;margin-left: 10%;";
+        document.getElementById("deleteMultiple").style = "display: inline-block;margin-left: 10%;";
+        loadFiles(addEventListenersToFiles);
+    } else if (document.getElementById("mutipleFileControlValue").value == "1") {
+        document.getElementById("mutipleFileControl").innerHTML = '<input type="hidden" id = "mutipleFileControlValue" value = "0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M20 2H8c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2V4c0-1.103-.897-2-2-2zM8 16V4h12l.002 12H8z"></path><path d="M4 8H2v12c0 1.103.897 2 2 2h12v-2H4V8zm8.933 3.519-1.726-1.726-1.414 1.414 3.274 3.274 5.702-6.84-1.538-1.282z"></path></svg>';
+        document.getElementById("downloadMultiple").style = "display:none";
+        document.getElementById("deleteMultiple").style = "display:none";
+        document.getElementById("mutipleFileControl").title = "Select files";
+        document.getElementById("selectedFiles").value = "";
+        loadFiles(addEventListenersToFiles);
+    }
+}
+
+function addSelection(checkbox) {
+    if (checkbox.checked) {
+        document.getElementById("selectedFiles").value += checkbox.value + ";";
+    } else {
+        let tmp = "";
+
+        document.getElementById("selectedFiles").value.split(";").forEach(element => {
+            if (element != checkbox.value && element != "") {
+                tmp += element + ";";
+            }
+        });
+
+        document.getElementById("selectedFiles").value = tmp;
+    }
+}
+
+function deleteSelected() {
+    if (document.getElementById("selectedFiles").value != "") {
+        let files = document.getElementById("selectedFiles").value.split(";");
+
+        files.forEach(file => {
+            removeFile(file);
+        });
+        document.getElementById("selectedFiles").value = "";
+    } else {
+        displayError("No files selected");
+    }
+}
+
+function downloadSelected() {
+    if (document.getElementById("selectedFiles").value != "") {
+        window.location.href = "downloadMultiple.php?files=" + document.getElementById("selectedFiles").value;
+        displaySuccess("Creating ZIP");
+    } else {
+        displayError("No files selected");
+    }
+}
