@@ -10,6 +10,7 @@ function back() {
     document.getElementById("newFolderContainer").hidden = true;
     document.getElementById("folderDelete").hidden = true;
     document.getElementById("fileDelete").hidden = true;
+    document.getElementById("moveContainer").hidden = true;
 }
 
 

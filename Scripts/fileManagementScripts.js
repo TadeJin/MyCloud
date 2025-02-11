@@ -160,6 +160,9 @@ function selectFiles() {
         document.getElementById("mutipleFileControl").title = "Unselect files";
         document.getElementById("downloadMultiple").style = "display: inline-block;margin-left: 10%;";
         document.getElementById("deleteMultiple").style = "display: inline-block;margin-left: 10%;";
+        document.getElementById("fileDisplayDiv").querySelectorAll(".fileName").forEach(element => {
+            element.style.height = "0";
+        });
         loadFiles(addEventListenersToFiles);
     } else if (document.getElementById("mutipleFileControlValue").value == "1") {
         document.getElementById("mutipleFileControl").innerHTML = '<input type="hidden" id = "mutipleFileControlValue" value = "0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M20 2H8c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2V4c0-1.103-.897-2-2-2zM8 16V4h12l.002 12H8z"></path><path d="M4 8H2v12c0 1.103.897 2 2 2h12v-2H4V8zm8.933 3.519-1.726-1.726-1.414 1.414 3.274 3.274 5.702-6.84-1.538-1.282z"></path></svg>';
@@ -207,4 +210,44 @@ function downloadSelected() {
     } else {
         displayError("No files selected");
     }
+}
+
+function moveFile(file) {
+    document.getElementById("movedFile").value = file;
+    
+    document.getElementById("moveContainer").hidden = false;
+    $.ajax({
+        url: "getDirectories.php",
+        type: "POST",
+        data: { 
+            fileName: document.getElementById("movedFile").value, 
+            newDir: document.getElementById("dirSelect").value 
+        },
+        success: function(response) {
+            document.getElementById("dirSelect").innerHTML = '<option value = "">Select directory</option>' + response;
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            displayError("ERROR: " + errorThrown);
+        }
+    });
+
+    document.getElementById("moveSub").addEventListener("click", function() {
+        $.ajax({
+            url: "moveFile.php",
+            type: "POST",
+            data: { 
+                fileName: document.getElementById("movedFile").value, 
+                newDir: document.getElementById("dirSelect").value 
+            },
+            success: function(response) {
+                displaySuccess("File moved"); 
+                document.getElementById("moveContainer").hidden = true;
+                document.getElementById("movedFile").value = "";
+                loadFiles(addEventListenersToFiles);
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                displayError("ERROR: " + errorThrown);
+            }
+        });
+    });
 }

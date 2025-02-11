@@ -63,6 +63,20 @@
             <button class = "submitBut" id = "fileDelteSub">YES</button>
         </div>
     </div>
+
+    <div class = "renameContainer" id = "moveContainer" hidden>
+        <input type ="hidden" id = "movedFile">
+        <div class = "renameBox">
+            <h2 id = "fileDeleteWarningHeader">Select new directory:</h2>
+            <div style = "text-align: center;height:30%">
+                <select id = "dirSelect" style = "width: 50%;height: 50%;border: 2px solid black; border-radius: 5px;">
+                    
+                </select>
+            </div>
+            <button class="backBut" onclick="back()">CANCEL</button>
+            <button class = "submitBut" id = "moveSub">SUBMIT</button>
+        </div>
+    </div>
     
     <div class="header">
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000" version="1.1" id="Capa_1" viewBox="0 0 547.674 547.674" xml:space="preserve">
