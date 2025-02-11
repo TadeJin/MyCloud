@@ -171,11 +171,13 @@ function upload() {
                                         hideUploadStatus(true);
                                         enableUploadTools();
                                         displaySuccess("Files uploaded");
+                                        newLog("User " + document.getElementById("userName").value + " uploaded a file at " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds() + " " + date.getDate() + "-" + date.getMonth() + 1 + "-" + date.getFullYear());
                                     } else {
                                         document.getElementById("file-input").value = "";
                                         hideUploadStatus(true);
                                         enableUploadTools();
                                         displaySuccess("File uploaded");
+                                        newLog("User " + document.getElementById("userName").value + " uploaded a file at " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds() + " " + date.getDate() + "-" + date.getMonth() + 1 + "-" + date.getFullYear());
                                     }
                                     window.removeEventListener("beforeunload",beforeUnloadFn);
                                     getFreeSpace();
@@ -302,11 +304,13 @@ function sendNextChunk(fileIndex,chunkIndex,fileChunks,files,cancel) {
                             hideUploadStatus(true);
                             enableUploadTools();
                             displaySuccess("Files uploaded");
+                            newLog("User " + document.getElementById("userName").value + " uploaded a file at " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds() + " " + date.getDate() + "-" + date.getMonth() + 1 + "-" + date.getFullYear());
                         } else {
                             document.getElementById("file-input").value = "";
                             hideUploadStatus(true); 
                             enableUploadTools();
                             displaySuccess("File uploaded");
+                            newLog("User " + document.getElementById("userName").value + " uploaded a file at " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds() + " " + date.getDate() + "-" + date.getMonth() + 1 + "-" + date.getFullYear());
                         }
                         window.removeEventListener("beforeunload",beforeUnloadFn);
                         getFreeSpace();

@@ -398,6 +398,19 @@ function loadRequests() {
     });
 }
 
+function loadLogs() {
+    $.ajax({
+        url: "loadLogs.php",
+        type: "POST",
+        success: function(response) {
+            document.getElementById("logDiv").innerHTML = response;
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            displayError("ERROR: " + errorThrown);
+        }
+    });
+}
+
 function showFolderDeleteWarning(folderName) {
     document.getElementById("folderDeleteWarningHeader").innerHTML = "Are you sure you want to delete " + folderName +" and its contents ?";
     document.getElementById("folderDelete").hidden = false;

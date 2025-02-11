@@ -60,6 +60,10 @@
                 if (response == "1") {
                     document.getElementById("errorDiv").innerHTML = "Wrong login credentials!";
                 } else if (response == 0) {
+                    let date = new Date();
+                    if (document.getElementById("username").value != "admin") {
+                        newLog("User " + document.getElementById("username").value + " logged in at " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds() + " " + date.getDate() + "-" + date.getMonth() + 1 + "-" + date.getFullYear());
+                    }
                     window.location.href = document.getElementById("username").value == "admin" ? "admin" : "storage";
                 }
             },
@@ -69,6 +73,6 @@
             });
         }
     </script>
-    <script src="serverStatusScripts"></script>
+    <script src = "Scripts/serverStatusScripts.js"></script>
 </body>
 </html>

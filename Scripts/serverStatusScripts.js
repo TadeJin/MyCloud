@@ -39,7 +39,7 @@ function newLog(message) {
             logMessage: message
         },
         success: function(response) {
-            
+           
         },
         error: function(jqXHR, textStatus, errorThrown) {
            console.log("ERROR LOGGING")

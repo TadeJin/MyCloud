@@ -120,7 +120,7 @@
                     <ul>
                         <div id = "availableSpaceDiv">Available Space: </div>
                         <div id = "takenSpaceDiv">Taken Space: </div>
-                        <div id = "logout"><button type = "submit" name = "logout">Logout<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M16 13v-2H7V8l-5 4 5 4v-3z"></path><path d="M20 3h-9c-1.103 0-2 .897-2 2v4h2V5h9v14h-9v-4H9v4c0 1.103.897 2 2 2h9c1.103 0 2-.897 2-2V5c0-1.103-.897-2-2-2z"></path></svg></button></div>
+                        <div id = "logout"><button type = "submit" name = "logout" onclick = "logoutLog()">Logout<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M16 13v-2H7V8l-5 4 5 4v-3z"></path><path d="M20 3h-9c-1.103 0-2 .897-2 2v4h2V5h9v14h-9v-4H9v4c0 1.103.897 2 2 2h9c1.103 0 2-.897 2-2V5c0-1.103-.897-2-2-2z"></path></svg></button></div>
                     </ul>
                 </div>
             </form>
@@ -215,5 +215,23 @@
     <script src="../Scripts/UIControlScripts.js"></script>
     <script src="../Scripts/uploadScripts.js"></script>
     <script src = "../Scripts/serverStatusScripts.js"></script>
+    <script>
+        function logoutLog() {
+            let date = new Date();
+            $.ajax({
+                url: "../createLog.php",
+                type: "POST",
+                data: {
+                    logMessage: "User " + document.getElementById("userName").innerHTML + " logged out at " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds() + " " + date.getDate() + "-" + date.getMonth() + 1 + "-" + date.getFullYear()
+                },
+                success: function(response) {
+                
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                console.log("ERROR LOGGING")
+                }
+            });
+        }
+    </script>
 </body>
 </html>

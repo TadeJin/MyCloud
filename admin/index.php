@@ -25,7 +25,7 @@
         <link rel="stylesheet" href = "../CSS/stylesheetAdmin.css">
         <link rel ="icon" href="../media/cloud-solid-120.png">
     </head>
-    <body onload="loadUsers(),loadRequests()">
+    <body onload="loadUsers(),loadRequests(),loadLogs()">
     <div class="header">
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000" version="1.1" id="Capa_1" viewBox="0 0 547.674 547.674" xml:space="preserve">
             <g>
@@ -88,10 +88,7 @@
 
                         <tr>
                             <td id = "logTd">
-                                <div class = "logDiv">
-                                &emsp; User tadeas logged in at 12:37 AM 24-01-2025<br />
-                                &emsp; User Marek logged in at 8:37 PM 24-01-2025
-                                </div>
+                                <div class = "logDiv" id = "logDiv"></div>
                             </td>
                         </tr>
                     </table>
