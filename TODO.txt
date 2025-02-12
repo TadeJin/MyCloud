@@ -13,9 +13,9 @@ FIX LOGGING BUG WHEN UPLOADING FILES (change filepath to createLog.php or move i
 
 Bind enter to send data in ajax forms**
 
-Animation fix (dots while uploading on laptop)
+Animation fix (dots while uploading on laptop)**
 Refresh tables on admin page every 30 secs
-CSS improvements - admin page table scrolling
+CSS improvements - admin page table scrolling**, file divs, upload dialog on laptop, createUser page on laptop
 
 Link available space to RaspPi storage (user info in admin panel, user profile info on profile icon click)
 Reboot button fnc + log

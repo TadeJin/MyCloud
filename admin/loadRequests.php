@@ -7,23 +7,7 @@
 
     $result = $connect->query("SELECT idaccountRequests,username,date FROM accountRequests");
 
-    $htmlOutput = 
-
-    '
-    <thead>
-        <tr>
-            <td colspan ="4" style = "font-size: 1.25vw;">New requests</td>
-        </tr>
-
-        <tr>
-            <td>Username</td>
-            <td>Date</td>
-            <td>Accept</td>
-            <td>Decline</td>
-        </tr>
-    </thead>
-    
-    <tbody>';
+    $htmlOutput = "";
 
     while ($row = $result -> fetch_assoc()) {
         $htmlOutput .= '

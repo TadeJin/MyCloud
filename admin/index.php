@@ -102,8 +102,8 @@
                 <label id = "userCount">Total user count: </label><br /><br />
                 <label id = "activeUserCount">Currently active users: </label><br /><br />
 
-                <div class = "tableDiv">
-                    <table class = "userTable" id = "usersTable">
+                <div style = "margin-left: 5%;outline: 2px solid black;">
+                    <table class = "userTable" style = "width: 25.8vw;">
                         <tr>
                             <td colspan = "3" style = "text-align: center;font-size: 1.25vw;">User list</td>
                         </tr>
@@ -112,12 +112,12 @@
                             <td>Taken space</td>
                             <td>Remove</td>
                         </tr>
+                    </table>
+                </div>
 
-                        <!-- <tr>
-                            <td>tadeas</td>
-                            <td>47.6 GB</td>
-                            <td><a href = "removeUser.php" id = "">Remove</a></td>
-                        </tr> -->
+                <div style = "margin-left: 5%;max-height:55vh;min-height:55vh;overflow-y:scroll;overflow-x:hidden;outline: 3px solid black;">
+                    <table class = "userTable" id = "usersTable" style = "width: 26.2vw;">
+                
                     </table>
                 </div>
             </div>
@@ -133,31 +133,27 @@
             
 
             <div class = "tableDiv">
-                <table class="userTable" id = "requests">
-                    <thead>
-                        <tr>
-                            <td colspan ="4" style = "font-size: 1.25vw;">New requests</td>
-                        </tr>
 
-                        <tr>
-                            <td>Username</td>
-                            <td>Date</td>
-                            <td>Accept</td>
-                            <td>Decline</td>
-                        </tr>
-                    </thead>
+            <div style = "outline: 2px solid black;">
+                <table class="userTable">
+                    <tr>
+                        <td colspan ="4" style = "font-size: 1.25vw;">New requests</td>
+                    </tr>
 
-                    <tbody>
-
-                    </tbody>
-
-                    <!-- <tr>
-                        <td>marek</td>
-                        <td>02-01-2025</td>
-                        <td><a href = "acceptRequest.php" style = "color:lime;">Accept</a></td>
-                        <td><a href="declineRequest.php">Decline</a></td>
-                    </tr> -->
+                    <tr>
+                        <td>Username</td>
+                        <td>Date</td>
+                        <td>Accept</td>
+                        <td>Decline</td>
+                    </tr>
                 </table>
+            </div>
+
+            <div style = "max-height:55.7vh;min-height:55.7vh;overflow-y:scroll;overflow-x:hidden;outline: 3px solid black;">
+                <table class = "userTable" id = "requests" style = "width: 26.2vw;">
+            
+                </table>
+            </div>
             </div>
             </div>
         </div>
