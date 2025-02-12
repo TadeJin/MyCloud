@@ -68,7 +68,7 @@
 				'<div class = "file">
 					<div class="fileButDiv">
 						<button class = "fileBut" name = "'. $_SESSION["rootPath"] . $_SESSION["user"] . "/" . $row["name"] .'">
-						<div class = "fileIcon" style = "position: relative;height: 20%;"><input type = "checkbox" value ="'. $row["name"] .'" style = "position:absolute;left:-15%;top:10%;" onclick = "addSelection(this)"' . $isChecked . '></div>
+						<div class = "fileIcon" style = "width: 8px; height: 8px;"><input type = "checkbox" value ="'. $row["name"] .'" style = "position:absolute;left: 0,top: 50%; transform: translate(0%,-50%);" onclick = "addSelection(this)"' . $isChecked . '></div>
 						<div class = "fileName" title="'.$row["name"] .'">' . $filename .'</div>
 						<div class = "dotDiv">
 						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10.707 17.707 16.414 12l-5.707-5.707-1.414 1.414L13.586 12l-4.293 4.293z"/></svg>

@@ -155,7 +155,9 @@ body {
     font-family: "Russo One",sans-serif;
     text-align: center;
     font-size: 1.75vh;
-    padding-bottom: 2.5%;
+    position: absolute;
+    left: 38%;
+    top: 70%;
 }
 
 .container .loginErrorDisplay {
@@ -163,6 +165,9 @@ body {
     text-align: center;
     font-size: 2vh;
     color: red;
+    position: absolute;
+    left: 40.5%;
+    top: 73%;
 }
 
 

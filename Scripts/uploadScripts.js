@@ -127,7 +127,7 @@ function upload() {
                             document.getElementById("progress").value = (currentSize / files[fileIndex].size) * 100;
                             document.getElementById("percentage").innerHTML = Math.floor(((currentSize / files[fileIndex].size) * 100)) + "%";
                             document.getElementById("filesUploaded").innerHTML = "Uploaded: " + fileIndex + " files";
-                            document.getElementById("currentFileUploading").innerHTML = "Currently uploading: " + files[fileIndex].name;
+                            document.getElementById("currentFileUploading").innerHTML = "Currently uploading: " + (files[fileIndex].name.length > 10 ? files[fileIndex].name.substring(0,10) + "..." : files[fileIndex].name);;
                             
                             if (chunkIndex < fileChunks[fileIndex].length -1) {
                                 //window.removeEventListener("beforeunload",beforeUnloadFn);
@@ -259,7 +259,7 @@ function sendNextChunk(fileIndex,chunkIndex,fileChunks,files,cancel) {
                 document.getElementById("progress").value = (currentSize / files[fileIndex].size) * 100;
                 document.getElementById("percentage").innerHTML = Math.floor(((currentSize / files[fileIndex].size) * 100)) + "%";
                 document.getElementById("filesUploaded").innerHTML = "Uploaded: " + fileIndex + "/" + files.length + " files";
-                document.getElementById("currentFileUploading").innerHTML = "Currently uploading: " + files[fileIndex].name;
+                document.getElementById("currentFileUploading").innerHTML = "Currently uploading: " + (files[fileIndex].name.length > 10 ? files[fileIndex].name.substring(0,10) + "..." : files[fileIndex].name);
                             
                 if (chunkIndex < fileChunks[fileIndex].length -1) {
                     window.removeEventListener("beforeunload",beforeUnloadFn);

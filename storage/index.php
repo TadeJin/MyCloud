@@ -184,6 +184,9 @@
     <div class = "multipleFileManagementWrapper">
         <input type="hidden" id = "selectedFiles" value = "">
         
+        <div id = "selectAll" style = "display:none;height:3vh"> 
+            <a id = "selectAllText" style = 'font-family: "Russo One",sans-serif;color: black' onclick = "selectAllFiles()">Select all</a>
+        </div>
 
         <div id = "downloadMultiple" title = "Download selected files" style = "display:none;" onclick = "downloadSelected()">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M19 9h-4V3H9v6H5l7 8zM4 19h16v2H4z"></path></svg>

@@ -1,5 +1,9 @@
 @import url("https://fonts.googleapis.com/css?family=Russo+One");
 
+html {
+    height: 90%;
+}
+
 body {
     z-index: -1;
     height: 100%;
@@ -336,7 +340,8 @@ body {
     color: gray;
     z-index: 2;
     position: absolute;
-    top:20%;
+    top:50%;
+    transform: translate(0%,-50%);
     left:1%;
     width: 90%;
     background: transparent;
@@ -349,7 +354,8 @@ body {
     width: max-content;
     height: auto;
     position: absolute;
-    top: 15%;
+    top: 50%;
+    transform: translate(0%,-50%);
     left: 92.5%;
     z-index: 3;
 }
@@ -396,7 +402,7 @@ body {
     border: 5px solid black;
     border-radius: 10px;
     width: 25vw;
-    height: 15vh;
+    height: 17vh;
     z-index: 2;
     background: white;
     overflow: hidden;
@@ -466,7 +472,7 @@ body {
 
 #cancelUpload {
     position: relative;
-    height: 13%;
+    height: 15%;
     width: 40%;
     left: 30%;
     top: 19%;
@@ -475,13 +481,15 @@ body {
     color: black;
     text-align: center;
     border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #cancelUpload:hover {
     background-color: lightgray;
     cursor: pointer;
 }
-
 
 #hideUploadStatus {
     position: absolute;
@@ -598,12 +606,10 @@ body {
 
 /*--------------------------------FILE BUTTON CSS-----------------------------------*/
 .file {
-    width: 5vw;
+    width: 13vw;
     position: relative;
-    margin-left: 2.5%;
-    margin-right: 7.75%;
-    margin-bottom: 0.75%;
     display: inline-block;
+    margin-left: 2.5%;
 }
 
 .fileButDiv {
@@ -611,13 +617,23 @@ body {
     top:0;
     left: 0;
     z-index: 1;
-    width: 5vw;
+    width: 13vw;
 }
 
 .fileIcon {
     position: absolute;
-    left: 20%;
-    top: 17%;
+    left: 10%;
+    top: 50%;
+    transform: translate(0%,-50%);
+}
+
+.fileName {
+    position: absolute;
+    left: 30%;
+    top: 50%;
+    transform: translate(0%,-50%);
+    font-family: "Russo One",sans-serif;
+    font-size: 1vh * 2.5vw;
 }
 
 .fileIcon svg {
@@ -651,43 +667,40 @@ body {
     float: right;
     width: 25px;
     height: 25px;
-    margin-right: 5px;
     border-radius: 50%;
-    margin-top: -0.5vh;
     z-index: 2;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-
-.dotDiv:hover{
-    background-color: darkgray;
-}
-
-.fileName {
-    height: 5px;
-    width: 100%;
-    font-family: "Russo One",sans-serif;
-    font-size: 1vh * 2.5vw;
-}
-
-li {
-    list-style-type: none;
+    position: absolute;
+    left: 85%;
+    top: 50%;
+    transform: translate(0%,-50%);
 }
 
 .dropDown {
     display: none;
     border: 3px solid black;
     border-radius: 10%;
-    position: absolute;
     z-index: 2;
     background-color: transparent;
     animation-duration: .5s;
     animation-fill-mode: forwards;
     background-color: white;
     width: 7vw;
+    position: absolute;
+    left: 0%;
 }
+
+.dotDiv:hover{
+    background-color: darkgray;
+}
+
+
+li {
+    list-style-type: none;
+}
+
 
 .dropDown.active {
     display: inline-block;
@@ -737,27 +750,28 @@ ul {
 @keyframes active {
     0% {
         height: 0px;
-        left: 250%;
-        top: 25%;
+        left: 95%;
+        top: 24%;
+        transform: translate(0%,-50%);
     }
 
     100% {
         height: 130px;
-        left: 250%;
+        left: 95%;
         top: 25%;
     }
 }
 @keyframes hide {
     0% {
-        height: 100px;
-        left: 250%;
+        height: 130px;
+        left: 95%;
         top: 25%;
     }
 
     100% {
         height: 0px;
-        left: 250%;
-        top: 25%;
+        left: 95%;
+        top: 24%;
     }
 }
 

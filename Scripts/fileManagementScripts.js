@@ -155,19 +155,21 @@ function removeFile(fileName) {
 
 
 function selectFiles() {
-    if (document.getElementById("mutipleFileControlValue").value == "0") {
+    if (document.getElementById("mutipleFileControlValue").value == "0") { //Reveals
         document.getElementById("mutipleFileControl").innerHTML = '<input type="hidden" id = "mutipleFileControlValue" value = "1"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M9.172 16.242 12 13.414l2.828 2.828 1.414-1.414L13.414 12l2.828-2.828-1.414-1.414L12 10.586 9.172 7.758 7.758 9.172 10.586 12l-2.828 2.828z"></path><path d="M12 22c5.514 0 10-4.486 10-10S17.514 2 12 2 2 6.486 2 12s4.486 10 10 10zm0-18c4.411 0 8 3.589 8 8s-3.589 8-8 8-8-3.589-8-8 3.589-8 8-8z"></path></svg>';
         document.getElementById("mutipleFileControl").title = "Unselect files";
-        document.getElementById("downloadMultiple").style = "display: inline-block;margin-left: 10%;";
+        document.getElementById("downloadMultiple").style = "display: inline-block;margin-left: 5%;";
         document.getElementById("deleteMultiple").style = "display: inline-block;margin-left: 10%;";
+        document.getElementById("selectAll").style = "display: inline-block;";
         document.getElementById("fileDisplayDiv").querySelectorAll(".fileName").forEach(element => {
             element.style.height = "0";
         });
         loadFiles(addEventListenersToFiles);
-    } else if (document.getElementById("mutipleFileControlValue").value == "1") {
+    } else if (document.getElementById("mutipleFileControlValue").value == "1") { //Hides
         document.getElementById("mutipleFileControl").innerHTML = '<input type="hidden" id = "mutipleFileControlValue" value = "0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M20 2H8c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2V4c0-1.103-.897-2-2-2zM8 16V4h12l.002 12H8z"></path><path d="M4 8H2v12c0 1.103.897 2 2 2h12v-2H4V8zm8.933 3.519-1.726-1.726-1.414 1.414 3.274 3.274 5.702-6.84-1.538-1.282z"></path></svg>';
         document.getElementById("downloadMultiple").style = "display:none";
         document.getElementById("deleteMultiple").style = "display:none";
+        document.getElementById("selectAll").style = "display: none";
         document.getElementById("mutipleFileControl").title = "Select files";
         document.getElementById("selectedFiles").value = "";
         loadFiles(addEventListenersToFiles);
@@ -249,5 +251,18 @@ function moveFile(file) {
                 displayError("ERROR: " + errorThrown);
             }
         });
+    });
+}
+
+function selectAllFiles() {
+    if (document.getElementById("selectAllText").style.color == "blue") {
+        document.getElementById("selectAllText").style.color = "black";
+    } else if (document.getElementById("selectAllText").style.color == "black"){
+        document.getElementById("selectAllText").style.color = "blue"
+    }
+
+    document.querySelectorAll(".fileIcon").forEach(element => {
+        element.childNodes[0].checked = !element.childNodes[0].checked;
+        addSelection(element.childNodes[0]);
     });
 }

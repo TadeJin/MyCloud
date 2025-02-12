@@ -15,9 +15,10 @@ Bind enter to send data in ajax forms**
 
 Animation fix (dots while uploading on laptop)**
 Refresh tables on admin page every 30 secs
-CSS improvements - admin page table scrolling**, file divs, upload dialog on laptop, createUser page on laptop
+CSS improvements - admin page table scrolling**, file divs**, upload dialog on laptop**, createUser page on laptop**
 
 Link available space to RaspPi storage (user info in admin panel, user profile info on profile icon click)
+
 Reboot button fnc + log
 Link CPU temp, RAM usage, Reboot, add CPU usage
 HDD mounting linux script on restart|reboot
@@ -28,4 +29,4 @@ Security update (folder traversal, SQL injections, unwanted ajax)
 
 Code optimalization (upload fnc, animations)
 
-mobile CSS, tablet CSS
+mobile CSS, tablet CSS, and final CSS touches
