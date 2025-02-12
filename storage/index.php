@@ -222,7 +222,7 @@
                 url: "../createLog.php",
                 type: "POST",
                 data: {
-                    logMessage: "User " + document.getElementById("userName").innerHTML + " logged out at " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds() + " " + date.getDate() + "-" + date.getMonth() + 1 + "-" + date.getFullYear()
+                    logMessage: " logged out at " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds() + " " + date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear()
                 },
                 success: function(response) {
                 

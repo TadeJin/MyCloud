@@ -67,7 +67,7 @@
                 if (response == "1") {
                     document.getElementById("errorDiv").innerHTML = "Account with this name already exists!";
                 } else if (response == 0) {
-                    // window.location.href = "/MyCloud";
+                    window.location.href = "/MyCloud";
                 }
             },
             error: function(jqXHR, textStatus, errorThrown) {
@@ -75,6 +75,24 @@
             }
             });
         }
+
+        document.getElementById("username").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                if (!document.getElementById("submitBut").disabled) {
+                    document.getElementById("submitBut").click();
+                }
+            }
+        });
+
+        document.getElementById("password").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                if (!document.getElementById("submitBut").disabled) {
+                    document.getElementById("submitBut").click();
+                }
+            }
+        });
     </script>
 
     <?php 

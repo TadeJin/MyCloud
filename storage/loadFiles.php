@@ -17,7 +17,7 @@
 		$SQL ->bind_param("ss", $userid,$search);
 
 		$userid = $_SESSION["userid"];
-		$search = $_POST["searchString"] . "%";
+		$search = "%" . $_POST["searchString"] . "%";
 		$SQL -> execute();
 	}
 

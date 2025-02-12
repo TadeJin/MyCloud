@@ -62,7 +62,7 @@
                 } else if (response == 0) {
                     let date = new Date();
                     if (document.getElementById("username").value != "admin") {
-                        newLog("User " + document.getElementById("username").value + " logged in at " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds() + " " + date.getDate() + "-" + date.getMonth() + 1 + "-" + date.getFullYear());
+                        newLog(" logged in at " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds() + " " + date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear());
                     }
                     window.location.href = document.getElementById("username").value == "admin" ? "admin" : "storage";
                 }
@@ -72,6 +72,24 @@
             }
             });
         }
+
+        document.getElementById("username").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                if (!document.getElementById("login").disabled) {
+                    document.getElementById("login").click();
+                }
+            }
+        });
+
+        document.getElementById("password").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                if (!document.getElementById("login").disabled) {
+                    document.getElementById("login").click();
+                }
+            }
+        });
     </script>
     <script src = "Scripts/serverStatusScripts.js"></script>
 </body>

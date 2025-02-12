@@ -7,17 +7,25 @@ Multiple file download/delete (preview with checkbox instead of file icon)**
 
 Moving files into another folder (select tag with dir names)**
 
-Server logs
+Server logs**
 
-Bind enter to send data in ajax forms
+FIX LOGGING BUG WHEN UPLOADING FILES (change filepath to createLog.php or move it to a separate folder)**
+
+Bind enter to send data in ajax forms**
 
 Animation fix (dots while uploading on laptop)
+Refresh tables on admin page every 30 secs
 CSS improvements - admin page table scrolling
 
 Link available space to RaspPi storage (user info in admin panel, user profile info on profile icon click)
-Link CPU temp, RAM usage, Reboot
+Reboot button fnc + log
+Link CPU temp, RAM usage, Reboot, add CPU usage
+HDD mounting linux script on restart|reboot
 Currently active users counter
+sending emails to users when account activated or delted, admin email sending account requests
 
 Security update (folder traversal, SQL injections, unwanted ajax)
 
 Code optimalization (upload fnc, animations)
+
+mobile CSS, tablet CSS

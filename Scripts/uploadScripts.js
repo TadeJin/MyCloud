@@ -4,6 +4,8 @@ function download(a) {
 
 
 function upload() {
+    let date = new Date();
+
     let files = document.getElementById("file-input").files;
     if (files.length > 0) {
         let enoughSpace = true;
@@ -171,13 +173,13 @@ function upload() {
                                         hideUploadStatus(true);
                                         enableUploadTools();
                                         displaySuccess("Files uploaded");
-                                        newLog("User " + document.getElementById("userName").value + " uploaded a file at " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds() + " " + date.getDate() + "-" + date.getMonth() + 1 + "-" + date.getFullYear());
+                                        sendLog(" uploaded a file at " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds() + " " + date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear());
                                     } else {
                                         document.getElementById("file-input").value = "";
                                         hideUploadStatus(true);
                                         enableUploadTools();
                                         displaySuccess("File uploaded");
-                                        newLog("User " + document.getElementById("userName").value + " uploaded a file at " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds() + " " + date.getDate() + "-" + date.getMonth() + 1 + "-" + date.getFullYear());
+                                        sendLog(" uploaded a file at " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds() + " " + date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear());
                                     }
                                     window.removeEventListener("beforeunload",beforeUnloadFn);
                                     getFreeSpace();
@@ -222,6 +224,8 @@ function upload() {
 }
     
 function sendNextChunk(fileIndex,chunkIndex,fileChunks,files,cancel) {
+    let date = new Date();
+
     const beforeUnloadFn = function(event) {
         const url = "cancelUploadDelete.php";
         const data = new FormData();
@@ -304,13 +308,13 @@ function sendNextChunk(fileIndex,chunkIndex,fileChunks,files,cancel) {
                             hideUploadStatus(true);
                             enableUploadTools();
                             displaySuccess("Files uploaded");
-                            newLog("User " + document.getElementById("userName").value + " uploaded a file at " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds() + " " + date.getDate() + "-" + date.getMonth() + 1 + "-" + date.getFullYear());
+                            sendLog(" uploaded a file at " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds() + " " + date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear());
                         } else {
                             document.getElementById("file-input").value = "";
                             hideUploadStatus(true); 
                             enableUploadTools();
                             displaySuccess("File uploaded");
-                            newLog("User " + document.getElementById("userName").value + " uploaded a file at " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds() + " " + date.getDate() + "-" + date.getMonth() + 1 + "-" + date.getFullYear());
+                            sendLog(" uploaded a file at " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds() + " " + date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear());
                         }
                         window.removeEventListener("beforeunload",beforeUnloadFn);
                         getFreeSpace();
@@ -341,5 +345,21 @@ function sendNextChunk(fileIndex,chunkIndex,fileChunks,files,cancel) {
             }
         });
     }
+}
+
+function sendLog(message) {
+    $.ajax({
+        url: "../createLog.php",
+        type: "POST",
+        data: {
+            logMessage: message
+        },
+        success: function(response) {
+           
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+           console.log("ERROR LOGGING")
+        }
+    });
 }
 
