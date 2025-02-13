@@ -72,11 +72,11 @@
     
     <div class = "adminTools">
         <div class = "infoPanel">
-            <div class = "infoPanelHeader">Server info <button class = "rebootBut">&emsp;<div id = "buttonText">REBOOT&emsp;&emsp;</div><img src = "../media/reboot-icon.png" ></button><img src = "../media/server-icon.png"></div>
+            <div class = "infoPanelHeader">Server info <!--<button class = "rebootBut">&emsp;<div id = "buttonText">REBOOT&emsp;&emsp;</div><img src = "../media/reboot-icon.png" ></button>--><img src = "../media/server-icon.png"></div>
             <div class = "panelContent">
                 <label>STATUS: <label style = "color:green;">ONLINE</label></label>&emsp;&emsp;&emsp;  <br /><br />
                 <label>CPU Temperature:</label> <label style = "color: red">100°C</label>&emsp;&emsp;&emsp;&emsp;
-                <label>RAM used:</label> <label>2.0/8.0 GB</label><br /><br />
+                <label>CPU usage:</label> <label>100%</label><br /><br />
                 <label>Available space: </label> <label>960.0 GB</label><br /><br />
                 <label>Taken space: </label> <label>40.0 GB</label><br /><br />
 
@@ -100,7 +100,7 @@
             <div class = "infoPanelHeader">User info <img src = "../media/user-detail.png" style = "left: 87.5%;width:12.5%;height:auto;top: -16%;"></div>
             <div class = "panelContent">
                 <label id = "userCount">Total user count: </label><br /><br />
-                <label id = "activeUserCount">Currently active users: </label><br /><br />
+                <label id = "activeUserCount"></label><br /><br />
 
                 <div style = "margin-left: 5%;outline: 2px solid black;">
                     <table class = "userTable" style = "width: 25.8vw;">
@@ -115,7 +115,7 @@
                     </table>
                 </div>
 
-                <div style = "margin-left: 5%;max-height:55vh;min-height:55vh;overflow-y:scroll;overflow-x:hidden;outline: 3px solid black;">
+                <div style = "margin-left: 5%;max-height:55vh;min-height:55vh;overflow-y:scroll;overflow-x:hidden;outline: 3px solid black;border-radius: 5px;">
                     <table class = "userTable" id = "usersTable" style = "width: 26.2vw;">
                 
                     </table>
@@ -127,11 +127,9 @@
             <div class = "infoPanelHeader">Account requests  <img src = "../media/request-icon.png" style = "width: 8%;height: auto;top: 7.5%;"></div>
             <div class = "panelContent">
 
-
-            <label>Request email: example@seznam.cz</label><br /><br />
             <label id = "requestCount">Total requests: </label><br /><br />
-            
-
+            <label></label><br /><br />
+           
             <div class = "tableDiv">
 
             <div style = "outline: 2px solid black;">
