@@ -160,7 +160,6 @@
     </div>
 
 
-    <!-- <script src="../Scripts/script.js"></script> -->
 
     <script src="../Scripts/fileDisplayScripts.js"></script>
     <script src="../Scripts/fileManagementScripts.js"></script>

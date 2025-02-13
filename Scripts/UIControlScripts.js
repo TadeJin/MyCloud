@@ -134,12 +134,11 @@ function showUploadStatus(completely) {
     } else {
         document.getElementById('uploadText').hidden = false;
         document.getElementById('dots').hidden = false;
-        document.getElementById('cancelUpload').hidden = false;
         document.getElementById("currentFileUploading").hidden = false;
         document.getElementById("filesUploaded").hidden = false;
         document.getElementById("percentage").hidden = false;
         document.getElementById('progress').hidden = false;
-        document.getElementById("cancelUpload").hidden = false;
+        document.getElementById("cancelUpload").style = "display:flex";
         document.getElementById("hideUploadStatus").style = "width: 8%;left: 92%";
 
         document.getElementById("statusArrow").animate(
@@ -202,7 +201,7 @@ function hideUploadStatus(completely) {
         document.getElementById("filesUploaded").hidden = false;
         document.getElementById("percentage").hidden = false;
         document.getElementById('progress').hidden = false;
-        document.getElementById("cancelUpload").hidden = false;
+        document.getElementById("cancelUpload").style = "display:flex;";
         document.getElementById("hideUploadStatus").style = "left: 92%;;width: 8%";
         document.getElementById("uploadStatusBox").animate(
             [
@@ -238,7 +237,7 @@ function hideUploadStatus(completely) {
         document.getElementById("filesUploaded").hidden = true;
         document.getElementById("percentage").hidden = true;
         document.getElementById('progress').hidden = true;
-        document.getElementById("cancelUpload").hidden = true;
+        document.getElementById("cancelUpload").style = "display:none;";
         document.getElementById("hideUploadStatus").style = "left: 0%;width: 100%";
         
         document.getElementById("statusArrow").animate(

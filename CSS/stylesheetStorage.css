@@ -1,13 +1,13 @@
 @import url("https://fonts.googleapis.com/css?family=Russo+One");
 
 html {
-    height: 90%;
+    min-height: 100%;
 }
-
 body {
     z-index: -1;
-    height: 100%;
+    min-height: 100vh;
     overflow-x: hidden;
+    overflow-y: auto;
 }
 
 .header {
@@ -180,10 +180,13 @@ body {
     cursor: pointer;
 }
 
+.tools {
+    display: unset;
+}
+
 .tools input {
     display: none;
 }
-
 
 
 .tools button {
@@ -389,7 +392,8 @@ body {
 }
 
 #uploadStatusWrapper {
-    position: relative; 
+    position: sticky;
+    top: 8%; 
     width: 25%;
     left:74%;
     z-index: 3;
@@ -610,6 +614,7 @@ body {
     position: relative;
     display: inline-block;
     margin-left: 2.5%;
+    margin-bottom: .5%;
 }
 
 .fileButDiv {

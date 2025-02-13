@@ -19,14 +19,18 @@ CSS improvements - admin page table scrolling**, file divs**, upload dialog on l
 
 Link available space to RaspPi storage (user info in admin panel, user profile info on profile icon click)
 
-Reboot button fnc + log
-Link CPU temp, RAM usage, Reboot, add CPU usage
+Code optimalization (upload fnc, animations)**
+
+Reboot button fnc + log (maybe not implement cause of security)
+
+Link CPU temp, CPU usage, Reboot
+
 HDD mounting linux script on restart|reboot
+
 Currently active users counter
-sending emails to users when account activated or delted, admin email sending account requests
+
+sending emails to users when account activated or delted, admin email sending account requests (maybe)
 
 Security update (folder traversal, SQL injections, unwanted ajax)
-
-Code optimalization (upload fnc, animations)
 
 mobile CSS, tablet CSS, and final CSS touches

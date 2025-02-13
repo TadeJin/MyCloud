@@ -94,29 +94,5 @@
             }
         });
     </script>
-
-    <?php 
-        // if (isset($_POST["back"])) {
-        //     header("Location: /MyCloud");
-        // }
-
-        // if(isset($_POST["add"])) {
-        //     include("../dbInfo/database.php");
-        //     $connect = new mysqli($host, $user, $passwd, $db) or die("Spojení se nezdařilo");
-        //     $connect -> set_charset("UTF8") or die("Kódování nenastaveno");
-
-        //     $SQL = $connect->prepare("INSERT INTO accountRequests(username,password,date) VALUES(?,?,?)");
-        //     $SQL->bind_param("sss",$name,$password,$date);
-
-        //     $name = $_POST["username"];
-        //     $password = password_hash($_POST["password"],PASSWORD_DEFAULT);
-        //     $date = date("d-m-Y");
-        //     $SQL->execute();
-
-
-        //     $connect->close();
-        //     header("Location: /MyCloud");
-        // }
-    ?>
 </body>
 </html>

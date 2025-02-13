@@ -3,7 +3,7 @@ function download(a) {
 }
 
 
-function upload() {
+function upload() { //Prepares files for upload and checks if upload is possible
     let date = new Date();
 
     let files = document.getElementById("file-input").files;
@@ -39,6 +39,7 @@ function upload() {
             
     
             if(noDuplicate) {
+                //Configures Upload UI
                 let cancelled = false;
                 document.getElementById("cancelUpload").addEventListener("click", function() {
                     cancelled = true;
@@ -79,6 +80,7 @@ function upload() {
                 }
                 document.getElementById("searchBar").value = "";
 
+                //Splits files into 20MB chunks to bypass CloudFlare 100MB max file size limit
                 let fileChunks = [];
                 const chunkSize = 20 * 1024 * 1024;
                 
@@ -99,6 +101,7 @@ function upload() {
                 let fileIndex = 0;
                 let chunkIndex = 0;
                 
+                // Sets not completed file upload delete if user exits app mid upload
                 const beforeUnloadFn = function(event) {
                     const url = "cancelUploadDelete.php";
                     const data = new FormData();
@@ -108,122 +111,39 @@ function upload() {
                 window.addEventListener("beforeunload", beforeUnloadFn);
                 
                 if (!cancelled) {
-                    let xhr = new XMLHttpRequest();
-                    let formData = new FormData();
-                    
-                    formData.append("blob",fileChunks[fileIndex][chunkIndex]);
-                    formData.append("fileName",files[fileIndex].name);
-                    
-                    xhr.open("POST","upload.php");
-                    
-                    xhr.onreadystatechange = function() {
-                    if (xhr.readyState === XMLHttpRequest.DONE) {
-                        if (xhr.status === 200) {
-                            
-                            let currentSize = 0;
-                            for (let i = 0; i < chunkIndex+1; i++) {
-                                currentSize += fileChunks[fileIndex][i].size;
-                            }
-                            document.getElementById("progress").value = (currentSize / files[fileIndex].size) * 100;
-                            document.getElementById("percentage").innerHTML = Math.floor(((currentSize / files[fileIndex].size) * 100)) + "%";
-                            document.getElementById("filesUploaded").innerHTML = "Uploaded: " + fileIndex + " files";
-                            document.getElementById("currentFileUploading").innerHTML = "Currently uploading: " + (files[fileIndex].name.length > 10 ? files[fileIndex].name.substring(0,10) + "..." : files[fileIndex].name);;
-                            
-                            if (chunkIndex < fileChunks[fileIndex].length -1) {
-                                //window.removeEventListener("beforeunload",beforeUnloadFn);
-                                sendNextChunk(fileIndex,chunkIndex + 1,fileChunks,files,cancelled);
-                            }else {
-                                if (fileIndex < fileChunks.length-1) {
-                                    /*let xhr = new XMLHttpRequest();
-                                    let formData = new FormData();
-                                    formData.append("fileName",files[fileIndex].name);
-                                    xhr.open("POST","makeRow.php",false);
-                                    xhr.send(formData);*/
-                                    $.ajax({
-                                        url: "makeRow.php",
-                                        type: "POST",
-                                        async: false,
-                                        data: { 
-                                            name: files[fileIndex].name,
-                                            isDir: 0
-                                        }
-                                    });
-                                    
-                                    loadFiles(addEventListenersToFiles);
-                                    getFreeSpace();
-                                    window.removeEventListener("beforeunload",beforeUnloadFn);
-                                    sendNextChunk(fileIndex + 1,0,fileChunks,files,cancelled);
-                                } else {
-                                    /*let xhr = new XMLHttpRequest();
-                                    let formData = new FormData();
-                                    formData.append("fileName",files[fileIndex].name);
-                                    xhr.open("POST","makeRow.php",false);
-                                    xhr.send(formData);*/
-                                    $.ajax({
-                                        url: "makeRow.php",
-                                        type: "POST",
-                                        async: false,
-                                        data: { 
-                                            name: files[fileIndex].name,
-                                            isDir: 0
-                                        }
-                                    });
-                                    if(files.length > 1) {
-                                        document.getElementById("file-input").value = "";
-                                        hideUploadStatus(true);
-                                        enableUploadTools();
-                                        displaySuccess("Files uploaded");
-                                        sendLog(" uploaded a file at " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds() + " " + date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear());
-                                    } else {
-                                        document.getElementById("file-input").value = "";
-                                        hideUploadStatus(true);
-                                        enableUploadTools();
-                                        displaySuccess("File uploaded");
-                                        sendLog(" uploaded a file at " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds() + " " + date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear());
-                                    }
-                                    window.removeEventListener("beforeunload",beforeUnloadFn);
-                                    getFreeSpace();
-                                    loadFiles(addEventListenersToFiles);
-                                }
-                            }
-                        } else {
-                            displayError("Request failed. " + xhr.status);
+                    sendChunk(fileIndex,chunkIndex,fileChunks,files,cancelled);
+                } else {
+                    $.ajax({
+                        url: "cancelUploadDelete.php",
+                        type: "POST",
+                        data: { fileName: files[fileIndex].name},
+                        success: function(response) {
+                            enableUploadTools();
+                            displaySuccess("Upload cancelled");
+                            document.getElementById("file-input").value = "";
+                            hideUploadStatus(true);
+                            getFreeSpace();
+                            loadFiles(addEventListenersToFiles);
+                        },
+                        error: function() {
+                            displayError("Failed to cancel upload");
                         }
-                    };
+                        
+                    });
                 }
-                xhr.send(formData);
+                } else {
+                    document.getElementById("file-input").value = "";
+                    displayError("File/Folder with this name already exists"); 
+                }
             } else {
-                $.ajax({
-                    url: "cancelUploadDelete.php",
-                    type: "POST",
-                    data: { fileName: files[fileIndex].name},
-                    success: function(response) {
-                        enableUploadTools();
-                        displaySuccess("Upload cancelled");
-                        document.getElementById("file-input").value = "";
-                        hideUploadStatus(true);
-                        getFreeSpace();
-                        loadFiles(addEventListenersToFiles);
-                    },
-                    error: function() {
-                        displayError("Failed to cancel upload");
-                    }
-                    
-                });
+                displayError("Not enough space");
             }
-            } else {
-                document.getElementById("file-input").value = "";
-                displayError("File/Folder with this name already exists"); 
-            }
-        } else {
-            displayError("Not enough space");
-        }
     } else {
         displayError("No files selected");
     }
 }
     
-function sendNextChunk(fileIndex,chunkIndex,fileChunks,files,cancel) {
+function sendChunk(fileIndex,chunkIndex,fileChunks,files,cancel) { //Sends file chunk to storage
     let date = new Date();
 
     const beforeUnloadFn = function(event) {
@@ -263,15 +183,9 @@ function sendNextChunk(fileIndex,chunkIndex,fileChunks,files,cancel) {
                             
                 if (chunkIndex < fileChunks[fileIndex].length -1) {
                     window.removeEventListener("beforeunload",beforeUnloadFn);
-                    sendNextChunk(fileIndex,chunkIndex + 1,fileChunks,files,cancelled);
+                    sendChunk(fileIndex,chunkIndex + 1,fileChunks,files,cancelled);
                 }else {
                     if (fileIndex < fileChunks.length-1) {
-                        /*let xhr = new XMLHttpRequest();
-                        let formData = new FormData();
-                        formData.append("fileName",files[fileIndex].name);
-                        xhr.open("POST","makeRow.php",false);
-                        xhr.send(formData);*/
-
                         $.ajax({
                             url: "makeRow.php",
                             type: "POST",
@@ -285,14 +199,8 @@ function sendNextChunk(fileIndex,chunkIndex,fileChunks,files,cancel) {
                         getFreeSpace();
                         loadFiles(addEventListenersToFiles);
                         window.removeEventListener("beforeunload",beforeUnloadFn);
-                        sendNextChunk(fileIndex + 1,0,fileChunks,files,cancelled);
+                        sendChunk(fileIndex + 1,0,fileChunks,files,cancelled);
                     } else {
-                        /*let xhr = new XMLHttpRequest();
-                        let formData = new FormData();
-                        formData.append("fileName",files[fileIndex].name);
-                        xhr.open("POST","makeRow.php",false);
-                        xhr.send(formData);*/
-
                         $.ajax({
                             url: "makeRow.php",
                             type: "POST",
