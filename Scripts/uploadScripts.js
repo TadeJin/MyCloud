@@ -160,13 +160,14 @@ function sendChunk(fileIndex,chunkIndex,fileChunks,files,cancel) { //Sends file 
     });
     
     if (!cancelled) {
-        let xhr = new XMLHttpRequest();
-        let formData = new FormData();
             
-        formData.append("blob",fileChunks[fileIndex][chunkIndex]);
-        formData.append("fileName",files[fileIndex].name);
+        setFileName(files[fileIndex].name);
+
+        let xhr = new XMLHttpRequest();
+        let chunk = fileChunks[fileIndex][chunkIndex];
             
         xhr.open("POST","upload.php");
+        xhr.setRequestHeader("Content-Type", "application/octet-stream"); 
             
         xhr.onreadystatechange =function() {
         if (xhr.readyState === XMLHttpRequest.DONE) {
@@ -234,7 +235,7 @@ function sendChunk(fileIndex,chunkIndex,fileChunks,files,cancel) { //Sends file 
                 }
             };
         }
-        xhr.send(formData);
+        xhr.send(chunk);
     } else {
         $.ajax({
             url: "cancelUploadDelete.php",
@@ -271,3 +272,18 @@ function sendLog(message) {
     });
 }
 
+function setFileName(fileName) {
+    $.ajax({
+        url: "setUploadFileName.php",
+        type: "POST",
+        data: {fileName: fileName},
+        async: false,
+        success: function() {
+            
+        },
+        error: function() {
+            displayError("Failed to set fileName");
+        }
+    });
+}
+ 
