@@ -17,15 +17,21 @@ Animation fix (dots while uploading on laptop)**
 Refresh tables on admin page every 30 secs
 CSS improvements - admin page table scrolling**, file divs**, upload dialog on laptop**, createUser page on laptop**
 
+Code optimalization (upload fnc, animations)**
+
+Change isDir column data type to binary in db
+
 Link available space to RaspPi storage (user info in admin panel, user profile info on profile icon click)
 
-Code optimalization (upload fnc, animations)**
+BUGFIX - when renaming folder rename also parentDIr, grayText when uploading on files
+
+Drag and drop function
 
 Reboot button fnc + log (maybe not implement cause of security)
 
 Link CPU temp, CPU usage, Reboot
 
-HDD mounting linux script on restart|reboot
+HDD mounting linux script on restart|reboot, static IP**
 
 Currently active users counter
 
