@@ -26,6 +26,15 @@
         <link rel ="icon" href="../media/cloud-solid-120.png">
     </head>
     <body onload="loadUsers(),loadRequests(),loadLogs()">
+
+    <div class = "renameContainer" id = "rebootCheck" hidden>
+        <div class = "renameBox">
+            <h2>Are you sure you want to reboot ?</h2>
+            <button class="backBut" onclick="back()">BACK</button>
+            <button class = "submitBut" id = "rebootSub">REBOOT</button>
+        </div>
+    </div>
+
     <div class="header">
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000" version="1.1" id="Capa_1" viewBox="0 0 547.674 547.674" xml:space="preserve">
             <g>
@@ -72,7 +81,7 @@
     
     <div class = "adminTools">
         <div class = "infoPanel">
-            <div class = "infoPanelHeader">Server info <!--<button class = "rebootBut">&emsp;<div id = "buttonText">REBOOT&emsp;&emsp;</div><img src = "../media/reboot-icon.png" ></button>--><img src = "../media/server-icon.png"></div>
+            <div class = "infoPanelHeader">Server info <button class = "rebootBut">&emsp;<div onclick = "rebootServer()" id = "buttonText">REBOOT&emsp;&emsp;</div><img src = "../media/reboot-icon.png" ></button><img src = "../media/server-icon.png"></div>
             <div class = "panelContent">
                 <label>STATUS: <label style = "color:green;">ONLINE</label></label>&emsp;&emsp;&emsp;  <br /><br />
                 <label>CPU Temperature:</label> <label style = "color: red">100°C</label>&emsp;&emsp;&emsp;&emsp;
@@ -167,5 +176,10 @@
     <script src="../Scripts/uploadScripts.js"></script>
     <script src = "../Scripts/serverStatusScripts.js"></script>
 
+    <script>
+        function back() {
+            document.getElementById("rebootCheck").hidden = true;
+        }
+    </script>
     </body>
 </html>

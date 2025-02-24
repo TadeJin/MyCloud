@@ -191,8 +191,8 @@ div {
 
 .rebootBut {
     position: absolute;
-    top: 10%;
-    left: 62.5%;
+    top: 120%;
+    left: 72.5%;
     width: 7.5vw;
     height: 2.25vw;
     text-align: left;
@@ -203,6 +203,7 @@ div {
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 4;
 }
 
 .rebootBut:hover {
@@ -284,4 +285,91 @@ div {
     height: 99%;
     font-size: .9vw;
     text-align: left;
+}
+
+
+/* ----------------------------------------------------------RENAME BOX CSS--------------------------------------------------------------------*/
+.renameContainer {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    z-index: 5;
+    background-color: rgba(255, 255, 255, 0.75);
+}
+
+.renameContainer .renameBox p {
+    text-align: center;
+    font-family: "Russo One",sans-serif;
+    color: red;
+}
+
+.renameBox {
+    position: absolute;
+    top: 30%;
+    left: 30%;
+    border: 3px solid black;
+    border-radius: 20px;
+    height: 22.5%;
+    width: 35%;
+    background-color: white;
+}
+
+.newNameInput {
+    margin-top: 1%;
+    margin-left: 17.5%;
+    width: 65%;
+    height: 17.5%;
+    border-radius: 5px;
+    border: 2px solid black;
+    background: transparent;
+    font-family: "Russo One",sans-serif;
+    font-size: 100%;
+    justify-content: center;
+}
+
+
+.renameBox h2 {
+    text-align: center;
+    font-family: "Russo One",sans-serif;
+}
+
+.backBut {
+    position: absolute;
+    top: 75%;
+    left: 5%;
+    width: 20%;
+    height: 17.5%;
+    border-radius: 10px;
+    background: transparent;
+    font-family: "Russo One",sans-serif;
+}
+
+.backBut:hover {
+    background-color: lightgray;
+    cursor: pointer;
+}
+
+.submitBut{
+    position: absolute;
+    top: 75%;
+    left: 75%;
+    width: 20%;
+    height: 17.5%;
+    border-radius: 10px;
+    background: transparent;
+    font-family: "Russo One",sans-serif;
+}
+
+.submitBut:hover {
+    background-color: lightgray;
+    cursor:pointer;
+}
+
+.forbiddenCharsDiv {
+    position: absolute;
+    font-family: "Russo One",sans-serif;
+    top: 70%;
+    left: 28%;
+    color: red;
+    display: none;
 }

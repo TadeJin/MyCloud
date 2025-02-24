@@ -46,3 +46,19 @@ function newLog(message) {
         }
     });
 }
+
+function rebootServer() {
+    document.getElementById("rebootCheck").hidden = false;
+    document.getElementById("rebootSub").addEventListener("click", function() {
+        $.ajax({
+            url: "../PhpScripts/rebootServer.php",
+            type: "POST",
+            success: function(response) {
+                
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                displayError("ERROR: " + errorThrown);
+            }
+        });
+    });
+}

@@ -26,13 +26,13 @@ Link profile icon storage info **
 
 BUGFIX - when renaming folder rename also parentDIr, grayText when uploading on files**
 
-BUGFIX - check for forbidden folder/file name characters
+BUGFIX - check for forbidden folder/file name characters**
 
-Reboot button fnc + log 
+Reboot button fnc + log **
+
+Link CPU temp, CPU usage, Reboot**
 
 Drag and drop function
-
-Link CPU temp, CPU usage, Reboot
 
 Currently active users counter(maybe, last seen in db, check how many users are last seen in current minute)
 
