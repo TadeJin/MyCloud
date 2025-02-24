@@ -255,11 +255,6 @@ function moveFile(file) {
 }
 
 function selectAllFiles() {
-    if (document.getElementById("selectAllText").style.color == "blue") {
-        document.getElementById("selectAllText").style.color = "black";
-    } else if (document.getElementById("selectAllText").style.color == "black"){
-        document.getElementById("selectAllText").style.color = "blue"
-    }
 
     document.querySelectorAll(".fileIcon").forEach(element => {
         element.childNodes[0].checked = !element.childNodes[0].checked;

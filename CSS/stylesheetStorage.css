@@ -658,6 +658,7 @@ body {
 }
 
 .fileBut:disabled:hover {
+    background: transparent;
     cursor: not-allowed;
 }
 

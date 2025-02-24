@@ -14,26 +14,27 @@ FIX LOGGING BUG WHEN UPLOADING FILES (change filepath to createLog.php or move i
 Bind enter to send data in ajax forms**
 
 Animation fix (dots while uploading on laptop)**
-Refresh tables on admin page every 30 secs
-CSS improvements - admin page table scrolling**, file divs**, upload dialog on laptop**, createUser page on laptop**
-
 Code optimalization (upload fnc, animations)**
+Change isDir column data type to binary in db**
+CSS improvements - admin page table scrolling**, file divs**, upload dialog on laptop**, createUser page on laptop**
+HDD mounting linux script on restart|reboot, static IP**
+Link available space to RaspPi storage (user info in admin panel, user profile info on profile icon click)**
 
-Change isDir column data type to binary in db
+Refresh tables on admin page every 10 secs**
 
-Link available space to RaspPi storage (user info in admin panel, user profile info on profile icon click)
+Link profile icon storage info **
 
-BUGFIX - when renaming folder rename also parentDIr, grayText when uploading on files
+BUGFIX - when renaming folder rename also parentDIr, grayText when uploading on files**
+
+BUGFIX - check for forbidden folder/file name characters
+
+Reboot button fnc + log 
 
 Drag and drop function
 
-Reboot button fnc + log (maybe not implement cause of security)
-
 Link CPU temp, CPU usage, Reboot
 
-HDD mounting linux script on restart|reboot, static IP**
-
-Currently active users counter
+Currently active users counter(maybe, last seen in db, check how many users are last seen in current minute)
 
 sending emails to users when account activated or delted, admin email sending account requests (maybe)
 

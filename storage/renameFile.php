@@ -22,6 +22,9 @@ if ($result["isDir"] == 0) {
     rename($_SESSION["rootPath"] . $_SESSION["user"] . "/" . $_POST["oldFileName"],$filePath);
 } else {
     $newName = $_POST["newFileName"];
+    $SQL0 = $connect->prepare("UPDATE storagedata SET parentDir = ? WHERE parentDir = ? AND user_iduser = ?");
+    $SQL0->bind_param("ssi", $newName,$_POST["oldFileName"],$_SESSION["userid"]);
+    $SQL0->execute();
 }
 
 $SQL = $connect->prepare("UPDATE storagedata SET name = ? WHERE name = ? AND user_iduser = ?");

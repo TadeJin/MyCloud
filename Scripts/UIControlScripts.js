@@ -343,6 +343,14 @@ function enableUploadTools() {
         button.disabled = false;
     });
 
+    document.getElementById("fileDisplayDiv").querySelectorAll(".fileName").forEach(element => {
+        element.style.color = "black";
+    }); 
+
+    document.getElementById("fileDisplayDiv").querySelectorAll("svg").forEach(element => {
+        element.style.fill = "black";
+    });
+
     document.getElementById("returnToMainIcon").style = "fill: rgba(0,0,0,1)";
     document.getElementById("returnToMain").onclick = function() {
         openPreviousFolder();

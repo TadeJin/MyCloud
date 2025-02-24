@@ -64,6 +64,15 @@ function upload() { //Prepares files for upload and checks if upload is possible
                 document.getElementById("fileDisplayDiv").querySelectorAll("button").forEach(button => {
                     button.disabled = true;
                 });
+
+                document.getElementById("fileDisplayDiv").querySelectorAll(".fileName").forEach(element => {
+                    element.style.color = "lightgray";
+                });  
+
+                document.getElementById("fileDisplayDiv").querySelectorAll("svg").forEach(element => {
+                    element.style.fill = "lightgray";
+                });
+
                 document.getElementById("returnToMain").style = "cursor: not-allowed";
                 document.getElementById("returnToMainIcon").style = "fill: rgba(80,80,80,1)";
                 document.getElementById("returnToMain").onclick = function() {
