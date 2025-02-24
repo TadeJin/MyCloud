@@ -2,39 +2,45 @@ function makeFolder() {
     document.getElementById("newFolderName").value = "";
     document.getElementById("newFolderContainer").hidden = false;
     const folderSubButClickEL = function() {
-        back();
-        $.ajax({
-            url: "checkDuplicate.php",
-            type: "POST",
-            data: { 
-                filename: document.getElementById("newFolderName").value
-            },
-            success: function(response) {
-                if (response == 1) {
-                    $.ajax({
-                        url: "makeRow.php",
-                        type: "POST",
-                        data: { 
-                            name: document.getElementById("newFolderName").value,
-                            isDir: 1
-                        },
-                        success: function(response) {
-                            displaySuccess("Folder created"); 
-                            document.getElementById("newFolderSub").removeEventListener("click",folderSubButClickEL);
-                            loadFiles(addEventListenersToFiles);
-                        },
-                        error: function(jqXHR, textStatus, errorThrown) {
-                            displayError("ERROR: " + errorThrown);
-                        }
-                    });
-                } else {
-                    displayError("Folder/File with this name already exists")
+        const regex = new RegExp('[*"\\\\/<>:|?]');
+
+        if (regex.test(document.getElementById("newFolderName").value) || document.getElementById("newFolderName").value == "") {
+            document.getElementById("forbiddenCharCheckFolder").style.display = "block";
+        } else {
+            back();
+            $.ajax({
+                url: "checkDuplicate.php",
+                type: "POST",
+                data: { 
+                    filename: document.getElementById("newFolderName").value
+                },
+                success: function(response) {
+                    if (response == 1) {
+                        $.ajax({
+                            url: "makeRow.php",
+                            type: "POST",
+                            data: { 
+                                name: document.getElementById("newFolderName").value,
+                                isDir: 1
+                            },
+                            success: function(response) {
+                                displaySuccess("Folder created"); 
+                                document.getElementById("newFolderSub").removeEventListener("click",folderSubButClickEL);
+                                loadFiles(addEventListenersToFiles);
+                            },
+                            error: function(jqXHR, textStatus, errorThrown) {
+                                displayError("ERROR: " + errorThrown);
+                            }
+                        });
+                    } else {
+                        displayError("Folder/File with this name already exists")
+                    }
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    displayError("ERROR: " + errorThrown);
                 }
-            },
-            error: function(jqXHR, textStatus, errorThrown) {
-                displayError("ERROR: " + errorThrown);
-            }
-        });
+            });
+        }
     }
     document.getElementById("newFolderSub").addEventListener("click", folderSubButClickEL);
 }
@@ -117,22 +123,29 @@ function renameFile(fileName) {
     document.getElementById("newFileNameInput").value = "";
     document.getElementById("renameContainer").hidden = false;
     document.getElementById("renameSub").addEventListener("click", function() {
-        $.ajax({
-            url: "renameFile.php",
-            type: "POST",
-            data: { 
-                oldFileName: fileName, 
-                newFileName: document.getElementById("newFileNameInput").value 
-            },
-            success: function(response) {
-                displaySuccess("Renamed file"); 
-                document.getElementById("renameContainer").hidden = true;
-                loadFiles(addEventListenersToFiles);
-            },
-            error: function(jqXHR, textStatus, errorThrown) {
-                displayError("ERROR: " + errorThrown);
-            }
-        });
+        const regex = new RegExp('[*"\\\\/<>:|?]');
+
+        if (regex.test(document.getElementById("newFileNameInput").value) || document.getElementById("newFileNameInput").value == "") {
+            document.getElementById("forbiddenCharCheckRename").style.display = "block";
+        } else {
+            $.ajax({
+                url: "renameFile.php",
+                type: "POST",
+                data: { 
+                    oldFileName: fileName, 
+                    newFileName: document.getElementById("newFileNameInput").value 
+                },
+                success: function(response) {
+                    displaySuccess("Renamed file"); 
+                    document.getElementById("renameContainer").hidden = true;
+                    loadFiles(addEventListenersToFiles);
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    displayError("ERROR: " + errorThrown);
+                }
+            });
+        }
+        
     });
 }
 

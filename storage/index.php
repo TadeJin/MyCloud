@@ -33,6 +33,7 @@
             <h2>Enter new file name:</h2>
             <input type="text" class = "newNameInput" id = "newFileNameInput"><br>
             <button class="backBut" onclick="back()">BACK</button>
+            <div class = "forbiddenCharsDiv" id = "forbiddenCharCheckRename">Name contains forbidden characters</div>
             <button class = "submitBut" id = "renameSub">SUBMIT</button>
         </div>
     </div>
@@ -42,6 +43,7 @@
             <h2>Enter folder name:</h2>
             <input type="text" class = "newNameInput" id = "newFolderName"><br>
             <button class="backBut" onclick="back()">BACK</button>
+            <div class = "forbiddenCharsDiv" id = "forbiddenCharCheckFolder">Name contains forbidden characters</div>
             <button class = "submitBut" id = "newFolderSub">SUBMIT</button>
         </div>
     </div>
