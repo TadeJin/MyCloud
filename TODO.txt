@@ -32,9 +32,11 @@ Reboot button fnc + log **
 
 Link CPU temp, CPU usage, Reboot**
 
-Drag and drop function
+!!! NEEDED BUGFIX (CSS overhaul on login, create account) (JS hide fobidden chars warning on completion or back - maybe put onkeyup event listener to verify)
 
 Currently active users counter($_SERVER variable, curl pro inicializaci přes linux script, v pythonu import requests a přečtu obsah stránky co bude mít echo $_SERVER["userCount"])
+
+Drag and drop function
 
 sending emails to users when account activated or delted, admin email sending account requests (maybe)
 
