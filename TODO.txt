@@ -34,7 +34,7 @@ Link CPU temp, CPU usage, Reboot**
 
 Drag and drop function
 
-Currently active users counter(maybe, last seen in db, check how many users are last seen in current minute)
+Currently active users counter($_SERVER variable, curl pro inicializaci přes linux script, v pythonu import requests a přečtu obsah stránky co bude mít echo $_SERVER["userCount"])
 
 sending emails to users when account activated or delted, admin email sending account requests (maybe)
 
