@@ -182,6 +182,7 @@ body {
 
 .tools {
     display: unset;
+    position: relative;
 }
 
 .tools input {
@@ -899,6 +900,21 @@ ul {
     color: white;
 }
 
+#dropArea {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+#dropText {
+    font-family: "Russo One",sans-serif;
+    font-size: 3vh;
+}
 
 /* ---------------------------------------------------------MOBILE CSS-------------------------------------------------*//*
 @media (max-width: 1000px) {

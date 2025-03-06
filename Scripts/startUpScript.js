@@ -87,6 +87,4 @@ $(function() {
             if (document.getElementById("file-input").files.length == 0) 
                 $(".tooltip").fadeOut(100);
         });
-
-        
     });

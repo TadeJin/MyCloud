@@ -295,4 +295,51 @@ function setFileName(fileName) {
         }
     });
 }
- 
+
+function handleDrop(e) {
+    const dt = e.dataTransfer;
+    let files = dt.files;
+
+    let dataTransfer = new DataTransfer();
+
+    Array.from(files).forEach(file => {
+        dataTransfer.items.add(file);
+    });
+
+    document.getElementById("file-input").files = dataTransfer.files;
+
+    upload();
+}
+
+function iniDragDrop() {
+    const prevents = (e) => e.preventDefault();
+        let droparea = document.getElementById("dropArea");
+        let dropareaDiv = document.getElementById("dropDiv");
+        let body = document.querySelector("body");
+    
+        const active = () => {
+            droparea.style = "background: rgba(83,83,83,0.5);z-index:5;";
+            dropareaDiv.style = "z-index:2;display:block;";
+        }
+
+        const inactive = () => {
+            dropareaDiv.style.display = "none";
+            droparea.style.backgroundColor = "transparent";
+            droparea.style.zIndex = 0;
+            dropareaDiv.style.zIndex = 0;
+        }
+    
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(evtName => {
+            body.addEventListener(evtName, prevents);
+        });
+    
+        ['dragenter', 'dragover'].forEach(evtName => {
+            body.addEventListener(evtName, active);
+        });
+    
+        ['dragleave', 'drop'].forEach(evtName => {
+            body.addEventListener(evtName, inactive);
+        });
+    
+        body.addEventListener("drop", handleDrop);
+}
