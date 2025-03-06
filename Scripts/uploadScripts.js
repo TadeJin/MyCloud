@@ -318,15 +318,18 @@ function iniDragDrop() {
         let body = document.querySelector("body");
     
         const active = () => {
-            droparea.style = "background: rgba(83,83,83,0.5);z-index:5;";
-            dropareaDiv.style = "z-index:2;display:block;";
+            droparea.style = "background: rgba(83,83,83,0.8);z-index:5;";
+            dropareaDiv.style = "z-index:0;display:block;";
         }
 
-        const inactive = () => {
-            dropareaDiv.style.display = "none";
-            droparea.style.backgroundColor = "transparent";
-            droparea.style.zIndex = 0;
-            dropareaDiv.style.zIndex = 0;
+        const inactive = (e) => {
+            console.log(e.target)
+            if (e.target === droparea) {
+                dropareaDiv.style.display = "none";
+                droparea.style.backgroundColor = "transparent";
+                droparea.style.zIndex = 0;
+                dropareaDiv.style.zIndex = 0;
+            }
         }
     
         ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(evtName => {
@@ -340,6 +343,18 @@ function iniDragDrop() {
         ['dragleave', 'drop'].forEach(evtName => {
             body.addEventListener(evtName, inactive);
         });
+
+        // ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(evtName => {
+        //     dropareaDiv.removeEventListener(evtName, prevents);
+        // });
+    
+        // ['dragenter', 'dragover'].forEach(evtName => {
+        //     dropareaDiv.removeEventListener(evtName, active);
+        // });
+    
+        // ['dragleave', 'drop'].forEach(evtName => {
+        //     dropareaDiv.removeEventListener(evtName, inactive);
+        // });
     
         body.addEventListener("drop", handleDrop);
 }
