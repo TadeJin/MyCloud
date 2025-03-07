@@ -297,6 +297,12 @@ function setFileName(fileName) {
 }
 
 function handleDrop(e) {
+    let droparea = document.getElementById("dropArea");
+    let dropareaDiv = document.getElementById("dropDiv");
+
+    droparea.style.backgroundColor = "transparent";
+    dropareaDiv.style.display = "none";
+    
     const dt = e.dataTransfer;
     let files = dt.files;
 
@@ -340,9 +346,8 @@ function iniDragDrop() {
             body.addEventListener(evtName, active);
         });
     
-        ['dragleave', 'drop'].forEach(evtName => {
-            body.addEventListener(evtName, inactive);
-        });
+        body.addEventListener("dragleave", inactive);
+
     
         body.addEventListener("drop", handleDrop);
 }
