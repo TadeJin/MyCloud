@@ -37,7 +37,7 @@
             <button id = "back" onclick="goBack()">Back</button>
         </div><br><br><br><br><br><br><br>
 
-        <div class="register">Once your account is approved you will be able to log in.</div>
+        <div class="register" id = "reg">Once your account is approved you will be able to log in.</div>
         <div class = "loginErrorDisplay" id = "errorDiv"></div>
     </div>
     

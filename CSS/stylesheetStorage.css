@@ -6,7 +6,7 @@ html {
 body {
     z-index: -1;
     min-height: 100vh;
-    /* overflow-x: hidden; */
+    overflow-x: auto;
     overflow-y: auto;
 }
 
@@ -555,12 +555,18 @@ body {
     top: 1%;
 }
 
+#statusIcon svg {
+    height: 24px;
+    width: 24px;
+}
+
 #statusText {
     position: relative;
     font-family: "Russo One",sans-serif;
     width: 100%;
     top: 40%;
     text-align: center;
+    font-size: 1vw;
 }
 
 #hideStatusBox {
@@ -747,6 +753,11 @@ ul {
     cursor: pointer;
 }
 
+.dropDownBut button svg {
+    height: 24px;
+    width: 24px;
+}
+
 .dropDown svg {
     height: 75%;
     float: left;
@@ -921,86 +932,356 @@ ul {
 }
 
 
-/* ---------------------------------------------------------MOBILE CSS-------------------------------------------------*//*
-@media (max-width: 1000px) {
+/* ---------------------------------------------------------MOBILE CSS-------------------------------------------------*/
+@media (max-width: 600px) {
 
-.header h1 {
-    width: 60vw;
-    font-size: 8vw;
-    margin-left: 0.25vw;
-}
+    html, body {
+        overflow-x: hidden;
+    }
 
-#serverText {
-    margin-top: -25%;
-    margin-right: 10%;
-    font-size: 1.25vh
-}
+    .header svg{
+        height: 3vh;
+        width: 5vh;
+        position: absolute;
+        left: 17%;
+        top: 1.75%;
+    }
 
-#temp {
-    font-size: 1.25vh;
-    margin-top: -25%;
-    margin-right: -0.5%;
-}
+    .header h1{
+        height: 3vh;
+        font-size: 2.5vh;
+    }
 
-.header .Space {
-    margin-top: -28%;
-}
+    .header svg{
+        height: 3vh;
+    }
 
-.header .Space h2 {
-    font-size: 1.25vh;
-}
+    #currentFolderDiv {
+        font-size: 1vh;
+    }
 
-.header h1 img {
-    width: 11vw;
-}
+    #userInfo {
+        top:3%;
+    }
 
-.header form {
-    margin-top: -10%;
-    width: 22vw;
-    height: 3.5vh;
-    margin-right: 2%;
-}
+    #userInfo svg {
+        width: 1.75vh;
+        height: 1.75vh;
+    }
 
-.header form button {
-    font-size: 2.5vw;
-    border: 2px solid black;
-    color: black;
-    width: 100%;
-    height: 100%;
-    margin-right: -7.5%;
-    margin-top: 7.5%;
-}
+    #userName {
+        left: 6%;
+        top: -1%;
+        font-size: 1.5vh;
+    }
 
-.tools button{
-    width: 22vw;
-    font-size: 2.5vw;
-    height: 3.5vh;
-    border: 2px solid black;
-    color: black;
-}
+    #profileDropDown {
+        width: 15vh;
+        min-height: 5vh;
+        top: 35%;
+        background: white;
+        z-index: 3;
+    }
 
-.tools button[id="remove"] {
-    margin-top: 2.5%;
-}
+    #profileDropDown svg[name="triangle"] {
+        top: -26%;
+        width: 1vh;
+        height: 1vh;
+    }
 
-.tools progress {
-    width: 20vw;
-    height: 1.5vh;
-}
+    #profileDropDown ul div {
+        font-size: 1.1vh;
+    }
 
-.tools h2 {
-    font-size: 5vw;
-}
+    #takenSpaceDiv {
+        top: 30%;
+    }
 
-.file {
-    height: 7vw;
-    font-size: 3.5vw;
-    border: 2px solid black;
-    color: black;
-}
+    #logout  {
+        top: 60%;
+    }
 
-.file img {
-    width: 3vw;
-}
+    #logout button {
+        font-size: 0.9vh;
+        height: 5%;
+        color: black;
+    }
 
-} */
+    #logout button svg {
+        left: 67%;
+        top:10%;
+        height: 1.4vh;
+    }
+
+    .tools {
+        display: block;
+        height: 15vh;
+    }
+
+    #toolsWrapper h2{
+        font-size: 1.75vh;
+        width: 30vw;
+    }
+
+    #fileUploadBut {
+        left: 0%;
+        top: 110%;
+        width: 2.5vh;
+        height: 2.5vh;
+    }
+
+    #createFolderBut {
+        left: 0%;
+        top: 200%;
+        width: 2.5vh;
+        height: 2.5vh;
+    }
+
+    .searchBarWrapper {
+        top: 7%;
+    }
+
+    #searchBarDiv {
+        width: 42.5%;
+        height: 25%;
+        z-index: 0;
+    }
+
+    #searchbarIcon {
+        width: 3vh;
+        left: 85%;
+        top: 60%;
+    }
+
+    #searchbarIcon svg {
+        width: 1.75vh;
+    }
+
+    #searchBar {
+        font-size: 1.2vh;
+    }
+
+    .multipleFileManagementWrapper {
+        width: 50%;
+        top: 15%;
+        left: 45%;
+    }
+
+    .multipleFileManagementWrapper div {
+        width: 2vh;
+    }
+
+    #selectAll {
+        font-size: 1.2vh;
+        width: 25%;
+    }
+
+    #returnToMain {
+        top: 70%;
+        width: 2.5vh;
+        height: 2.5vh;
+    }
+    
+    #uploadStatusWrapper {
+        width: 40vw;
+        height: 10vh;
+        z-index: 5;
+    }
+
+    #uploadStatusBox {
+        width: 100%;
+        height: 100%;
+    }
+
+    #uploadText {
+        font-size: 1vh;
+    }
+
+    #dots {
+        left: 72%;
+        top: 1%;
+        font-size: 1vh;
+    }
+
+    #currentFileUploading {
+        font-size: 1vh;
+    }
+
+    #filesUploaded {
+        font-size: 1vh;
+    }
+
+    #percentage {
+        font-size: 1vh;
+        left: 47%;
+    }
+
+    #cancelUpload {
+        font-size: .75vh;
+    }
+
+    #statusBoxWrapper {
+        width: 40vw;
+        height: 5vh;
+    }
+
+    #statusBox {
+        width: 100%;
+        height: 100%;
+    }
+
+    #hideStatusBox {
+        width: 1.2vh;
+        height: 1.2vh;
+    }
+
+    #statusHeaderText {
+        font-size:  2.1vw;
+    }
+
+    #statusIcon {
+        top: -8%;
+    }
+
+    #statusIcon svg {
+        height: 10px;
+        width: 10px;
+    }
+
+    #statusText {
+        font-size: 2vw;
+    }
+
+    .file {
+        width: 18vw;
+        margin-left: 6%;
+        margin-right: 15%;
+        height: 4vh;
+        margin-bottom: 2.5%;
+    }
+
+    .fileButDiv {
+        width: 18vw;
+        height: 4vh;
+    }
+
+    .fileButDiv button {
+        width: 35vw;
+        height: 4vh;
+        font-size: 1.3vh;
+        outline: 1px solid black;
+        border: 0;
+    }
+
+    .fileIcon svg{
+        width: 1.75vh;
+        height: 1.75vh;
+    }
+
+    .fileName {
+        left: 35%;
+        color: black;
+    }
+
+    .dotDiv {
+        left: 150%;
+        width: 20px;
+        height: 20px;
+    }
+
+    .dropDown {
+        width: 20vw;
+        z-index: 3;
+        max-height: 10vh;
+    }
+
+    .dropDown ul {
+        width: 100%;
+        height: 90%;
+    }
+
+    .dropDownBut {
+        height: 25%;
+    }
+
+    .dropDownBut button{
+        font-size: 1.25vh;
+        width: 100%;
+    }
+
+    .dropDownBut button svg {
+        height: 10px;
+        width: 10px;
+    }
+
+    @keyframes active {
+        0% {
+            height: 0px;
+            left: 150%;
+            top: 40%;
+            transform: translate(0%,-50%);
+        }
+    
+        100% {
+            height: 130px;
+            left: 170%;
+            top: 50%;
+        }
+    }
+    @keyframes hide {
+        0% {
+            height: 130px;
+            left: 95%;
+            top: 25%;
+        }
+    
+        100% {
+            height: 0px;
+            left: 95%;
+            top: 24%;
+        }
+    }
+
+    .renameBox {
+        width: 80vw;
+        left: 7.5%;
+    }
+
+    .renameBox input {
+        height: 3vh;
+    }
+
+    .backBut {
+        font-size: 1.3vh;
+        color: black;
+        border: 0;
+        outline: 1px solid black;
+    }
+
+    .submitBut {
+        font-size: 1.3vh;
+        color: black;
+        border: 0;
+        outline: 1px solid black;
+    }
+
+    .forbiddenCharsDiv {
+        font-size: 1vh;
+        top: 80%;
+        left: 28%;
+    }
+
+    #noFilesDisplay div{
+        font-size: 2vh;
+    }
+
+    #fileDeleteWarningHeader {
+        font-size: 1.5vh;
+        overflow: hidden;
+    }
+
+    #folderDeleteWarningHeader {
+        font-size: 1.5vh;
+        overflow: hidden;
+    }
+} 
