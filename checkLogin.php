@@ -6,8 +6,8 @@
 
         include("dbInfo/database.php");
 
-        $connect = new mysqli($host, $user, $passwd, $db) or die("Spojení se nezdařilo");
-        $connect -> set_charset("UTF8") or die("Kódování nenastaveno");
+        $connect = new mysqli($host, $user, $passwd, $db) or die("Can't connect to db");
+        $connect -> set_charset("UTF8") or die("Encoding not set");
 
         $SQL = $connect->prepare("SELECT iduser,username,password FROM user WHERE username = ?");
         $SQL ->bind_param("s", $user);

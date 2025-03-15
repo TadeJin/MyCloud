@@ -2,4 +2,4 @@
     $host = "localhost";
     $user = "root";
     $passwd = "";
-    $db = "MyCloud1";
+    $db = "mycloud1";

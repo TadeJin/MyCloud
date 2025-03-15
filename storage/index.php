@@ -4,7 +4,7 @@
     if (empty($_SESSION["userid"])) {
         header ("Location: /MyCloud");
     }
-
+    
 ?>
 <!--                                                                                                                    
   __  __          _____  _                    _        
@@ -26,16 +26,15 @@
     <link rel="stylesheet" href = "../CSS/stylesheetStorage.css">
     <link rel ="icon" href="../media/cloud-solid-120.png">
 </head>
-<body onload="iniDragDrop()">
-
+<body onload="iniDragDrop(),checkIntegrity()"> <!-- getFreeSpace(), getTakenSpaceName()-->
+    
     <div id = "dropArea">
         <div style="display: none;" id = "dropDiv">
             <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);margin-left:25%;"><path d="m12 16 4-5h-3V4h-2v7H8z"></path><path d="M20 18H4v-7H2v7c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2v-7h-2v7z"></path></svg>
             <div id = "dropText">Drag Files Here</div>
         </div>
     </div>
-
-    <!-- <div id = "dropAreaCover"></div> -->
+    
     
     <div class = "renameContainer" id = "renameContainer" hidden>
         <div class = "renameBox">
@@ -137,7 +136,7 @@
     <div class="tools">
         <input id = "file-input" type="file" name ="file" multiple>
         
-        <div id = "returnToMain" title = "Return to main folder" style="display:none" onclick="openPreviousFolder()">
+        <div id = "returnToMain" title = "Return to previous folder" style="display:none" onclick="openPreviousFolder()">
             <svg id = "returnToMainIcon"xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M12.707 17.293 8.414 13H18v-2H8.414l4.293-4.293-1.414-1.414L4.586 12l6.707 6.707z"></path></svg>
         </div>
         
@@ -213,6 +212,8 @@
     <div id = "noFilesDisplay">
         <div>No files uploaded</div>
     </div>
+    <input type="hidden" id = "availableStorage">
+    
      
     <script src="../Scripts/fileDisplayScripts.js"></script>
     <script src="../Scripts/fileManagementScripts.js"></script>
@@ -238,6 +239,23 @@
                 }
             });
         }
+
+        function getTakenSpaceName() {
+            $.ajax({
+                url: "../PhpScripts/getFreeSpaceName.php",
+                type: "POST",
+                dataType:"text",
+                success: function(response) {
+                    document.getElementById("takenSpaceDiv").innerText = "Taken space: " + response;
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log("ERROR GETTING AVAILABLE SPACE");
+                }
+            });
+        }
+
+        // setInterval(getFreeSpace,3000);
+        // setInterval(getTakenSpaceName,3000);
     </script>
 </body>
 </html>

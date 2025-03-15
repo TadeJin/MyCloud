@@ -2,22 +2,22 @@
     session_start();
     include("../dbInfo/database.php");
 
-	$connect = new mysqli($host, $user, $passwd, $db) or die("Spojení se nezdařilo");
-    $connect -> set_charset("UTF8") or die("Kódování nenastaveno");
+	$connect = new mysqli($host, $user, $passwd, $db) or die("Can't connect to db");
+    $connect -> set_charset("UTF8") or die("Encoding not set");
 	
 	if ($_POST["searchString"] == "") {
-		$SQL = $connect->prepare("SELECT name,isDir FROM storageData WHERE user_iduser = ? AND parentDir = ?");
+		$SQL = $connect->prepare("SELECT name,isDir FROM storagedata WHERE user_iduser = ? AND parentDir = ? ORDER BY name");
 		$SQL ->bind_param("ss", $userid,$parentDir);
 
 		$userid = $_SESSION["userid"];
 		$parentDir = $_SESSION["currentDir"];
 		$SQL -> execute();
 	} else {
-		$SQL = $connect->prepare("SELECT name,isDir FROM storageData WHERE user_iduser = ? AND name LIKE ?");
+		$SQL = $connect->prepare("SELECT name,isDir FROM storagedata WHERE user_iduser = ? AND name LIKE ? ORDER BY name");
 		$SQL ->bind_param("ss", $userid,$search);
 
 		$userid = $_SESSION["userid"];
-		$search = "%" . $_POST["searchString"] . "%";
+		$search = "%" . htmlspecialchars($_POST["searchString"]) . "%";
 		$SQL -> execute();
 	}
 
@@ -30,7 +30,7 @@
     while ($row = $result -> fetch_assoc()) {
 		$filename;
         if (strlen($row["name"]) > 11) {
-			$filename = substr($row["name"],0,11) . "...";
+			$filename = mb_substr($row["name"],0,11,"UTF-8") . "...";
 		} else {
 			$filename = $row["name"];
         }

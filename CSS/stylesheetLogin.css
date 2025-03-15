@@ -38,7 +38,8 @@ body {
 .container .input-box img[src ='user-solid-60.png'] {
     position: absolute;
     left: 90%;
-    top: 17.5%;
+    top:50%;
+    transform: translate(0%,-50%);
     width: 10%;
     height: auto;
 }
@@ -46,7 +47,8 @@ body {
 .container .input-box img[src ='lock-solid-60.png'] {
     position: absolute;
     left: 90%;
-    top: 17.5%;
+    top:50%;
+    transform: translate(0%,-50%);
     width: 10%;
     height: auto;
 }
@@ -181,3 +183,4 @@ body {
 }
 
 }
+

@@ -2,7 +2,7 @@
 
     session_start();
 
-    include("dbInfo/database.php");
+    include("../dbInfo/database.php");
 
     if (isset($_POST["logMessage"]) && isset($_SESSION["userid"])) {
         
@@ -19,7 +19,7 @@
         $SQL = $connect->prepare("INSERT INTO logs (logMessage) VALUES(?)");
         $SQL->bind_param("s",$message);
 
-        $message = "User " . $_SESSION["user"] . $_POST["logMessage"];
+        $message = htmlspecialchars($_POST["logMessage"]);
 
         $SQL->execute();
         $connect->close();

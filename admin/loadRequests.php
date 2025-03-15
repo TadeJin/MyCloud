@@ -1,11 +1,11 @@
 <?php
     include("../dbInfo/database.php");
 
-    $connect = new mysqli($host, $user, $passwd, $db) or die("Spojení se nezdařilo");
-    $connect -> set_charset("UTF8") or die("Kódování nenastaveno");
+    $connect = new mysqli($host, $user, $passwd, $db) or die("Can't connect to db");
+    $connect -> set_charset("UTF8") or die("Encoding not set");
 
 
-    $result = $connect->query("SELECT idaccountRequests,username,date FROM accountRequests");
+    $result = $connect->query("SELECT idaccountRequests,username,date FROM accountrequests");
 
     $htmlOutput = "";
 

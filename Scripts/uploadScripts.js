@@ -15,9 +15,11 @@ function upload() { //Prepares files for upload and checks if upload is possible
             totalFileSize += file.size;
         });
 
-        if (getFreeSpace() < totalFileSize) {
+
+        if (getFreeSpaceRaw() < totalFileSize) {
             enoughSpace = false;
         }
+
         if (enoughSpace) {
             
             let noDuplicate = true;
@@ -65,6 +67,7 @@ function upload() { //Prepares files for upload and checks if upload is possible
                     button.disabled = true;
                 });
 
+
                 document.getElementById("fileDisplayDiv").querySelectorAll(".fileName").forEach(element => {
                     element.style.color = "lightgray";
                 });  
@@ -72,7 +75,7 @@ function upload() { //Prepares files for upload and checks if upload is possible
                 document.getElementById("fileDisplayDiv").querySelectorAll("svg").forEach(element => {
                     element.style.fill = "lightgray";
                 });
-
+                
                 document.getElementById("returnToMain").style = "cursor: not-allowed";
                 document.getElementById("returnToMainIcon").style = "fill: rgba(80,80,80,1)";
                 document.getElementById("returnToMain").onclick = function() {
@@ -169,19 +172,30 @@ function sendChunk(fileIndex,chunkIndex,fileChunks,files,cancel) { //Sends file 
     });
     
     if (!cancelled) {
-            
+
         setFileName(files[fileIndex].name);
 
         let xhr = new XMLHttpRequest();
         let chunk = fileChunks[fileIndex][chunkIndex];
+
+        
+        let currentSize = 0;
+        for (let i = 0; i < chunkIndex+1; i++) {
+            currentSize += fileChunks[fileIndex][i].size;
+        }
+        document.getElementById("progress").value = (currentSize / files[fileIndex].size) * 100;
+        document.getElementById("percentage").innerHTML = Math.floor(((currentSize / files[fileIndex].size) * 100)) + "%";
+        document.getElementById("filesUploaded").innerHTML = "Uploaded: " + fileIndex + "/" + files.length + " files";
+        document.getElementById("currentFileUploading").innerHTML = "Currently uploading: " + (files[fileIndex].name.length > 10 ? files[fileIndex].name.substring(0,10) + "..." : files[fileIndex].name);
+            
             
         xhr.open("POST","upload.php");
         xhr.setRequestHeader("Content-Type", "application/octet-stream"); 
+
             
         xhr.onreadystatechange =function() {
         if (xhr.readyState === XMLHttpRequest.DONE) {
             if (xhr.status === 200) {
-                
                 let currentSize = 0;
                 for (let i = 0; i < chunkIndex+1; i++) {
                     currentSize += fileChunks[fileIndex][i].size;
@@ -226,12 +240,14 @@ function sendChunk(fileIndex,chunkIndex,fileChunks,files,cancel) { //Sends file 
                             hideUploadStatus(true);
                             enableUploadTools();
                             displaySuccess("Files uploaded");
+                            setFileName("");
                             sendLog(" uploaded a file at " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds() + " " + date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear());
                         } else {
                             document.getElementById("file-input").value = "";
                             hideUploadStatus(true); 
                             enableUploadTools();
                             displaySuccess("File uploaded");
+                            setFileName("");
                             sendLog(" uploaded a file at " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds() + " " + date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear());
                         }
                         window.removeEventListener("beforeunload",beforeUnloadFn);
@@ -244,6 +260,7 @@ function sendChunk(fileIndex,chunkIndex,fileChunks,files,cancel) { //Sends file 
                 }
             };
         }
+        // xhr.send(formData);
         xhr.send(chunk);
     } else {
         $.ajax({
@@ -253,6 +270,7 @@ function sendChunk(fileIndex,chunkIndex,fileChunks,files,cancel) { //Sends file 
             success: function() {
                 enableUploadTools();
                 displaySuccess("Upload cancelled");
+                setFileName("");
                 document.getElementById("file-input").value = "";
                 hideUploadStatus(true);
                 getFreeSpace();
@@ -280,6 +298,7 @@ function sendLog(message) {
         }
     });
 }
+
 
 function setFileName(fileName) {
     $.ajax({
@@ -323,12 +342,9 @@ function iniDragDrop() {
         let dropareaDiv = document.getElementById("dropDiv");
         let body = document.querySelector("body");
     
-        const active = (e) => {
-            console.log(e.target)
+        const active = () => {
             droparea.style = "background: rgba(83,83,83,0.8);";
             dropareaDiv.style = "display:block;";
-                // body.style.pointerEvents = "none";
-                // e.stopPropagation();
         }
 
         const inactive = (e) => {
@@ -351,3 +367,4 @@ function iniDragDrop() {
     
         body.addEventListener("drop", handleDrop);
 }
+ 

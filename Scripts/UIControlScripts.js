@@ -11,6 +11,13 @@ function back() {
     document.getElementById("folderDelete").hidden = true;
     document.getElementById("fileDelete").hidden = true;
     document.getElementById("moveContainer").hidden = true;
+    document.getElementById("forbiddenCharCheckFolder").style.display = "none";
+    document.getElementById("forbiddenCharCheckRename").style.display = "none";
+
+    //Removes old EL from rename in order to not rename old files
+    let old_element = document.getElementById("renameSub");
+    let new_element = old_element.cloneNode(true);
+    old_element.parentNode.replaceChild(new_element, old_element);
 }
 
 
@@ -39,12 +46,12 @@ function displayError(errorText) {
                 { transform: "translateX(0%)" }
             ],
                             
-        {
+           {
                 duration: 250,
                 iterations: 1,
                 fill: "forwards",
-        }
-        );
+           }
+          );
 
         setTimeout(() => {
             document.getElementById("statusBoxWrapper").animate(
@@ -52,12 +59,12 @@ function displayError(errorText) {
                     { transform: "translateX(120%)" }
                 ],
                                 
-            {
+               {
                     duration: 250,
                     iterations: 1,
                     fill: "forwards",
-            }
-            );
+               }
+              );
         },5000);
     } else {
         document.getElementById("statusBoxWrapper").animate(
@@ -121,22 +128,22 @@ function displaySuccess(successText) {
             );
         document.getElementById("statusHeaderText").innerHTML = "Success";
         document.getElementById("statusHeaderText").style = "color: green;";
-        document.getElementById("statusIcon").innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="green" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+        document.getElementById("statusIcon").innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="green" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
         document.getElementById("statusIcon").style = "left: 16%;";
         document.getElementById("statusText").innerHTML = successText;
-        // document.getElementById("statusText").style = "font-size: 1.2vw";
+        //document.getElementById("statusText").style = "font-size: 1.2vw";
         
         document.getElementById("statusBoxWrapper").animate(
             [
                 { transform: "translateX(0%)" }
             ],
                             
-        {
+           {
                 duration: 250,
                 iterations: 1,
                 fill: "forwards",
-        }
-        );
+           }
+          );
 
         setTimeout(() => {
             document.getElementById("statusBoxWrapper").animate(
@@ -144,12 +151,12 @@ function displaySuccess(successText) {
                     { transform: "translateX(120%)" }
                 ],
                                 
-            {
+               {
                     duration: 250,
                     iterations: 1,
                     fill: "forwards",
-            }
-            );
+               }
+              );
         },5000);
     } else {
         document.getElementById("statusBoxWrapper").animate(
@@ -206,14 +213,14 @@ function showUploadStatus(completely) {
                     { transform: "translateX(0%)" }
                 ],
                                 
-            {
+               {
                     duration: 250,
                     iterations: 1,
                     fill: "forwards",
-            }
-            );
+               }
+              );
 
-            document.getElementById("statusArrow").animate(
+              document.getElementById("statusArrow").animate(
                 [
                     { transform: "rotate(180deg)" }
                 ],
@@ -239,11 +246,11 @@ function showUploadStatus(completely) {
                     { transform: "rotate(180deg)" }
                 ],
                                 
-            {
+               {
                     duration: 250,
                     iterations: 1,
                     fill: "forwards",
-            }
+               }
             );
 
             document.getElementById("uploadStatusBox").animate(
@@ -256,7 +263,7 @@ function showUploadStatus(completely) {
                     duration: 250,
                     iterations: 1,
                     fill: "forwards",
-            }
+               }
             );
 
             document.getElementById("uploadStatusWrapper").animate(
@@ -264,18 +271,18 @@ function showUploadStatus(completely) {
                     { transform: "translateX(0%)" }
                 ],
                                 
-            {
+               {
                     duration: 250,
                     iterations: 1,
                     fill: "forwards",
-            }
-            );
+               }
+              );
         }
     } else {
         if (completely) {
             document.getElementById("uploadStatusWrapper").animate(
                 [
-                    { transform: "translateX(0%)" }
+                    { transform: "translateX(-10%)" }
                 ],
                                 
             {
@@ -333,7 +340,7 @@ function showUploadStatus(completely) {
 
             document.getElementById("uploadStatusWrapper").animate(
                 [
-                    { transform: "translateX(-80%)" }
+                    { transform: "translateX(-10%)" }
                 ],
                                 
             {
@@ -347,103 +354,204 @@ function showUploadStatus(completely) {
 }
 
 function hideUploadStatus(completely) {
-    if (completely) {
-        document.getElementById("uploadStatusWrapper").animate(
-            [
-                { transform: "translateX(120%)" }
-            ],
-                            
-           {
-                duration: 250,
-                iterations: 1,
-                fill: "forwards",
-           }
-          );
-        
-        document.getElementById('uploadText').hidden = false;
-        document.getElementById('dots').hidden = false;
-        document.getElementById('cancelUpload').hidden = false;
-        document.getElementById("currentFileUploading").hidden = false;
-        document.getElementById("filesUploaded").hidden = false;
-        document.getElementById("percentage").hidden = false;
-        document.getElementById('progress').hidden = false;
-        document.getElementById("cancelUpload").style = "display:flex;";
-        document.getElementById("hideUploadStatus").style = "left: 92%;;width: 8%";
-        document.getElementById("uploadStatusBox").animate(
-            [
-                {width: "10%"},
-                {width: "100%"}
-                
-                
-            ],
+    if (window.innerWidth > 600) {
+        if (completely) {
+            document.getElementById("uploadStatusWrapper").animate(
+                [
+                    { transform: "translateX(120%)" }
+                ],
+                                
+               {
+                    duration: 250,
+                    iterations: 1,
+                    fill: "forwards",
+               }
+              );
+            
+            document.getElementById('uploadText').hidden = false;
+            document.getElementById('dots').hidden = false;
+            document.getElementById('cancelUpload').hidden = false;
+            document.getElementById("currentFileUploading").hidden = false;
+            document.getElementById("filesUploaded").hidden = false;
+            document.getElementById("percentage").hidden = false;
+            document.getElementById('progress').hidden = false;
+            document.getElementById("cancelUpload").style = "display:flex;";
+            document.getElementById("hideUploadStatus").style = "left: 92%;;width: 8%";
+            document.getElementById("uploadStatusBox").animate(
+                [
+                    {width: "10%"},
+                    {width: "100%"}
+                    
+                    
+                ],
 
-            {
-                duration: 0,
-                iterations: 1,
-                fill: "forwards",
-           }
-        );
+                {
+                    duration: 0,
+                    iterations: 1,
+                    fill: "forwards",
+               }
+            );
 
-        document.getElementById("statusArrow").animate(
-            [
-                { transform: "rotate(0deg)" }
-            ],
-                            
-           {
-                duration: 0,
-                iterations: 1,
-                fill: "forwards",
-           }
-        ); 
+            document.getElementById("statusArrow").animate(
+                [
+                    { transform: "rotate(0deg)" }
+                ],
+                                
+               {
+                    duration: 0,
+                    iterations: 1,
+                    fill: "forwards",
+               }
+            ); 
+        } else {
+            document.getElementById('uploadText').hidden = true;
+            document.getElementById('dots').hidden = true;
+            document.getElementById('cancelUpload').hidden = true;
+            document.getElementById("currentFileUploading").hidden = true;
+            document.getElementById("filesUploaded").hidden = true;
+            document.getElementById("percentage").hidden = true;
+            document.getElementById('progress').hidden = true;
+            document.getElementById("cancelUpload").style = "display:none;";
+            document.getElementById("hideUploadStatus").style = "left: 0%;width: 100%";
+            
+            document.getElementById("statusArrow").animate(
+                [
+                    { transform: "rotate(0deg)" }
+                ],
+                                
+               {
+                    duration: 250,
+                    iterations: 1,
+                    fill: "forwards",
+               }
+            );
+
+            document.getElementById("uploadStatusBox").animate(
+                [
+                    
+                    {width: "100%"},
+                    {width: "10%"}
+                    
+                ],
+
+                {
+                    duration: 250,
+                    iterations: 1,
+                    fill: "forwards",
+               }
+            );
+
+            document.getElementById("uploadStatusWrapper").animate(
+                [
+                    { transform: "translateX(88%)" }
+                ],
+                                
+               {
+                    duration: 250,
+                    iterations: 1,
+                    fill: "forwards",
+               }
+              );
+        }
     } else {
-        document.getElementById('uploadText').hidden = true;
-        document.getElementById('dots').hidden = true;
-        document.getElementById('cancelUpload').hidden = true;
-        document.getElementById("currentFileUploading").hidden = true;
-        document.getElementById("filesUploaded").hidden = true;
-        document.getElementById("percentage").hidden = true;
-        document.getElementById('progress').hidden = true;
-        document.getElementById("cancelUpload").style = "display:none;";
-        document.getElementById("hideUploadStatus").style = "left: 0%;width: 100%";
-        
-        document.getElementById("statusArrow").animate(
-            [
-                { transform: "rotate(0deg)" }
-            ],
-                            
-           {
-                duration: 250,
-                iterations: 1,
-                fill: "forwards",
-           }
-        );
+        if (completely) {
+            document.getElementById("uploadStatusWrapper").animate(
+                [
+                    { transform: "translateX(120%)" }
+                ],
+                                
+               {
+                    duration: 250,
+                    iterations: 1,
+                    fill: "forwards",
+               }
+              );
+            
+            document.getElementById('uploadText').hidden = false;
+            document.getElementById('dots').hidden = false;
+            document.getElementById('cancelUpload').hidden = false;
+            document.getElementById("currentFileUploading").hidden = false;
+            document.getElementById("filesUploaded").hidden = false;
+            document.getElementById("percentage").hidden = false;
+            document.getElementById('progress').hidden = false;
+            document.getElementById("cancelUpload").style = "display:flex;";
+            document.getElementById("hideUploadStatus").style = "left: 92%;;width: 8%";
+            document.getElementById("uploadStatusBox").animate(
+                [
+                    {width: "10%"},
+                    {width: "100%"}
+                    
+                    
+                ],
 
-        document.getElementById("uploadStatusBox").animate(
-            [
-                
-                {width: "100%"},
-                {width: "10%"}
-                
-            ],
+                {
+                    duration: 0,
+                    iterations: 1,
+                    fill: "forwards",
+               }
+            );
 
-            {
-                duration: 250,
-                iterations: 1,
-                fill: "forwards",
-           }
-        );
+            document.getElementById("statusArrow").animate(
+                [
+                    { transform: "rotate(0deg)" }
+                ],
+                                
+               {
+                    duration: 0,
+                    iterations: 1,
+                    fill: "forwards",
+               }
+            ); 
+        } else {
+            document.getElementById('uploadText').hidden = true;
+            document.getElementById('dots').hidden = true;
+            document.getElementById('cancelUpload').hidden = true;
+            document.getElementById("currentFileUploading").hidden = true;
+            document.getElementById("filesUploaded").hidden = true;
+            document.getElementById("percentage").hidden = true;
+            document.getElementById('progress').hidden = true;
+            document.getElementById("cancelUpload").style = "display:none;";
+            document.getElementById("hideUploadStatus").style = "left: 0%;width: 100%";
+            
+            document.getElementById("statusArrow").animate(
+                [
+                    { transform: "rotate(0deg)" }
+                ],
+                                
+               {
+                    duration: 250,
+                    iterations: 1,
+                    fill: "forwards",
+               }
+            );
 
-        document.getElementById("uploadStatusWrapper").animate(
-            [
-                { transform: "translateX(88%)" }
-            ],
-                            
-           {
-                duration: 250,
-                iterations: 1,
-                fill: "forwards",
-           }
-          );
+            document.getElementById("uploadStatusBox").animate(
+                [
+                    
+                    {width: "100%"},
+                    {width: "10%"}
+                    
+                ],
+
+                {
+                    duration: 250,
+                    iterations: 1,
+                    fill: "forwards",
+               }
+            );
+
+            document.getElementById("uploadStatusWrapper").animate(
+                [
+                    { transform: "translateX(45%)" }
+                ],
+                                
+               {
+                    duration: 250,
+                    iterations: 1,
+                    fill: "forwards",
+               }
+              );
+        }
     }
 }
 
@@ -576,12 +684,34 @@ function loadLogs() {
         url: "loadLogs.php",
         type: "POST",
         success: function(response) {
-            document.getElementById("logDiv").innerHTML = response;
+            // /\s*=\s*/g regex for whitespace around "=" replace 
+            if (getLastLog(document.getElementById("logDiv").innerHTML).trim().replace(/\s*=\s*/g, "=") != getLastLog(response).trim().replace(/\s*=\s*/g, "=")) {
+                document.getElementById("logDiv").innerHTML = response;
+                var objDiv = document.getElementById("logDiv");
+                objDiv.scrollTop = objDiv.scrollHeight;
+            }
         },
         error: function(jqXHR, textStatus, errorThrown) {
             displayError("ERROR: " + errorThrown);
         }
     });
+}
+
+function getLastLog(text) {
+    let first = true;
+    let index = -1;
+    for (let i = text.length - 1; i > -1; i--) {
+        if (text[i] == "<" && !first) {
+            index = i;
+            break;
+        }
+
+        if (text[i] == "<") {
+            first = false;
+        }
+    }
+
+    return text.substring(index);
 }
 
 function showFolderDeleteWarning(folderName) {

@@ -7,11 +7,11 @@
 
         $requestId = (int) $_GET["id"];
 
-        $connect = new mysqli($host, $user, $passwd, $db) or die("Spojení se nezdařilo");
-        $connect -> set_charset("UTF8") or die("Kódování nenastaveno");
+        $connect = new mysqli($host, $user, $passwd, $db) or die("Can't connect to db");
+        $connect -> set_charset("UTF8") or die("Encoding not set");
 
 
-        $SQL = $connect->prepare("DELETE FROM accountRequests WHERE idaccountRequests = ?");
+        $SQL = $connect->prepare("DELETE FROM accountrequests WHERE idaccountRequests = ?");
         $SQL->bind_param("i",$requestId);
         $SQL->execute();
 

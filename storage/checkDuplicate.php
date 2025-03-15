@@ -6,11 +6,11 @@ include("../dbInfo/database.php");
 $connect = new mysqli($host, $user, $passwd, $db);
 $connect -> set_charset("UTF8") or die("Encoding not set");
 
-$SQL = $connect->prepare("SELECT name FROM storageData WHERE name = ? AND user_iduser = ?");
+$SQL = $connect->prepare("SELECT name FROM storagedata WHERE name = ? AND user_iduser = ?");
 $SQL ->bind_param("ss", $filename,$userid);
 
-$filename = $_POST["filename"];
-$userid = $_SESSION["userid"];
+$filename = htmlspecialchars($_POST["filename"]);
+$userid = htmlspecialchars($_SESSION["userid"]);
 $SQL->execute();
 
 $result = $SQL->get_result();

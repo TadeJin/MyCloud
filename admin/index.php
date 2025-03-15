@@ -25,7 +25,7 @@
         <link rel="stylesheet" href = "../CSS/stylesheetAdmin.css">
         <link rel ="icon" href="../media/cloud-solid-120.png">
     </head>
-    <body onload="loadUsers(),loadRequests(),loadLogs()">
+    <body onload="loadUsers(),loadRequests(),loadLogs()"> <!-- getTemp(),getCpuUsage(),getFreeSpace() -->
 
     <div class = "renameContainer" id = "rebootCheck" hidden>
         <div class = "renameBox">
@@ -34,7 +34,6 @@
             <button class = "submitBut" id = "rebootSub">REBOOT</button>
         </div>
     </div>
-
     <div class="header">
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000" version="1.1" id="Capa_1" viewBox="0 0 547.674 547.674" xml:space="preserve">
             <g>
@@ -70,7 +69,6 @@
                     </svg>
                     <ul>
                         <div id = "availableSpaceDiv">Available Space: </div>
-                        <div id = "takenSpaceDiv">Taken Space: </div>
                         <div id = "logout"><button type = "submit" name = "logout">Logout<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M16 13v-2H7V8l-5 4 5 4v-3z"></path><path d="M20 3h-9c-1.103 0-2 .897-2 2v4h2V5h9v14h-9v-4H9v4c0 1.103.897 2 2 2h9c1.103 0 2-.897 2-2V5c0-1.103-.897-2-2-2z"></path></svg></button></div>
                     </ul>
                 </div>
@@ -81,13 +79,13 @@
     
     <div class = "adminTools">
         <div class = "infoPanel">
-            <div class = "infoPanelHeader">Server info <button class = "rebootBut">&emsp;<div onclick = "rebootServer()" id = "buttonText">REBOOT&emsp;&emsp;</div><img src = "../media/reboot-icon.png" ></button><img src = "../media/server-icon.png"></div>
+            <div class = "infoPanelHeader">Server info <button class = "rebootBut" onclick = "rebootServer()">&emsp;<div id = "buttonText">REBOOT&emsp;&emsp;</div><img src = "../media/reboot-icon.png" ></button><img src = "../media/server-icon.png"></div>
             <div class = "panelContent">
                 <label>STATUS: <label style = "color:green;">ONLINE</label></label>&emsp;&emsp;&emsp;  <br /><br />
-                <label>CPU Temperature:</label> <label style = "color: red">100°C</label>&emsp;&emsp;&emsp;&emsp;
-                <label>CPU usage:</label> <label>100%</label><br /><br />
-                <label>Available space: </label> <label>960.0 GB</label><br /><br />
-                <label>Taken space: </label> <label>40.0 GB</label><br /><br />
+                <label>CPU Temperature:</label> <label id = "cpuTemp">0°C</label><br /> <br />
+                <label>CPU usage:</label> <label id = "cpuUsage">0%</label><br /><br />
+                <label>Available space: </label> <label id = "availableStorage">0 GB</label><br /><br />
+                <!-- <label>Taken space: </label> <label>40.0 GB</label> -->
 
                 <div class = "tableDiv" name = "logs">
                     <table class = "userTable" name = "logs">
@@ -111,8 +109,8 @@
                 <label id = "userCount">Total user count: </label><br /><br />
                 <label id = "activeUserCount"></label><br /><br />
 
-                <div style = "margin-left: 5%;outline: 2px solid black;">
-                    <table class = "userTable" style = "width: 25.8vw;">
+                <div style = "margin-left: 5%;outline: 2px solid black;position:relative;">
+                    <table class = "userTable" style = "width: 100%;">
                         <tr>
                             <td colspan = "3" style = "text-align: center;font-size: 1.25vw;">User list</td>
                         </tr>
@@ -177,9 +175,15 @@
     <script src = "../Scripts/serverStatusScripts.js"></script>
 
     <script>
+        // setInterval(getTemp,3000);
+        // setInterval(getCpuUsage,3000);
+        // setInterval(getFreeSpace,3000);
+        setInterval(loadRequests,3000);
+        setInterval(loadLogs,3000);
         function back() {
             document.getElementById("rebootCheck").hidden = true;
         }
     </script>
+
     </body>
 </html>

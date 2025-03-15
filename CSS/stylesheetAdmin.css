@@ -287,8 +287,6 @@ div {
     text-align: left;
 }
 
-
-/* ----------------------------------------------------------RENAME BOX CSS--------------------------------------------------------------------*/
 .renameContainer {
     position: fixed;
     width: 100vw;
@@ -363,13 +361,4 @@ div {
 .submitBut:hover {
     background-color: lightgray;
     cursor:pointer;
-}
-
-.forbiddenCharsDiv {
-    position: absolute;
-    font-family: "Russo One",sans-serif;
-    top: 70%;
-    left: 28%;
-    color: red;
-    display: none;
 }

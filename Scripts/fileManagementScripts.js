@@ -120,7 +120,7 @@ function deleteFolder(folderName) {
 
 
 function renameFile(fileName) {
-    document.getElementById("newFileNameInput").value = "";
+    fileName.lastIndexOf(".") == -1 ? (document.getElementById("newFileNameInput").value = fileName) : (document.getElementById("newFileNameInput").value = fileName.substring(0,fileName.lastIndexOf(".")));
     document.getElementById("renameContainer").hidden = false;
     document.getElementById("renameSub").addEventListener("click", function() {
         const regex = new RegExp('[*"\\\\/<>:|?]');
@@ -272,5 +272,19 @@ function selectAllFiles() {
     document.querySelectorAll(".fileIcon").forEach(element => {
         element.childNodes[0].checked = !element.childNodes[0].checked;
         addSelection(element.childNodes[0]);
+    });
+}
+
+
+function checkIntegrity() {
+    $.ajax({
+        url: "checkIntegrity.php",
+        type: "POST",
+        success: function(response) {
+            console.log(response);
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            displayError("ERROR: " + errorThrown);
+        }
     });
 }

@@ -3,4 +3,4 @@
 session_start();
 
 
-$_SESSION["uploadFileName"] = $_POST["fileName"];
+$_SESSION["uploadFileName"] = htmlspecialchars($_POST["fileName"]);

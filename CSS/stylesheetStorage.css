@@ -6,7 +6,7 @@ html {
 body {
     z-index: -1;
     min-height: 100vh;
-    overflow-x: auto;
+    overflow-x: hidden;
     overflow-y: auto;
 }
 
@@ -91,7 +91,7 @@ body {
     border-radius: 1px;
     right: 3.5%;
     background-color: white;
-    z-index: 3;
+    z-index: 4;
 }
 
 #profileDropDown svg[name="triangle"] {
@@ -182,7 +182,7 @@ body {
 
 .tools {
     display: unset;
-    position: relative;
+    position: realtive;
 }
 
 .tools input {
@@ -408,7 +408,7 @@ body {
     border-radius: 10px;
     width: 25vw;
     height: 17vh;
-    z-index: 2;
+    z-index: 3;
     background: white;
     overflow: hidden;
 }
@@ -641,7 +641,7 @@ body {
 
 .fileName {
     position: absolute;
-    left: 30%;
+    left: 25%;
     top: 50%;
     transform: translate(0%,-50%);
     font-family: "Russo One",sans-serif;
@@ -748,14 +748,14 @@ ul {
     font-size: 80%;
 }
 
-.dropDownBut button:hover {
-    background-color: lightgray;
-    cursor: pointer;
-}
-
 .dropDownBut button svg {
     height: 24px;
     width: 24px;
+}
+
+.dropDownBut button:hover {
+    background-color: lightgray;
+    cursor: pointer;
 }
 
 .dropDown svg {
@@ -877,10 +877,32 @@ ul {
     left: 28%;
     color: red;
     display: none;
+    font-size: 1.75vh;
 }
 
+/* ---------------------------------------------------------DROPAREA CSS-------------------------------------------------*/
+
+#dropArea {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 5;
+    pointer-events: none;
+}
+
+#dropText {
+    font-family: "Russo One",sans-serif;
+    font-size: 3vh;
+}
+
+
 /*--------------------------------------------------------TOOLTIP----------------------------------------------------*/
-.tooltip {
+/* .tooltip {
     width: 10%;
     height: 3vh;
     display: flex;
@@ -909,51 +931,25 @@ ul {
 .tooltip-text{
     font-family: "Russo One",sans-serif;
     color: white;
-}
-
-/* ---------------------------------------------------------DROPAREA CSS-------------------------------------------------*/
-
-#dropArea {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    left: 0;
-    top: 0;
-    z-index: 5;
-    pointer-events: none;
-}
-
-#dropText {
-    font-family: "Russo One",sans-serif;
-    font-size: 3vh;
-}
-
+} */
 
 /* ---------------------------------------------------------MOBILE CSS-------------------------------------------------*/
 @media (max-width: 600px) {
-
     html, body {
         overflow-x: hidden;
     }
 
     .header svg{
-        height: 3vh;
-        width: 5vh;
+        height: 4vh;
+        width: 6vh;
         position: absolute;
-        left: 17%;
-        top: 1.75%;
+        left: 14%;
+        top: 2.5%;
     }
 
     .header h1{
         height: 3vh;
         font-size: 2.5vh;
-    }
-
-    .header svg{
-        height: 3vh;
     }
 
     #currentFolderDiv {
@@ -990,9 +986,9 @@ ul {
     }
 
     #profileDropDown ul div {
-        font-size: 1.1vh;
+        font-size: 1vh;
     }
-
+    
     #takenSpaceDiv {
         top: 30%;
     }
@@ -1012,7 +1008,7 @@ ul {
         top:10%;
         height: 1.4vh;
     }
-
+    
     .tools {
         display: block;
         height: 15vh;
@@ -1077,7 +1073,7 @@ ul {
     }
 
     #returnToMain {
-        top: 70%;
+        top: 24%;
         width: 2.5vh;
         height: 2.5vh;
     }
@@ -1177,10 +1173,16 @@ ul {
         width: 1.75vh;
         height: 1.75vh;
     }
+    
+    .fileIcon input {
+        width: 1.25vh;
+        height: 1.25vh;
+    }
 
     .fileName {
         left: 35%;
         color: black;
+        font-size: 1.1vh;
     }
 
     .dotDiv {
@@ -1231,17 +1233,17 @@ ul {
     @keyframes hide {
         0% {
             height: 130px;
-            left: 95%;
-            top: 25%;
+            left: 170%;
+            top: 50%;
         }
     
         100% {
             height: 0px;
-            left: 95%;
-            top: 24%;
+            left: 150%;
+            top: 40%;
         }
     }
-
+    
     .renameBox {
         width: 80vw;
         left: 7.5%;
@@ -1285,3 +1287,5 @@ ul {
         overflow: hidden;
     }
 } 
+
+
