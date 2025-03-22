@@ -23,12 +23,10 @@
         <div class="header"><h1><img src="../media/cloud-black-shape-svgrepo-com.png"> Create User</h1></div>
 
         <div class="input-box">
-            <img src="../media/user-solid-60.png" id = "userImg">
             <input type = "name" placeholder="Username" onkeyup="disableBut()" id = "username">
         </div>
 
         <div class="input-box">
-            <img src="../media/lock-solid-60.png" id="pass">
             <input type="password" placeholder="Password" onkeyup="disableBut()" id = "password">
         </div>
         
@@ -43,7 +41,8 @@
     
     <script>
         function disableBut() {
-            if (document.getElementById("username").value != "" && document.getElementById("password").value != "") {
+            let fChars = checkForbiddenCharacters();
+            if (document.getElementById("username").value != "" && document.getElementById("password").value != "" && !fChars) {
                 document.getElementById("submitBut").disabled = false;
             } else {
                 document.getElementById("submitBut").disabled = true
@@ -93,6 +92,21 @@
                 }
             }
         });
+
+        function checkForbiddenCharacters() {
+            const regex = new RegExp('[\*"\\\\/<>:|?]');
+
+            let input = document.getElementById("username").value;
+
+            if (regex.test(input)) {
+                document.getElementById("errorDiv").innerHTML = "Name contains forbidden characters!"
+                return true;
+            } else {
+                document.getElementById("errorDiv").innerHTML = "";
+            }
+
+            return false;
+        }
     </script>
 </body>
 </html>

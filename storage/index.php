@@ -59,7 +59,6 @@
     <div class = "renameContainer" id = "folderDelete" hidden>
         <div class = "renameBox">
             <h2 id = "folderDeleteWarningHeader">Are you sure you want to delete and its contents ?</h2>
-            <p>This action cannot be undone!</p>
             <button class="backBut" onclick="back()">CANCEL</button>
             <button class = "submitBut" id = "folderDelteSub">YES</button>
         </div>
@@ -68,7 +67,6 @@
     <div class = "renameContainer" id = "fileDelete" hidden>
         <div class = "renameBox">
             <h2 id = "fileDeleteWarningHeader">Are you sure you want to delete ?</h2>
-            <p>This action cannot be undone!</p>
             <button class="backBut" onclick="back()">CANCEL</button>
             <button class = "submitBut" id = "fileDelteSub">YES</button>
         </div>
@@ -254,8 +252,8 @@
             });
         }
 
-        // setInterval(getFreeSpace,3000);
-        // setInterval(getTakenSpaceName,3000);
+        setInterval(getFreeSpace,3000);
+        setInterval(getTakenSpaceName,3000);
     </script>
 </body>
 </html>

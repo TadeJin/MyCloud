@@ -15,7 +15,7 @@
     $connect -> set_charset("UTF8") or die("Encoding not set");
 
 
-    $result = $connect->query("SELECT iduser,username FROM user WHERE username != 'admin';");
+    $result = $connect->query("SELECT iduser,username FROM users WHERE username != 'admin';");
 
     $htmlOutput = "";
 
@@ -23,7 +23,7 @@
         $htmlOutput .= '
         <tr>
             <td>' . $row["username"] . '</td>
-            <td>' . /*getTakenSpace($row["username"])*/ "N/A " . 'B</td>
+            <td>' . /*getTakenSpace($row["username"]) */ "N/A " . 'B</td>
             <td><a href = "removeUser.php?userid=' . $row["iduser"] . '&username='. $row["username"] . '" id = "">Remove</a></td>
         </tr>';
     }

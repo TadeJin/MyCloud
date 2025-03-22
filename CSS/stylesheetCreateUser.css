@@ -48,22 +48,6 @@ body {
     left: 57.5vw;
 }
 
-.container .input-box img[id = "userImg"] {
-    position: absolute;
-    width: 7.5%;
-    height: auto;
-    left: 90%;
-    top:50%;
-    transform: translate(0%,-50%);
-}
-
-.container .input-box img[id ="pass"] {
-    top:50%;
-    transform: translate(0%,-50%);
-    left: 90%;
-    width: 7.5%;
-    height: auto;
-}
 
 .input-box input {
     width: 100%;
@@ -165,7 +149,7 @@ body {
     text-align: center;
     font-size: 1.75vh ;
     position: absolute;
-    left: 12%;
+    left: 10.5%;
     top: 87%;
 }
 
@@ -208,14 +192,6 @@ body {
         height: 5.5vh;
         padding-bottom: 15px;
         margin-left: 6%;
-    }
-
-    .container .input-box img[id="userImg"] {
-        width: 10%;
-    }
-
-    .container .input-box img[id="pass"] {
-        width: 10%;
     }
 
     .input-box input::placeholder {

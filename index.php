@@ -25,11 +25,9 @@
     <div class = "container">
         <div class="header"><h1><img src="media/cloud-black-shape-svgrepo-com.png"> MyCloud</h1></div>
         <div class = "input-box">
-            <img src="user-solid-60.png" id = "userImg">
             <input type = "name" name = "username" onkeyup="disableBut()" id = "username" placeholder="Username"><br>
         </div>
         <div class="input-box">
-            <img src="lock-solid-60.png" id = "lockImg">
             <input type="password" name = "pass" onkeyup="disableBut()" id = "password" placeholder="Password"><br>
         </div>
         <div class="butDiv"><button id = "login" onclick="sendCredentials()" disabled class = "but">Login</button></div>

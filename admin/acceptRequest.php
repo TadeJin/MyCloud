@@ -18,7 +18,7 @@
         $row = $result->fetch_assoc();
 
 
-        $SQL2 = $connect->prepare("INSERT INTO user(username,password) VALUES(?,?)");
+        $SQL2 = $connect->prepare("INSERT INTO users(username,password) VALUES(?,?)");
         $SQL2->bind_param("ss",$name,$password);
 
         $name = $row["username"];

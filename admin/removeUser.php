@@ -15,7 +15,7 @@
         $SQL1->execute();
         
         
-        $SQL2 = $connect->prepare("DELETE FROM user WHERE iduser = ?");
+        $SQL2 = $connect->prepare("DELETE FROM users WHERE iduser = ?");
         $SQL2->bind_param("i",$userid);
 
         $SQL2->execute();

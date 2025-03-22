@@ -10,7 +10,7 @@
         $connect = new mysqli($host, $user, $passwd, $db) or die("Can't connect to db");
         $connect -> set_charset("UTF8") or die("Encoding not set");
 
-        $SQL = $connect->prepare("SELECT username FROM user WHERE username = ?");
+        $SQL = $connect->prepare("SELECT username FROM users WHERE username = ?");
         $SQL->bind_param("s",$name);
         
         $SQL->execute();
@@ -34,7 +34,7 @@
 
             $name = $_POST["username"];
             $password = password_hash($_POST["pass"],PASSWORD_DEFAULT);
-            $date = date("d-m-Y");
+            $date = date("Y-m-d");
             $SQL->execute();
             $connect->close();
             echo 0;

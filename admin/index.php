@@ -85,7 +85,6 @@
                 <label>CPU Temperature:</label> <label id = "cpuTemp">0°C</label><br /> <br />
                 <label>CPU usage:</label> <label id = "cpuUsage">0%</label><br /><br />
                 <label>Available space: </label> <label id = "availableStorage">0 GB</label><br /><br />
-                <!-- <label>Taken space: </label> <label>40.0 GB</label> -->
 
                 <div class = "tableDiv" name = "logs">
                     <table class = "userTable" name = "logs">
@@ -175,9 +174,9 @@
     <script src = "../Scripts/serverStatusScripts.js"></script>
 
     <script>
-        // setInterval(getTemp,3000);
-        // setInterval(getCpuUsage,3000);
-        // setInterval(getFreeSpace,3000);
+        setInterval(getTemp,3000);
+        setInterval(getCpuUsage,3000);
+        setInterval(getFreeSpace,3000);
         setInterval(loadRequests,3000);
         setInterval(loadLogs,3000);
         function back() {

@@ -9,7 +9,7 @@
         $connect = new mysqli($host, $user, $passwd, $db) or die("Can't connect to db");
         $connect -> set_charset("UTF8") or die("Encoding not set");
 
-        $SQL = $connect->prepare("SELECT iduser,username,password FROM user WHERE username = ?");
+        $SQL = $connect->prepare("SELECT iduser,username,password FROM users WHERE username = ?");
         $SQL ->bind_param("s", $user);
 
         $user = $_POST["username"];

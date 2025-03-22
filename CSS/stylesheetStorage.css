@@ -10,6 +10,10 @@ body {
     overflow-y: auto;
 }
 
+button {
+    border: 2px solid black;
+}
+
 .header {
     text-align: center;
 }

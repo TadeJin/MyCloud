@@ -35,23 +35,6 @@ body {
     margin-left: 8%;
 }
 
-.container .input-box img[src ='user-solid-60.png'] {
-    position: absolute;
-    left: 90%;
-    top:50%;
-    transform: translate(0%,-50%);
-    width: 10%;
-    height: auto;
-}
-
-.container .input-box img[src ='lock-solid-60.png'] {
-    position: absolute;
-    left: 90%;
-    top:50%;
-    transform: translate(0%,-50%);
-    width: 10%;
-    height: auto;
-}
 
 .input-box {
     position: relative;
@@ -129,7 +112,7 @@ body {
 
 
 
-@media (max-width: 1250px) {
+@media (max-width: 600px) {
     
 .container {
     border: solid black 2px;
