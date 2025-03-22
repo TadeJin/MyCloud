@@ -252,8 +252,8 @@
             });
         }
 
-        setInterval(getFreeSpace,3000);
-        setInterval(getTakenSpaceName,3000);
+        // setInterval(getFreeSpace,3000);
+        // setInterval(getTakenSpaceName,3000);
     </script>
 </body>
 </html>

@@ -174,9 +174,9 @@
     <script src = "../Scripts/serverStatusScripts.js"></script>
 
     <script>
-        setInterval(getTemp,3000);
-        setInterval(getCpuUsage,3000);
-        setInterval(getFreeSpace,3000);
+        // setInterval(getTemp,3000);
+        // setInterval(getCpuUsage,3000);
+        // setInterval(getFreeSpace,3000);
         setInterval(loadRequests,3000);
         setInterval(loadLogs,3000);
         function back() {
