@@ -1,4 +1,4 @@
-![Image](https://github.com/user-attachments/assets/6936dc2f-393a-40bb-bf45-6af189dfe007)
+![Image](https://github.com/user-attachments/assets/82299064-a9ba-4483-805d-9a18beafe212)
 # MyCloud ☁️
 This project is a high school final thesis focused on creating a web cloud application
 ---
