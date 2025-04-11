@@ -3,7 +3,7 @@ This project is a high school final thesis focused on creating a web cloud appli
 ---
 ## Features
 ---
-Version contains:
+Current version contains:
 - User features:
   - Account request 
   - Store files
