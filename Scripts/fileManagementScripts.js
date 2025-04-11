@@ -149,22 +149,6 @@ function renameFile(fileName) {
     });
 }
 
-function removeFile(fileName) {
-    $.ajax({
-        url: "deleteFile.php",
-  	    type: "POST",
-        data: {fileName: fileName},
- 	    success: function(response) {
-            displaySuccess("Removed file");
-            getFreeSpace();
-            loadFiles(addEventListenersToFiles);
-            back();
-        },
-        error: function(jqXHR, textStatus, errorThrown) {
-            displayError("Error: " + errorThrown);
-  	    }
- 	});	
-}
 
 
 function selectFiles() {
@@ -216,6 +200,24 @@ function deleteSelected() {
     } else {
         displayError("No files selected");
     }
+}
+
+
+function removeFile(fileName) {
+    $.ajax({
+        url: "deleteFile.php",
+  	    type: "POST",
+        data: {fileName: fileName},
+ 	    success: function(response) {
+            displaySuccess("Removed file");
+            getFreeSpace();
+            loadFiles(addEventListenersToFiles);
+            back();
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            displayError("Error: " + errorThrown);
+  	    }
+ 	});	
 }
 
 function downloadSelected() {

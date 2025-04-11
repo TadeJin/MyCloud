@@ -1,5 +1,5 @@
 <?php
     $host = "localhost";
-    $user = "root";
-    $passwd = "";
+    $user = ""; //DB user
+    $passwd = ""; // DB password
     $db = "mycloud1";

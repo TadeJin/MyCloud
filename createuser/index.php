@@ -50,7 +50,7 @@
         }
 
         function goBack() {
-            window.location.href = "/MyCloud";
+            window.location.href = "/";
         }
 
         function submitRequest() {
@@ -66,7 +66,7 @@
                 if (response == "1") {
                     document.getElementById("errorDiv").innerHTML = "Account with this name already exists!";
                 } else if (response == 0) {
-                    window.location.href = "/MyCloud";
+                    window.location.href = "/";
                 }
             },
             error: function(jqXHR, textStatus, errorThrown) {

@@ -2,7 +2,7 @@
     session_start();
 
     if (empty($_SESSION["userid"]) || $_SESSION["user"] != "admin") {
-        header ("Location: /MyCloud");
+        header ("Location: /");
     }
 ?>
 <!--                                                                                                                    
@@ -25,7 +25,7 @@
         <link rel="stylesheet" href = "../CSS/stylesheetAdmin.css">
         <link rel ="icon" href="../media/cloud-solid-120.png">
     </head>
-    <body onload="loadUsers(),loadRequests(),loadLogs()"> <!-- getTemp(),getCpuUsage(),getFreeSpace() -->
+    <body onload="loadUsers(),loadRequests(),loadLogs(),getTemp(),getCpuUsage(),getFreeSpace()">
 
     <div class = "renameContainer" id = "rebootCheck" hidden>
         <div class = "renameBox">
@@ -174,9 +174,9 @@
     <script src = "../Scripts/serverStatusScripts.js"></script>
 
     <script>
-        // setInterval(getTemp,3000);
-        // setInterval(getCpuUsage,3000);
-        // setInterval(getFreeSpace,3000);
+        setInterval(getTemp,3000);
+        setInterval(getCpuUsage,3000);
+        setInterval(getFreeSpace,3000);
         setInterval(loadRequests,3000);
         setInterval(loadLogs,3000);
         function back() {

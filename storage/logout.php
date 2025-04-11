@@ -4,5 +4,5 @@
 
     if (isset($_POST['logout'])) {
         session_destroy();
-        header("Location: /MyCloud");
+        header("Location: /");
     }

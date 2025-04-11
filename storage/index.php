@@ -2,7 +2,7 @@
     session_start(); 
     
     if (empty($_SESSION["userid"])) {
-        header ("Location: /MyCloud");
+        header ("Location: /");
     }
     
 ?>
@@ -26,7 +26,7 @@
     <link rel="stylesheet" href = "../CSS/stylesheetStorage.css">
     <link rel ="icon" href="../media/cloud-solid-120.png">
 </head>
-<body onload="iniDragDrop(),checkIntegrity()"> <!-- getFreeSpace(), getTakenSpaceName()-->
+<body onload="getFreeSpace(), getTakenSpaceName(),iniDragDrop(),checkIntegrity()">
     
     <div id = "dropArea">
         <div style="display: none;" id = "dropDiv">
@@ -252,8 +252,8 @@
             });
         }
 
-        // setInterval(getFreeSpace,3000);
-        // setInterval(getTakenSpaceName,3000);
+        setInterval(getFreeSpace,3000);
+        setInterval(getTakenSpaceName,3000);
     </script>
 </body>
 </html>

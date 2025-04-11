@@ -23,7 +23,7 @@
                 $_SESSION["user"] = $_POST["username"];
                 $_SESSION["userid"] = $row["iduser"];
                 $_SESSION["currentDir"] = "main";
-                $_SESSION["rootPath"] = "C:\\PROJECTS\\MyCloud\\TestStorage\\";
+                $_SESSION["rootPath"] = "/mnt/HDD/";
                 $connect->close();
                 echo 0;
             } else {

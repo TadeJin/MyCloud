@@ -23,7 +23,7 @@
         $htmlOutput .= '
         <tr>
             <td>' . $row["username"] . '</td>
-            <td>' . /*getTakenSpace($row["username"]) */ "N/A " . 'B</td>
+            <td>' . getTakenSpace($row["username"]) . 'B</td>
             <td><a href = "removeUser.php?userid=' . $row["iduser"] . '&username='. $row["username"] . '" id = "">Remove</a></td>
         </tr>';
     }

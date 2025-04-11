@@ -260,7 +260,7 @@ function sendChunk(fileIndex,chunkIndex,fileChunks,files,cancel) { //Sends file 
                 }
             };
         }
-        // xhr.send(formData);
+        
         xhr.send(chunk);
     } else {
         $.ajax({

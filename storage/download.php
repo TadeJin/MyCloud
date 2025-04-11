@@ -2,7 +2,7 @@
  session_start();
  
  if (empty($_SESSION["userid"])) {
-            header ("Location: /MyCloud");
+            header ("Location: /");
  }
 set_time_limit(-1);
    
