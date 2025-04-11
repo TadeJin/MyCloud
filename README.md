@@ -1,7 +1,7 @@
-#MyCloud ☁️
+# MyCloud ☁️
 This project is a high school final thesis focused on created a web cloud application
 ---
-##Features
+## Features
 ---
 Version contains:
 - User features:
