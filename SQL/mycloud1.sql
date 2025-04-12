@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Počítač: localhost:3306
--- Vytvořeno: Sob 22. bře 2025, 17:49
+-- Vytvořeno: Sob 12. dub 2025, 18:47
 -- Verze serveru: 10.11.6-MariaDB-0+deb12u1
 -- Verze PHP: 8.2.26
 
@@ -34,6 +34,13 @@ CREATE TABLE `accountrequests` (
   `date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_czech_ci;
 
+--
+-- Vypisuji data pro tabulku `accountrequests`
+--
+
+INSERT INTO `accountrequests` (`idaccountRequests`, `username`, `password`, `date`) VALUES
+(79, 'testRequest', '$2y$10$bqmoaT5eV6yeFnQSt1uURezlS9izIQFJwRyN82T5HWU9IazY.IoZG', '2025-04-11');
+
 -- --------------------------------------------------------
 
 --
@@ -44,8 +51,6 @@ CREATE TABLE `logs` (
   `idlogs` int(11) NOT NULL,
   `logMessage` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_czech_ci;
-
--- --------------------------------------------------------
 
 --
 -- Struktura tabulky `storagedata`
@@ -59,15 +64,13 @@ CREATE TABLE `storagedata` (
   `user_iduser` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_czech_ci;
 
--- --------------------------------------------------------
-
 --
 -- Struktura tabulky `users`
 --
 
 CREATE TABLE `users` (
   `iduser` int(11) NOT NULL,
-  `username` varchar(100) NOT NULL,
+  `username` varchar(45) NOT NULL,
   `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_czech_ci;
 
@@ -110,19 +113,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT pro tabulku `accountrequests`
 --
 ALTER TABLE `accountrequests`
-  MODIFY `idaccountRequests` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
+  MODIFY `idaccountRequests` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
 
 --
 -- AUTO_INCREMENT pro tabulku `logs`
 --
 ALTER TABLE `logs`
-  MODIFY `idlogs` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=714;
+  MODIFY `idlogs` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=832;
 
 --
 -- AUTO_INCREMENT pro tabulku `storagedata`
 --
 ALTER TABLE `storagedata`
-  MODIFY `idstorageData` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1492;
+  MODIFY `idstorageData` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1527;
 
 --
 -- AUTO_INCREMENT pro tabulku `users`
