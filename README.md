@@ -1,13 +1,13 @@
 ![Image](https://github.com/user-attachments/assets/82299064-a9ba-4483-805d-9a18beafe212)
 # MyCloud ☁️
 This project is a high school final thesis focused on creating a web cloud application hosted on a Raspberry Pi.
----
+
 ## Features
----
+
 Current version contains:
 - User features:
   - Account request 
-  - Store files
+  - Upload files
   - Download stored files
   - Rename stored files
   - Create directories
